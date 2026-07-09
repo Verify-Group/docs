@@ -1,0 +1,32 @@
+---
+title: "List participants with filters"
+api: "GET /api/v1/participants"
+---
+
+<ParamField query="organizationId" type="string">
+  Organization ID
+</ParamField>
+
+<ParamField query="search" type="string">
+  Search query (searches name, email, phone)
+</ParamField>
+
+<ParamField query="role" type=""claimant" | "witness" | "agent" | "adjuster" | "examiner" | "other"">
+  Filter by role
+</ParamField>
+
+<ParamField query="status" type=""active" | "inactive" | "pending"">
+  Filter by status
+</ParamField>
+
+<ParamField query="type" type=""individual" | "business"">
+  Filter by entity type
+</ParamField>
+
+<ParamField query="page" type="number">
+  Page number
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Items per page
+</ParamField>

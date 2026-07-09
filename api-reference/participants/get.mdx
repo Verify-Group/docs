@@ -1,0 +1,16 @@
+---
+title: "Get participant by ID"
+api: "GET /api/v1/participants/{id}"
+---
+
+<ParamField path="id" type="string" required>
+  Participant ID
+</ParamField>
+
+<ParamField query="with" type="string">
+  Comma-separated list of relations to include (e.g., bankAccounts)
+</ParamField>
+
+<ParamField query="include" type="string">
+  Alias for \"with\" parameter
+</ParamField>

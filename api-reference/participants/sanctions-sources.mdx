@@ -1,0 +1,21 @@
+---
+title: "List cached sanctions.io data sources"
+api: "GET /api/v1/participants/sanctions-sources"
+description: "Returns locally cached sanctions.io sources. Use shortName values as dataSources when creating watchlist checks."
+---
+
+<ParamField query="name" type="string">
+  Case-insensitive partial match on the source name
+</ParamField>
+
+<ParamField query="countryCode" type="string">
+  Country code from sanctions.io, for example US, GB, or INT
+</ParamField>
+
+<ParamField query="isEnabled" type="boolean">
+  Filter locally enabled or disabled sources
+</ParamField>
+
+<ParamField query="shortName" type="string">
+  Case-insensitive exact match on sanctions.io short_name
+</ParamField>

@@ -1,0 +1,45 @@
+---
+title: "Create and execute sanctions/PEP/AML screening check"
+api: "POST /api/v1/participants/{id}/sanctions-check"
+description: "Initiates one granular compliance screening check for the participant."
+---
+
+<ParamField path="id" type="string" required>
+  Participant ID
+</ParamField>
+
+<ParamField body="participantId" type="string" required>
+  Participant ID to screen
+</ParamField>
+
+<ParamField body="organizationId" type="string">
+  Organization ID (auto-resolved from authenticated user when omitted)
+</ParamField>
+
+<ParamField body="checkType" type=""aml" | "pep" | "sanctions" | "watchlist" | "adverse_media"">
+  Granular screening type to perform. Defaults to watchlist when omitted.
+</ParamField>
+
+<ParamField body="checkTypes" type="array">
+  Deprecated legacy grouped check types. If provided, only the first type is used.
+</ParamField>
+
+<ParamField body="searchName" type="string">
+  Custom search name (defaults to participant full name)
+</ParamField>
+
+<ParamField body="searchCountries" type="array">
+  Countries to search in (ISO 3166-1 alpha-2 codes)
+</ParamField>
+
+<ParamField body="searchDob" type="string">
+  Date of birth for enhanced matching
+</ParamField>
+
+<ParamField body="dataSources" type="array">
+  sanctions.io source short_name values to include in the search. Required for source-based watchlist screening.
+</ParamField>
+
+<ParamField body="enableMonitoring" type="boolean">
+  Enable continuous monitoring
+</ParamField>

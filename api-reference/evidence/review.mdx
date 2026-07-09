@@ -1,0 +1,16 @@
+---
+title: "Approve or reject evidence"
+api: "POST /api/v1/evidence/{id}/review"
+---
+
+<ParamField path="id" type="string" required>
+  Evidence UUID
+</ParamField>
+
+<ParamField body="decision" type=""approved" | "rejected"" required>
+  Review decision
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Optional notes explaining the decision
+</ParamField>

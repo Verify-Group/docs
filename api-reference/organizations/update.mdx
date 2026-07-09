@@ -1,0 +1,57 @@
+---
+title: "Update organization"
+api: "PUT /api/v1/organizations/{id}"
+description: "Update organization information."
+---
+
+<ParamField path="id" type="string" required>
+  Organization UUID
+</ParamField>
+
+<ParamField body="name" type="string">
+  Organization name
+</ParamField>
+
+<ParamField body="description" type="string">
+  Organization description
+</ParamField>
+
+<ParamField body="settings" type="object">
+  Organization settings
+</ParamField>
+
+<ParamField body="isBusiness" type="boolean">
+  Whether this organization is business or individual
+</ParamField>
+
+<ParamField body="registrationNo" type="string">
+  Unique business registration number
+</ParamField>
+
+<ParamField body="registeredAt" type="string">
+  Business registration date
+</ParamField>
+
+<ParamField body="countryOfRegistration" type="string">
+  ISO-3166 alpha-2 country code of registration
+</ParamField>
+
+<ParamField body="taxNo" type="string">
+  Tax registration number
+</ParamField>
+
+<ParamField body="currentSetupStep" type="string">
+  Current setup step that was last completed or should be handled next
+</ParamField>
+
+<ParamField body="industry" type="string">
+  Industry category
+</ParamField>
+
+<ParamField body="type" type="string">
+  Business type/category
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata
+</ParamField>

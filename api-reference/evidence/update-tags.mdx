@@ -1,0 +1,12 @@
+---
+title: "Set tags on evidence"
+api: "PATCH /api/v1/evidence/{id}/tags"
+---
+
+<ParamField path="id" type="string" required>
+  Evidence UUID
+</ParamField>
+
+<ParamField body="tags" type="array" required>
+  Tags to apply to the evidence
+</ParamField>

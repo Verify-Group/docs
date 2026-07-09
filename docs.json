@@ -42,12 +42,7 @@
         "groups": [
           {
             "group": "Getting Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "authentication",
-              "environments"
-            ]
+            "pages": ["index", "quickstart", "authentication", "environments"]
           },
           {
             "group": "Core Concepts",
@@ -79,41 +74,130 @@
           },
           {
             "group": "SDKs & Tools",
-            "pages": [
-              "sdks/javascript",
-              "sdks/postman"
-            ]
+            "pages": ["sdks/javascript", "sdks/postman"]
           }
         ]
       },
       {
         "tab": "API Reference",
-        "openapi": "api-reference/openapi.json"
+        "groups": [
+          {
+            "group": "Authentication",
+            "pages": [
+              "api-reference/authentication/login",
+              "api-reference/authentication/logout",
+              "api-reference/authentication/refresh",
+              "api-reference/authentication/me"
+            ]
+          },
+          {
+            "group": "Multi-Factor Authentication",
+            "pages": [
+              "api-reference/mfa/status",
+              "api-reference/mfa/enable",
+              "api-reference/mfa/verify",
+              "api-reference/mfa/disable"
+            ]
+          },
+          {
+            "group": "Users",
+            "pages": [
+              "api-reference/users/me",
+              "api-reference/users/update",
+              "api-reference/users/change-password",
+              "api-reference/users/notification-preferences",
+              "api-reference/users/update-notifications",
+              "api-reference/users/upload-avatar"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "api-reference/organizations/get",
+              "api-reference/organizations/update",
+              "api-reference/organizations/list-members",
+              "api-reference/organizations/dashboard",
+              "api-reference/organizations/token-balance",
+              "api-reference/organizations/run-kyc"
+            ]
+          },
+          {
+            "group": "Participants",
+            "pages": [
+              "api-reference/participants/create",
+              "api-reference/participants/list",
+              "api-reference/participants/get",
+              "api-reference/participants/detail",
+              "api-reference/participants/update",
+              "api-reference/participants/delete",
+              "api-reference/participants/sanctions-sources",
+              "api-reference/participants/sanctions-check",
+              "api-reference/participants/sanctions-checks"
+            ]
+          },
+          {
+            "group": "Claims",
+            "pages": [
+              "api-reference/claims/create",
+              "api-reference/claims/list",
+              "api-reference/claims/get",
+              "api-reference/claims/update",
+              "api-reference/claims/delete",
+              "api-reference/claims/update-status",
+              "api-reference/claims/assign",
+              "api-reference/claims/add-poi",
+              "api-reference/claims/list-pois"
+            ]
+          },
+          {
+            "group": "Voice Interview",
+            "pages": [
+              "api-reference/voice-interview/initiate",
+              "api-reference/voice-interview/upload-audio",
+              "api-reference/voice-interview/list-sessions",
+              "api-reference/voice-interview/results"
+            ]
+          },
+          {
+            "group": "Evidence",
+            "pages": [
+              "api-reference/evidence/upload",
+              "api-reference/evidence/list-by-claim",
+              "api-reference/evidence/get",
+              "api-reference/evidence/delete",
+              "api-reference/evidence/update-tags",
+              "api-reference/evidence/review"
+            ]
+          },
+          {
+            "group": "Tokens",
+            "pages": [
+              "api-reference/tokens/my-balance",
+              "api-reference/tokens/my-transactions",
+              "api-reference/tokens/purchase",
+              "api-reference/tokens/consume",
+              "api-reference/tokens/balance"
+            ]
+          }
+        ]
       },
       {
         "tab": "Changelog",
         "groups": [
           {
             "group": "Releases",
-            "pages": [
-              "changelog/2026"
-            ]
+            "pages": ["changelog/2026"]
           }
         ]
       }
     ]
   },
   "api": {
-    "baseUrl": [
-      "https://gateway.verify-group.io/api/v1",
-      "https://uat.gateway.verify-group.io/api/v1",
-      "http://localhost:4008/api/v1"
-    ],
-    "auth": {
-      "method": "bearer"
-    },
-    "playground": {
-      "mode": "simple"
+    "mdx": {
+      "server": "https://uat.gateway.verify-group.io",
+      "auth": {
+        "method": "bearer"
+      }
     }
   },
   "feedback": {

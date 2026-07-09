@@ -1,0 +1,17 @@
+---
+title: "Enable MFA"
+api: "POST /api/v1/mfa/enable"
+description: "Enable multi-factor authentication for the current user."
+---
+
+<ParamField body="method" type=""totp" | "sms" | "email"" required>
+  MFA method to enable
+</ParamField>
+
+<ParamField body="phoneNumber" type="string">
+  Phone number (required for SMS)
+</ParamField>
+
+<ParamField body="email" type="string">
+  Email (required for EMAIL)
+</ParamField>

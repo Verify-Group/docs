@@ -1,0 +1,25 @@
+---
+title: "User login"
+api: "POST /api/v1/auth/login"
+description: "Authenticate user with email and password"
+---
+
+<ParamField body="context" type="'admin' | 'client'">
+  Authentication context
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  User email address
+</ParamField>
+
+<ParamField body="password" type="string" required>
+  User password
+</ParamField>
+
+<ParamField body="ipAddress" type="string">
+  Client IP address
+</ParamField>
+
+<ParamField body="userAgent" type="string">
+  Client user agent
+</ParamField>

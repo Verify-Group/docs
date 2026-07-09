@@ -1,0 +1,17 @@
+---
+title: "Get organization members"
+api: "GET /api/v1/organizations/{id}/members"
+description: "Retrieve a paginated list of all members in an organization."
+---
+
+<ParamField path="id" type="string" required>
+  Organization UUID
+</ParamField>
+
+<ParamField query="page" type="number">
+  Page number (default: 1)
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Items per page (default: 20)
+</ParamField>

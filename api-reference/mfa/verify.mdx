@@ -1,0 +1,13 @@
+---
+title: "Verify MFA"
+api: "POST /api/v1/mfa/verify"
+description: "Verify MFA token to complete authentication or validate MFA setup."
+---
+
+<ParamField body="token" type="string" required>
+  MFA token
+</ParamField>
+
+<ParamField body="isBackupCode" type="boolean">
+  Use backup code instead
+</ParamField>

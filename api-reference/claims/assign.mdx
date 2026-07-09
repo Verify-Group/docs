@@ -1,0 +1,16 @@
+---
+title: "Assign claim to investigator"
+api: "POST /api/v1/claims/{id}/assign"
+description: "Assign claim to a specific investigator with optional assignment notes"
+---
+
+<ParamField path="id" type="string" required>
+</ParamField>
+
+<ParamField body="assignedToUserId" type="string" required>
+  User ID to assign the claim to
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Assignment notes
+</ParamField>

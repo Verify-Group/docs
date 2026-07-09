@@ -1,0 +1,21 @@
+---
+title: "Initiate voice interview for claim"
+api: "POST /api/v1/claims/voice-interview/{claimId}/initiate"
+description: "Creates a voice session and provides upload URL. Consumes 50 tokens for AI-powered voice analysis."
+---
+
+<ParamField path="claimId" type="string" required>
+  Claim ID
+</ParamField>
+
+<ParamField body="poiId" type="string" required>
+  Person of Interest ID
+</ParamField>
+
+<ParamField body="source" type=""CALL_CENTER" | "MOBILE_LINK" | "FIELD_RECORDER" | "AUTOMATED_CALL"" required>
+  Voice capture source
+</ParamField>
+
+<ParamField body="callbackUrl" type="string">
+  Callback URL for notifications when analysis is complete
+</ParamField>

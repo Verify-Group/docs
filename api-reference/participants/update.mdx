@@ -1,0 +1,56 @@
+---
+title: "Update participant (partial update)"
+api: "PATCH /api/v1/participants/{id}"
+---
+
+<ParamField path="id" type="string" required>
+  Participant ID
+</ParamField>
+
+<ParamField body="firstName" type="string">
+  First name
+</ParamField>
+
+<ParamField body="lastName" type="string">
+  Last name
+</ParamField>
+
+<ParamField body="email" type="string">
+  Email address
+</ParamField>
+
+<ParamField body="phone" type="string">
+  Phone number
+</ParamField>
+
+<ParamField body="emailVerifiedAt" type="string">
+  Email verification timestamp (when email was verified via KYC)
+</ParamField>
+
+<ParamField body="phoneVerifiedAt" type="string">
+  Phone verification timestamp (when phone was verified via KYC)
+</ParamField>
+
+<ParamField body="idNumber" type="string">
+  National ID / Tax ID / registration number
+</ParamField>
+
+<ParamField body="idType" type="string">
+  ID type (passport, national_id, drivers_license, tax_id)
+</ParamField>
+
+<ParamField body="dateOfBirth" type="string">
+  Date of birth
+</ParamField>
+
+<ParamField body="gender" type="string">
+  Gender
+</ParamField>
+
+<ParamField body="idDocSerialNo" type="string">
+  Identity document serial number
+</ParamField>
+
+<ParamField body="otherName" type="string">
+  Other names or middle names
+</ParamField>

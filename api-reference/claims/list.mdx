@@ -1,0 +1,25 @@
+---
+title: "List claims with filters"
+api: "GET /api/v1/claims"
+description: "Retrieve paginated claims list filtered by status, type, or assigned investigator"
+---
+
+<ParamField query="page" type="number">
+  Page number
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Items per page
+</ParamField>
+
+<ParamField query="status" type=""DRAFT" | "SUBMITTED" | "UNDER_REVIEW" | "INVESTIGATING" | "PENDING_EVIDENCE" | "PENDING_APPROVAL"">
+  Filter by status
+</ParamField>
+
+<ParamField query="type" type=""MOTOR" | "PROPERTY" | "LIFE" | "HEALTH" | "WORKERS_COMPENSATION" | "FRAUD"">
+  Filter by claim type
+</ParamField>
+
+<ParamField query="assignedToUserId" type="string">
+  Filter by assigned user ID
+</ParamField>

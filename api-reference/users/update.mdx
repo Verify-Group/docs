@@ -1,0 +1,29 @@
+---
+title: "Update user"
+api: "PUT /api/v1/users/{id}"
+description: "Update user information"
+---
+
+<ParamField header="X-Tenant-ID" type="string" required>
+  Tenant identifier
+</ParamField>
+
+<ParamField path="id" type="string" required>
+  User ID (UUID)
+</ParamField>
+
+<ParamField body="firstName" type="string">
+  First name
+</ParamField>
+
+<ParamField body="lastName" type="string">
+  Last name
+</ParamField>
+
+<ParamField body="userName" type="string">
+  Username
+</ParamField>
+
+<ParamField body="defaultAccountId" type="string">
+  Default account ID
+</ParamField>

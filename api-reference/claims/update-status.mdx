@@ -1,0 +1,16 @@
+---
+title: "Update claim status"
+api: "PATCH /api/v1/claims/{id}/status"
+description: "Update claim status. APPROVED/REJECTED status changes require manager approval within 48 hours. Consumes 5 tokens."
+---
+
+<ParamField path="id" type="string" required>
+</ParamField>
+
+<ParamField body="status" type=""DRAFT" | "SUBMITTED" | "UNDER_REVIEW" | "INVESTIGATING" | "PENDING_EVIDENCE" | "PENDING_APPROVAL"" required>
+  New status for the claim
+</ParamField>
+
+<ParamField body="reason" type="string">
+  Reason for status change
+</ParamField>

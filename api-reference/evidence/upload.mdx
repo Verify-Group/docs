@@ -1,0 +1,21 @@
+---
+title: "Upload evidence file"
+api: "POST /api/v1/evidence/upload"
+description: "Upload evidence files (documents, images, videos) associated with a claim. Supports multipart/form-data."
+---
+
+<ParamField body="file" type="string" required>
+  File to upload
+</ParamField>
+
+<ParamField body="claimId" type="string">
+  Claim ID to associate evidence with
+</ParamField>
+
+<ParamField body="description" type="string">
+  Description of the evidence
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata
+</ParamField>

@@ -1,0 +1,25 @@
+---
+title: "Create a new claim"
+api: "POST /api/v1/claims"
+description: "Create a new fraud/investigation claim with metadata and fraud score. Consumes 10 tokens."
+---
+
+<ParamField body="type" type=""MOTOR" | "PROPERTY" | "LIFE" | "HEALTH" | "WORKERS_COMPENSATION" | "FRAUD"" required>
+  Type of claim
+</ParamField>
+
+<ParamField body="description" type="string">
+  Detailed description of the claim
+</ParamField>
+
+<ParamField body="priority" type=""LOW" | "MEDIUM" | "HIGH" | "CRITICAL"">
+  Priority level of the claim
+</ParamField>
+
+<ParamField body="fraudScore" type="number">
+  Fraud score between 0-100
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata for the claim
+</ParamField>

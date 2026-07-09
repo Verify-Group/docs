@@ -1,0 +1,16 @@
+---
+title: "Update session with uploaded audio file details"
+api: "PATCH /api/v1/claims/voice-interview/sessions/{sessionId}/audio"
+---
+
+<ParamField path="sessionId" type="string" required>
+  Session ID
+</ParamField>
+
+<ParamField body="audioUrl" type="string" required>
+  URL of the uploaded audio file
+</ParamField>
+
+<ParamField body="durationSeconds" type="number" required>
+  Duration of the recording in seconds
+</ParamField>

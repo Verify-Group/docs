@@ -1,0 +1,52 @@
+---
+title: "Create a new participant"
+api: "POST /api/v1/participants"
+---
+
+<ParamField body="organizationId" type="string" required>
+  Organization ID
+</ParamField>
+
+<ParamField body="firstName" type="string" required>
+  First name
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Last name
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Email address
+</ParamField>
+
+<ParamField body="phone" type="string">
+  Phone number
+</ParamField>
+
+<ParamField body="role" type=""claimant" | "witness" | "agent" | "adjuster" | "examiner" | "other"" required>
+  Participant role
+</ParamField>
+
+<ParamField body="type" type=""individual" | "business"" required>
+  Entity type: individual or business
+</ParamField>
+
+<ParamField body="businessName" type="string">
+  Business name (required for business type)
+</ParamField>
+
+<ParamField body="registrationNumber" type="string">
+  Business registration number (required for business type)
+</ParamField>
+
+<ParamField body="taxId" type="string">
+  Tax ID / KRA PIN
+</ParamField>
+
+<ParamField body="idNumber" type="string">
+  Identification number (National ID, Passport, etc.)
+</ParamField>
+
+<ParamField body="idType" type="string">
+  Identification type
+</ParamField>
