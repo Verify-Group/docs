@@ -1,0 +1,43 @@
+---
+title: Changelog \u2014 2026
+description: Release notes for the Verify Group Platform API.
+---
+
+## July 2026
+
+### v2.3.0 \u2014 Evidence management
+
+- `PATCH /evidence/:id/tags` \u2014 Tag evidence with searchable labels
+- `POST /evidence/:id/review` \u2014 Approve or decline evidence with reviewer notes
+- `POST /evidence/public-upload/proxy-upload` \u2014 Browser-safe upload (no CORS)
+
+### v2.2.0 \u2014 Voice intelligence
+
+- Default scenario changed to `customerSupportComplaint` for intake/FNOL calls
+- Auto-retry on `SCENARIO_MISMATCH_NOT_SCORED` with the API-suggested scenario
+- Enriched results: `headline`, `recommendedDecision`, `executiveSummary`, `keyScores`, `importantCallSignals`
+
+### v2.1.0 \u2014 Forensics
+
+- `POST /forensics/poi-fraud-check` \u2014 Composite fraud score combining voice, KYC, and evidence per participant
+
+### v2.0.0 \u2014 Audit logging
+
+- Global interceptor logs every mutating request with actor name, email, IP, and timing
+- `GET /audit/logs` supports `sortBy`, `sortOrder`, `page`, `limit`, `resourceType`, `resourceId` filters
+
+## June 2026
+
+### v1.9.0 \u2014 Organisation KYC
+
+- `POST /organizations/:id/run-kyc` \u2014 Business verification with automatic director participant creation
+
+### v1.8.0 \u2014 Claims workflow
+
+- Assigning an investigator auto-transitions claim to `INVESTIGATING`
+- New investigation fields: `partiesContacted`, `riskIndicators`, `evidenceReviewed`
+
+### v1.7.0 \u2014 Sanctions screening
+
+- `POST /participants/sanctions-sources/sync` \u2014 public endpoint to refresh watchlist sources
+- `organizationId` now inferred server-side from JWT context

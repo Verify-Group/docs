@@ -1,4 +1,9 @@
-<svg width="180" height="23" viewBox="0 0 180 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 36" fill="none">
+  <path d="M16 3 L28 7 L28 17 C28 23 22 29 16 31 C10 29 4 23 4 17 L4 7 Z" fill="#42b549"/>
+  <path d="M10 16 L14 21 L22 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="36" y="23" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="700" fill="#1a1a2e" letter-spacing="-0.3">Verify</text>
+  <text x="95" y="23" font-family="Inter,system-ui,sans-serif" font-size="17" font-weight="400" fill="#42b549" letter-spacing="-0.3"> Group</text>
+</svg>
 <!-- mintlify wordmark paths -->
 <path d="M91.4402 21.4758H88.1331L90.4636 16.2156L85.8025 5.73975H89.1319L91.8475 12.3068C91.9428 12.5363 92.2682 12.5359 92.3624 12.3061L95.0575 5.73975H98.4091L91.4402 21.4758Z" fill="#09090B"/>
 <path d="M81.3934 16.8371V8.4031H79.1517V5.73971H81.3934V4.29706C81.3934 2.98017 81.7924 1.94441 82.5917 1.18979C83.391 0.435172 84.4044 0.0578613 85.6326 0.0578613C86.3869 0.0578613 87.0305 0.139242 87.5636 0.302003V2.98757C87.2084 2.8544 86.7941 2.78782 86.3202 2.78782C85.6549 2.78782 85.1739 2.93578 84.8778 3.23171C84.5817 3.51284 84.4337 3.99373 84.4337 4.67437V5.73971H87.5636V8.4031H84.4337V16.8371H81.3934Z" fill="#09090B"/>

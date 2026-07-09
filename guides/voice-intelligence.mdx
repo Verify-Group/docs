@@ -1,0 +1,48 @@
+---
+title: Voice Intelligence
+description: AI-powered voice analysis and fraud signal detection.
+---
+
+## Scenarios
+
+| Scenario | Use case |
+|---|---|
+| `customerSupportComplaint` | FNOL / intake calls (default) |
+| `fraudSignalDetection` | SIU / fraud investigation |
+| `debtCollection` | Collections calls |
+
+## Trigger analysis
+
+```bash
+POST /api/v1/voice/sessions/{sessionId}/analyze
+```
+```json
+{"forceReanalysis": false}
+```
+
+## Result structure
+
+```json
+{
+  "analysisResults": {
+    "primaryScore": 62,
+    "recommendedDecision": "MANUAL_REVIEW",
+    "headline": "Moderate stress detected",
+    "keyScores": {"stress": 68, "deception": 45, "coaching": 31},
+    "importantCallSignals": [{"type": "elevated_stress", "confidence": 0.78}]
+  }
+}
+```
+
+## Composite fraud score
+
+```bash
+POST /api/v1/forensics/poi-fraud-check
+```
+```json
+{"claimId": "claim-uuid"}
+```
+
+Returns per-participant composite scores combining voice, KYC, and evidence signals.
+
+<Tip>When a `SCENARIO_MISMATCH_NOT_SCORED` warning is returned, the backend retries automatically with the suggested scenario.</Tip>

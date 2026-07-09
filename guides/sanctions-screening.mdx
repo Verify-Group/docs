@@ -1,0 +1,39 @@
+---
+title: Sanctions Screening
+description: Screen participants against global AML/PEP/sanctions watchlists.
+---
+
+## Sync watchlist sources
+
+```bash
+POST /api/v1/participants/sanctions-sources/sync
+```
+
+Public endpoint — no authentication required. Call from a scheduled job to keep sources fresh.
+
+## Run a check
+
+```bash
+POST /api/v1/participants/{participantId}/sanctions-check
+```
+```json
+{
+  "dataSources": ["UN_CONSOLIDATED", "OFAC_SDN", "EU_FINANCIAL_SANCTIONS"],
+  "enableMonitoring": true
+}
+```
+
+<Note>`dataSources` is optional — omit to search all enabled sources.</Note>
+
+## Risk levels
+
+`clear` · `low` · `medium` · `high` · `critical`
+
+## Continuous monitoring
+
+When `enableMonitoring: true`, you receive webhooks when new matches appear on any enrolled list.
+
+| Event | Trigger |
+|---|---|
+| `sanctions.match.detected` | New match found |
+| `sanctions.match.resolved` | False positive resolved |

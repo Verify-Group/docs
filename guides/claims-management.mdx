@@ -1,0 +1,45 @@
+---
+title: Claims Management
+description: Create and process insurance claims through the full lifecycle.
+---
+
+## Create a claim
+
+```bash
+POST /api/v1/claims
+```
+```json
+{
+  "type": "MOTOR",
+  "policyNumber": "POL-MT-KE-2025-8847",
+  "description": "Rear-end collision on Mombasa Road",
+  "incidentDate": "2026-06-15",
+  "claimAmount": 185000
+}
+```
+
+## Update status
+
+```bash
+PATCH /api/v1/claims/{id}/status
+```
+```json
+{"status": "INVESTIGATING", "reason": "Elevated fraud score"}
+```
+
+## Add participants
+
+```bash
+POST /api/v1/claims/{claimId}/pois
+```
+```json
+{"personId": "participant-uuid", "role": "claimant"}
+```
+
+<Note>Assigning an investigator automatically transitions the claim to `INVESTIGATING`.</Note>
+
+## Audit trail
+
+```bash
+GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc
+```

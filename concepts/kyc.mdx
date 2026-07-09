@@ -1,0 +1,23 @@
+---
+title: KYC
+description: Identity and business verification concepts.
+---
+
+## Verification types
+
+| Type | Scenario |
+|---|---|
+| ID lookup | `identity` |
+| Biometric | `biometric` |
+| Business UBO | `business_ubo` |
+
+## Lifecycle
+
+`created` → `processing` → `verified` / `failed` / `manual_review`
+
+## Providers
+
+| Provider | Region | Capabilities |
+|---|---|---|
+| CreditInfo | East Africa | Individual ID, credit bureau |
+| InsightGenie | Global | Biometric, document OCR, voice |

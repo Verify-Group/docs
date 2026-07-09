@@ -1,0 +1,25 @@
+---
+title: Claims
+description: The insurance claim object — structure, lifecycle, and workflow.
+---
+
+## Lines of business
+
+`MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
+
+## Status lifecycle
+
+```
+DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
+                                                  ↘ PENDING_EVIDENCE / REJECTED
+```
+
+## Workflow metadata
+
+| Key | Stage |
+|---|---|
+| `metadata.intake[]` | FNOL intake |
+| `metadata.validation[]` | Coverage verification |
+| `metadata.investigation[]` | Field investigation |
+| `metadata.approval[]` | Approval decision |
+| `metadata.settlement[]` | Payment confirmation |

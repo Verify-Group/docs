@@ -1,0 +1,21 @@
+---
+title: Organisations
+description: Multi-tenancy — every resource is scoped to an organisation.
+---
+
+Every resource (claims, participants, KYC requests) belongs to an **Organisation**. Pass your UUID in every request:
+
+```
+X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
+```
+
+## Run KYC for your organisation
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+Automatically creates a business participant, runs `business_ubo` verification, and generates participant records for each director.

@@ -1,47 +1,66 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: Quickstart
+description: Make your first API call in under 5 minutes.
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+## 1. Get your credentials
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+Log in to the [Dashboard](https://app.verify-group.io) and go to **Settings → API Keys**.
 
-## Prerequisites
+## 2. Authenticate
 
-Before you begin, you must have:
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","password":"yourpassword"}'
+```
 
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
+**Response:**
+```json
+{
+  "data": {
+    "accessToken": "eyJhbGciOiJSUzI1NiJ9...",
+    "refreshToken": "...",
+    "expiresIn": 3600
+  }
+}
+```
 
-## Get started
+## 3. Include your Organisation header
 
-<Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+```bash
+export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
+export ORG_ID="cfa70c25-1800-4748-97b0-ce675940a537"
 
-    ```bash
-    npm install your-package
-    ```
-  </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
+curl https://gateway.verify-group.io/api/v1/participants \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID"
+```
 
-    ```bash
-    your-cli init
-    ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+## 4. Run a KYC verification
 
-    ```bash
-    your-cli start
-    ```
-  </Step>
-</Steps>
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/kyc \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "participant_id": "<uuid>",
+    "type": "individual",
+    "scenario": "identity",
+    "payload": {
+      "identifier_type": "national_id",
+      "identifier_number": "12345678",
+      "country": "KE"
+    }
+  }'
+```
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+<Check>You have completed your first identity verification!</Check>
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock" href="/authentication">JWT refresh flow and token management.</Card>
+  <Card title="Claims guide" icon="file-text" href="/guides/claims-management">Create and process claims end-to-end.</Card>
+  <Card title="Sanctions screening" icon="shield" href="/guides/sanctions-screening">Screen against global watchlists.</Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">Use the typed SDK.</Card>
+</CardGroup>

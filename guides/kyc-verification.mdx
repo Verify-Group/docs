@@ -1,0 +1,55 @@
+---
+title: KYC Verification
+description: Run individual and business identity verification.
+---
+
+## Run KYC
+
+```bash
+POST /api/v1/kyc
+```
+```json
+{
+  "participant_id": "uuid",
+  "type": "individual",
+  "scenario": "identity",
+  "payload": {
+    "identifier_type": "national_id",
+    "identifier_number": "12345678",
+    "country": "KE"
+  }
+}
+```
+
+## Check status
+
+```bash
+GET /api/v1/kyc/{id}
+```
+
+| Status | Meaning |
+|---|---|
+| `pending` | Queued |
+| `processing` | In progress |
+| `verified` | Identity confirmed |
+| `failed` | Could not verify |
+| `manual_review` | Needs human review |
+
+## Sync result to participant
+
+```bash
+POST /api/v1/kyc/{id}/sync
+```
+
+Updates the participant with verified name, date of birth, address, and extracted face photo.
+
+## Organisation KYC
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+Creates participant records for all identified directors automatically.

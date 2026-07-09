@@ -1,20 +1,68 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: Introduction
+description: The Verify Group Platform API — enterprise identity verification, claims management, and compliance for African markets.
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+## Welcome to Verify Group
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+The **Verify Group Platform** is an enterprise multi-tenant API for:
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+- **KYC / Identity Verification** — Individual and business verification powered by CreditInfo, InsightGenie, and proprietary AI
+- **Claims Management** — Full insurance claims lifecycle with intake, validation, investigation, and settlement workflows
+- **Sanctions & AML Screening** — Real-time watchlist screening via Sanctions.io with continuous monitoring
+- **Voice Intelligence** — AI-powered voice biometric analysis and fraud detection using InsightGenie
+- **Document Authenticity** — OCR and forensic analysis for document verification
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Get your first API call running in under 5 minutes.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Learn how to authenticate your API requests.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Browse the full interactive API reference.
+  </Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">
+    Use our official TypeScript SDK.
+  </Card>
+</CardGroup>
+
+## Base URLs
+
+| Environment | URL |
+|---|---|
+| Production | `https://gateway.verify-group.io/api/v1` |
+| UAT | `https://uat.gateway.verify-group.io/api/v1` |
+| Local dev | `http://localhost:4008/api/v1` |
+
+## Response format
+
+All successful responses follow a consistent envelope:
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Success",
+  "data": { ... },
+  "metadata": {
+    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "timestamp": "2026-07-09T10:00:00.000Z"
+  }
+}
+```
+
+## Error format
+
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": "BadRequestException"
+}
+```
+
+## Support
+
+Email: [support@verify-group.io](mailto:support@verify-group.io)

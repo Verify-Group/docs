@@ -1,0 +1,46 @@
+---
+title: Evidence Management
+description: Upload, tag, review, and manage claim evidence.
+---
+
+## Upload (recommended for browser clients)
+
+Routes the upload through the backend to avoid CORS issues:
+
+```bash
+POST /api/v1/evidence/public-upload/proxy-upload
+Content-Type: multipart/form-data
+```
+
+Returns `evidenceId` and a `signedUrl` for immediate preview.
+
+## List evidence for a claim
+
+```bash
+GET /api/v1/evidence?claimId={claimId}
+```
+
+## Tag evidence
+
+```bash
+PATCH /api/v1/evidence/{id}/tags
+```
+```json
+{"tags": ["police_report", "verified", "high_priority"]}
+```
+
+## Approve or decline evidence
+
+```bash
+POST /api/v1/evidence/{id}/review
+```
+```json
+{"status": "APPROVED", "notes": "Document authenticated against police database."}
+```
+
+| Status | Meaning |
+|---|---|
+| `PENDING` | Awaiting review |
+| `APPROVED` | Verified and accepted |
+| `REJECTED` | Declined |
+| `UNDER_REVIEW` | In forensic analysis |

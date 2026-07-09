@@ -1,0 +1,40 @@
+---
+title: Postman Collection
+description: Import the Verify Group API into Postman for interactive testing.
+---
+
+## Import via OpenAPI URL
+
+1. Open Postman → **Import** → **Link**
+2. Paste: `https://gateway.verify-group.io/api/swagger.json`
+3. Click **Continue → Import**
+
+## Environment variables
+
+| Variable | Value |
+|---|---|
+| `baseUrl` | `https://gateway.verify-group.io/api/v1` |
+| `accessToken` | *(set after login)* |
+| `organizationId` | Your org UUID |
+
+## Collection pre-request script (auto-refresh)
+
+```javascript
+const expiry = pm.environment.get("tokenExpiry");
+if (!expiry || Date.now() > parseInt(expiry) - 60000) {
+  pm.sendRequest({
+    url: pm.environment.get("baseUrl") + "/auth/refresh",
+    method: "POST",
+    header: { "Content-Type": "application/json" },
+    body: { mode: "raw", raw: JSON.stringify({ refreshToken: pm.environment.get("refreshToken") }) }
+  }, (err, res) => {
+    if (!err && res.code === 200) {
+      const { accessToken, expiresIn } = res.json().data;
+      pm.environment.set("accessToken", accessToken);
+      pm.environment.set("tokenExpiry", String(Date.now() + expiresIn * 1000));
+    }
+  });
+}
+```
+
+Set the collection `Authorization` header to `Bearer {{accessToken}}`.

@@ -1,0 +1,38 @@
+---
+title: Webhooks
+description: Receive real-time event notifications from Verify Group.
+---
+
+## Register a webhook
+
+```bash
+POST /api/v1/webhooks
+```
+```json
+{
+  "url": "https://your-system.io/webhooks/verify-group",
+  "events": ["kyc.verified", "claim.status_changed", "sanctions.match.detected"],
+  "secret": "whsec_your_signing_secret"
+}
+```
+
+## Verify signatures
+
+Every delivery includes `X-VG-Signature-256`. Always verify before processing:
+
+```typescript
+import crypto from "crypto";
+
+function verify(rawBody: string, signature: string, secret: string): boolean {
+  const expected = `sha256=${crypto.createHmac("sha256", secret).update(rawBody).digest("hex")}`;
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+}
+```
+
+<Warning>Parse the body as **raw bytes** before verifying — parsing JSON first changes the byte representation and breaks signature checks.</Warning>
+
+## Retry policy
+
+Failed deliveries are retried with exponential backoff: 5s → 30s → 5m → 30m → 2h. After 5 failures the webhook is marked `failed` and you receive an email alert.
+
+<Warning>Your endpoint must respond within **30 seconds** or the delivery is marked failed.</Warning>

@@ -1,0 +1,37 @@
+---
+title: Webhook Events
+description: All Verify Group webhook event types and payloads.
+---
+
+## KYC events
+
+| Event | Trigger |
+|---|---|
+| `kyc.created` | New KYC request initiated |
+| `kyc.verified` | Identity confirmed |
+| `kyc.failed` | Verification failed |
+| `kyc.manual_review` | Requires human review |
+
+## Claims events
+
+| Event | Trigger |
+|---|---|
+| `claim.created` | New claim submitted |
+| `claim.status_changed` | Status transition |
+| `claim.approved` | Claim approved for settlement |
+| `claim.rejected` | Claim rejected |
+
+## Sanctions events
+
+| Event | Trigger |
+|---|---|
+| `sanctions.check.completed` | Screening run completed |
+| `sanctions.match.detected` | New match found (monitoring) |
+| `sanctions.match.resolved` | Match resolved as false positive |
+
+## Evidence events
+
+| Event | Trigger |
+|---|---|
+| `evidence.uploaded` | New file attached |
+| `evidence.reviewed` | Evidence approved or rejected |

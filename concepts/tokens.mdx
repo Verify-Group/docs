@@ -1,0 +1,17 @@
+---
+title: Tokens
+description: JWT access tokens and refresh tokens.
+---
+
+| Type | Lifetime |
+|---|---|
+| Access token | 1 hour |
+| Refresh token | 30 days |
+
+## Decoded payload
+
+```json
+{"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
+```
+
+Each refresh token use **rotates** both tokens — the old pair is immediately invalidated.

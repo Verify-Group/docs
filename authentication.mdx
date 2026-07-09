@@ -1,0 +1,43 @@
+---
+title: Authentication
+description: JWT bearer tokens, refresh flow, and multi-tenancy headers.
+---
+
+Every request must include `Authorization: Bearer <token>`.
+
+## Login
+
+```bash
+POST /api/v1/auth/login
+```
+```json
+{"email":"user@example.com","password":"yourpassword"}
+```
+
+**Response:**
+```json
+{"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
+```
+
+## Refresh a token
+
+```bash
+POST /api/v1/auth/refresh
+```
+```json
+{"refreshToken":"eyJ..."}
+```
+
+## Required headers
+
+| Header | Required | Description |
+|---|---|---|
+| `Authorization` | Always | `Bearer <token>` |
+| `X-Organization-ID` | Most endpoints | UUID of your organisation |
+
+## Security best practices
+
+<Check>Store access tokens in memory, not localStorage</Check>
+<Check>Store refresh tokens in httpOnly secure cookies</Check>
+<Check>Use HTTPS everywhere</Check>
+<Check>Revoke tokens on logout</Check>

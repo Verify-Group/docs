@@ -1,72 +1,132 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Verify Group",
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://verify-group.com"
   },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#42b549",
+    "light": "#5ecf65",
+    "dark": "#2e8e34",
+    "anchors": {
+      "from": "#42b549",
+      "to": "#2e8e34"
     }
   },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+  "theme": "venus",
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://platform.verify-score.com"
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:tech@verify-group.com"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "API Reference",
+      "icon": "code",
+      "url": "api-reference"
+    },
+    {
+      "name": "Status",
+      "icon": "signal",
+      "url": "https://status.verify-group.io"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/Verify-Group"
+    }
+  ],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "quickstart",
+              "authentication",
+              "environments"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/organizations",
+              "concepts/participants",
+              "concepts/claims",
+              "concepts/kyc",
+              "concepts/tokens"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/kyc-verification",
+              "guides/claims-management",
+              "guides/voice-intelligence",
+              "guides/sanctions-screening",
+              "guides/evidence-management"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "webhooks/overview",
+              "webhooks/events",
+              "webhooks/security"
+            ]
+          },
+          {
+            "group": "SDKs & Tools",
+            "pages": [
+              "sdks/javascript",
+              "sdks/postman"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "/swagger.json"
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Releases",
+            "pages": [
+              "changelog/2026"
+            ]
+          }
+        ]
+      }
     ]
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+  "api": {
+    "baseUrl": [
+      "https://gateway.verify-group.io/api/v1",
+      "https://uat.gateway.verify-group.io/api/v1",
+      "http://localhost:4008/api/v1"
+    ],
+    "auth": {
+      "method": "bearer"
+    },
+    "playground": {
+      "mode": "simple"
     }
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true
   }
 }

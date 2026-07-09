@@ -1,0 +1,28 @@
+---
+title: Participants
+description: People and entities linked to claims and verifications.
+---
+
+## Types
+
+| Type | Description |
+|---|---|
+| `individual` | Natural person |
+| `business` | Legal entity |
+
+## Roles on a claim
+
+`claimant` · `witness` · `third_party` · `beneficiary` · `agent` · `insured`
+
+## Create
+
+```bash
+POST /api/v1/participants
+```
+```json
+{"firstName":"James","lastName":"Kamau","type":"individual","nationalId":"12345678","phone":"+254722000001","country":"KE"}
+```
+
+## Verification status
+
+`unverified` → `pending` → `verified` / `failed`
