@@ -25,11 +25,6 @@
   ],
   "anchors": [
     {
-      "name": "API Reference",
-      "icon": "code",
-      "url": "api-reference"
-    },
-    {
       "name": "Status",
       "icon": "signal",
       "url": "https://status.verify-group.io"
@@ -41,349 +36,67 @@
     }
   ],
   "navigation": {
-    "languages": [
+    "tabs": [
       {
-        "language": "en",
-        "default": true,
-        "tabs": [
+        "tab": "Documentation",
+        "groups": [
           {
-            "tab": "Documentation",
-            "groups": [
-              {
-                "group": "Getting Started",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "authentication",
-                  "environments"
-                ]
-              },
-              {
-                "group": "Core Concepts",
-                "pages": [
-                  "concepts/organizations",
-                  "concepts/participants",
-                  "concepts/claims",
-                  "concepts/kyc",
-                  "concepts/tokens"
-                ]
-              },
-              {
-                "group": "Guides",
-                "pages": [
-                  "guides/kyc-verification",
-                  "guides/claims-management",
-                  "guides/voice-intelligence",
-                  "guides/sanctions-screening",
-                  "guides/evidence-management"
-                ]
-              },
-              {
-                "group": "Webhooks",
-                "pages": [
-                  "webhooks/overview",
-                  "webhooks/events",
-                  "webhooks/security"
-                ]
-              },
-              {
-                "group": "SDKs & Tools",
-                "pages": [
-                  "sdks/javascript",
-                  "sdks/postman"
-                ]
-              }
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "quickstart",
+              "authentication",
+              "environments"
             ]
           },
           {
-            "tab": "API Reference",
-            "openapi": "https://uat.gateway.verify-group.io/api/swagger.json"
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/organizations",
+              "concepts/participants",
+              "concepts/claims",
+              "concepts/kyc",
+              "concepts/tokens"
+            ]
           },
           {
-            "tab": "Changelog",
-            "groups": [
-              {
-                "group": "Releases",
-                "pages": [
-                  "changelog/2026"
-                ]
-              }
+            "group": "Guides",
+            "pages": [
+              "guides/kyc-verification",
+              "guides/claims-management",
+              "guides/voice-intelligence",
+              "guides/sanctions-screening",
+              "guides/evidence-management"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "webhooks/overview",
+              "webhooks/events",
+              "webhooks/security"
+            ]
+          },
+          {
+            "group": "SDKs & Tools",
+            "pages": [
+              "sdks/javascript",
+              "sdks/postman"
             ]
           }
         ]
       },
       {
-        "language": "fr",
-        "tabs": [
-          {
-            "tab": "Documentation",
-            "groups": [
-              {
-                "group": "Prise en main",
-                "pages": [
-                  "fr/index",
-                  "fr/quickstart",
-                  "fr/authentication",
-                  "fr/environments"
-                ]
-              },
-              {
-                "group": "Concepts fondamentaux",
-                "pages": [
-                  "fr/concepts/organizations",
-                  "fr/concepts/participants",
-                  "fr/concepts/claims",
-                  "fr/concepts/kyc",
-                  "fr/concepts/tokens"
-                ]
-              },
-              {
-                "group": "Guides",
-                "pages": [
-                  "fr/guides/kyc-verification",
-                  "fr/guides/claims-management",
-                  "fr/guides/voice-intelligence",
-                  "fr/guides/sanctions-screening",
-                  "fr/guides/evidence-management"
-                ]
-              },
-              {
-                "group": "Webhooks",
-                "pages": [
-                  "fr/webhooks/overview",
-                  "fr/webhooks/events",
-                  "fr/webhooks/security"
-                ]
-              },
-              {
-                "group": "SDK et outils",
-                "pages": [
-                  "fr/sdks/javascript",
-                  "fr/sdks/postman"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "openapi": "https://uat.gateway.verify-group.io/api/swagger.json"
-          },
-          {
-            "tab": "Journal des modifications",
-            "groups": [
-              {
-                "group": "Versions",
-                "pages": [
-                  "fr/changelog/2026"
-                ]
-              }
-            ]
-          }
-        ]
+        "tab": "API Reference",
+        "openapi": "openapi.json"
       },
       {
-        "language": "ar",
-        "tabs": [
+        "tab": "Changelog",
+        "groups": [
           {
-            "tab": "التوثيق",
-            "groups": [
-              {
-                "group": "البدء",
-                "pages": [
-                  "ar/index",
-                  "ar/quickstart",
-                  "ar/authentication",
-                  "ar/environments"
-                ]
-              },
-              {
-                "group": "المفاهيم الأساسية",
-                "pages": [
-                  "ar/concepts/organizations",
-                  "ar/concepts/participants",
-                  "ar/concepts/claims",
-                  "ar/concepts/kyc",
-                  "ar/concepts/tokens"
-                ]
-              },
-              {
-                "group": "الأدلة",
-                "pages": [
-                  "ar/guides/kyc-verification",
-                  "ar/guides/claims-management",
-                  "ar/guides/voice-intelligence",
-                  "ar/guides/sanctions-screening",
-                  "ar/guides/evidence-management"
-                ]
-              },
-              {
-                "group": "Webhooks",
-                "pages": [
-                  "ar/webhooks/overview",
-                  "ar/webhooks/events",
-                  "ar/webhooks/security"
-                ]
-              },
-              {
-                "group": "SDK والأدوات",
-                "pages": [
-                  "ar/sdks/javascript",
-                  "ar/sdks/postman"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "openapi": "https://uat.gateway.verify-group.io/api/swagger.json"
-          },
-          {
-            "tab": "سجل التغييرات",
-            "groups": [
-              {
-                "group": "الإصدارات",
-                "pages": [
-                  "ar/changelog/2026"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "language": "pt-BR",
-        "tabs": [
-          {
-            "tab": "Documentação",
-            "groups": [
-              {
-                "group": "Primeiros passos",
-                "pages": [
-                  "pt-BR/index",
-                  "pt-BR/quickstart",
-                  "pt-BR/authentication",
-                  "pt-BR/environments"
-                ]
-              },
-              {
-                "group": "Conceitos principais",
-                "pages": [
-                  "pt-BR/concepts/organizations",
-                  "pt-BR/concepts/participants",
-                  "pt-BR/concepts/claims",
-                  "pt-BR/concepts/kyc",
-                  "pt-BR/concepts/tokens"
-                ]
-              },
-              {
-                "group": "Guias",
-                "pages": [
-                  "pt-BR/guides/kyc-verification",
-                  "pt-BR/guides/claims-management",
-                  "pt-BR/guides/voice-intelligence",
-                  "pt-BR/guides/sanctions-screening",
-                  "pt-BR/guides/evidence-management"
-                ]
-              },
-              {
-                "group": "Webhooks",
-                "pages": [
-                  "pt-BR/webhooks/overview",
-                  "pt-BR/webhooks/events",
-                  "pt-BR/webhooks/security"
-                ]
-              },
-              {
-                "group": "SDKs e ferramentas",
-                "pages": [
-                  "pt-BR/sdks/javascript",
-                  "pt-BR/sdks/postman"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "openapi": "https://uat.gateway.verify-group.io/api/swagger.json"
-          },
-          {
-            "tab": "Changelog",
-            "groups": [
-              {
-                "group": "Versões",
-                "pages": [
-                  "pt-BR/changelog/2026"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "language": "cn",
-        "tabs": [
-          {
-            "tab": "文档",
-            "groups": [
-              {
-                "group": "快速入门",
-                "pages": [
-                  "cn/index",
-                  "cn/quickstart",
-                  "cn/authentication",
-                  "cn/environments"
-                ]
-              },
-              {
-                "group": "核心概念",
-                "pages": [
-                  "cn/concepts/organizations",
-                  "cn/concepts/participants",
-                  "cn/concepts/claims",
-                  "cn/concepts/kyc",
-                  "cn/concepts/tokens"
-                ]
-              },
-              {
-                "group": "指南",
-                "pages": [
-                  "cn/guides/kyc-verification",
-                  "cn/guides/claims-management",
-                  "cn/guides/voice-intelligence",
-                  "cn/guides/sanctions-screening",
-                  "cn/guides/evidence-management"
-                ]
-              },
-              {
-                "group": "Webhooks",
-                "pages": [
-                  "cn/webhooks/overview",
-                  "cn/webhooks/events",
-                  "cn/webhooks/security"
-                ]
-              },
-              {
-                "group": "SDK 与工具",
-                "pages": [
-                  "cn/sdks/javascript",
-                  "cn/sdks/postman"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "openapi": "https://uat.gateway.verify-group.io/api/swagger.json"
-          },
-          {
-            "tab": "更新日志",
-            "groups": [
-              {
-                "group": "版本",
-                "pages": [
-                  "cn/changelog/2026"
-                ]
-              }
+            "group": "Releases",
+            "pages": [
+              "changelog/2026"
             ]
           }
         ]
