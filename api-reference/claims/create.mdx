@@ -1,7 +1,7 @@
 ---
 title: "Create a new claim"
 api: "POST /api/v1/claims"
-description: "Create a new fraud/investigation claim with metadata and fraud score. Consumes 10 tokens."
+description: "Open a new fraud or investigation claim with type, priority, incident metadata, and an initial fraud score. Consumes 10 tokens from the organization balance."
 ---
 
 <ParamField body="type" type="MOTOR | PROPERTY | LIFE | HEALTH | WORKERS_COMPENSATION | FRAUD" required>

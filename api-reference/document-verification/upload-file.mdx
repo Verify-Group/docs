@@ -1,7 +1,7 @@
 ---
 title: "Upload document images for verification"
 api: "POST /api/v1/documents/verification/{verificationId}/upload"
-description: "Upload document images (max 10). Files stored temporarily for processing. Future: cloud storage integration"
+description: "Attach up to 10 document images to an existing verification session. Uploaded files are held in temporary storage until the automated processing job runs."
 ---
 
 <ParamField path="verificationId" type="string" required>

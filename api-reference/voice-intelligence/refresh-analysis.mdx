@@ -1,7 +1,7 @@
 ---
 title: "Refresh InsightGenie analysis results"
 api: "POST /api/v1/voice-calls/{id}/refresh-analysis"
-description: "Manually fetches the latest analysis results from InsightGenie for a call."
+description: "Re-query InsightGenie for the latest voice analysis on a call, refreshing deception, stress, and fraud scores after the AI provider has finished processing."
 ---
 
 <ParamField path="id" type="string" required>

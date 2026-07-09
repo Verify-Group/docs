@@ -1,7 +1,7 @@
 ---
 title: "Get KYC verification status"
 api: "GET /api/v1/kyc/verifications/{id}/status"
-description: "Retrieve the current status of a specific KYC verification request"
+description: "Fetch the current lifecycle status of a specific KYC verification request, useful for polling pending checks and driving UI state without loading full details."
 ---
 
 <ParamField path="id" type="string" required>

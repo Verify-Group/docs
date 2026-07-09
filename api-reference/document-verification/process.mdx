@@ -1,6 +1,7 @@
 ---
 title: "Submit documents for automated verification"
 api: "POST /api/v1/documents/verification/{verificationId}/process"
+description: "Trigger automated processing on documents in an existing verification session, running OCR, authenticity, and identity checks and returning a job status."
 ---
 
 <ParamField path="verificationId" type="string" required>

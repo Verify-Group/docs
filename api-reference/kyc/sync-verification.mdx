@@ -1,7 +1,7 @@
 ---
 title: "Sync KYC verification results"
 api: "POST /api/v1/kyc/verifications/{id}/sync"
-description: "Syncs verified data from successful KYC results to related entities. For bank verifications, automatically matches and verifies bank accounts. If multiple banks match, returns list for user confirmati"
+description: "Sync verified data from a successful KYC result into participant and bank records, auto-matching accounts and returning candidates when multiple banks match."
 ---
 
 <ParamField path="id" type="string" required>
