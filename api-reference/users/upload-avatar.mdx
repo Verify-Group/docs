@@ -1,7 +1,7 @@
 ---
 title: "Upload avatar"
 api: "POST /api/v1/users/me/avatar"
-description: "Upload a profile picture. Stored in GCS; avatarUrl is updated automatically."
+description: "Upload a profile picture for the authenticated user. The image is stored in Google Cloud Storage and the avatarUrl field is updated automatically."
 ---
 
 <ParamField header="X-Tenant-ID" type="string" required>
