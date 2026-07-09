@@ -5936,7 +5936,7 @@
     },
     "/api/v1/participants/sanctions-sources": {
       "get": {
-        "description": "Returns locally cached sanctions.io sources. Use shortName values as dataSources when creating watchlist checks.",
+        "description": "Returns locally cached the watchlist provider sources. Use shortName values as dataSources when creating watchlist checks.",
         "operationId": "ParticipantController_listSanctionsSources",
         "parameters": [
           {
@@ -5953,7 +5953,7 @@
             "name": "countryCode",
             "required": false,
             "in": "query",
-            "description": "Country code from sanctions.io, for example US, GB, or INT",
+            "description": "Country code from the watchlist provider, for example US, GB, or INT",
             "schema": {
               "example": "INT",
               "type": "string"
@@ -5973,7 +5973,7 @@
             "name": "shortName",
             "required": false,
             "in": "query",
-            "description": "Case-insensitive exact match on sanctions.io short_name",
+            "description": "Case-insensitive exact match on the watchlist provider short_name",
             "schema": {
               "example": "ADB",
               "type": "string"
@@ -6000,7 +6000,7 @@
             "bearer": []
           }
         ],
-        "summary": "List cached sanctions.io data sources",
+        "summary": "List cached the watchlist provider data sources",
         "tags": [
           "Participants"
         ]
@@ -6008,7 +6008,7 @@
     },
     "/api/v1/participants/sanctions-sources/sync": {
       "post": {
-        "description": "Triggers an immediate sync of sanctions.io data sources, bypassing the automatic sync interval check.",
+        "description": "Triggers an immediate sync of the watchlist provider data sources, bypassing the automatic sync interval check.",
         "operationId": "ParticipantController_syncSanctionsSources",
         "parameters": [],
         "responses": {
@@ -6021,7 +6021,7 @@
             "bearer": []
           }
         ],
-        "summary": "Manually trigger sanctions.io sources sync",
+        "summary": "Manually trigger the watchlist provider sources sync",
         "tags": [
           "Participants"
         ]
@@ -6871,7 +6871,7 @@
     },
     "/api/v1/participants/sanctions/webhook": {
       "post": {
-        "description": "\n      This endpoint receives webhook notifications from sanctions.io when new matches\n      are found for monitored entries. The webhook is configured in the sanctions.io\n      company settings and will be called whenever:\n      - A new match is found (new_match)\n      - An existing match is updated (updated_match)\n      - A watchlist is updated (list_update)\n    ",
+        "description": "\n      This endpoint receives webhook notifications from the watchlist provider when new matches\n      are found for monitored entries. The webhook is configured in the the watchlist provider\n      company settings and will be called whenever:\n      - A new match is found (new_match)\n      - An existing match is updated (updated_match)\n      - A watchlist is updated (list_update)\n    ",
         "operationId": "ParticipantController_handleSanctionsWebhook",
         "parameters": [],
         "responses": {
@@ -6905,7 +6905,7 @@
             "bearer": []
           }
         ],
-        "summary": "Webhook endpoint for sanctions.io monitoring alerts",
+        "summary": "Webhook endpoint for the watchlist provider monitoring alerts",
         "tags": [
           "Participants"
         ]
@@ -19091,7 +19091,7 @@
             "example": "1990-01-15"
           },
           "dataSources": {
-            "description": "sanctions.io source short_name values to include in the search. Required for source-based watchlist screening.",
+            "description": "the watchlist provider source short_name values to include in the search. Required for source-based watchlist screening.",
             "example": [
               "ADB",
               "UN"

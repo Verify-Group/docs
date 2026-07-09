@@ -1,7 +1,7 @@
 ---
-title: "List cached sanctions.io data sources"
+title: "List Watchlist Sources"
 api: "GET /api/v1/participants/sanctions-sources"
-description: "List locally cached sanctions.io watchlist sources with their shortName values, which you supply as dataSources when creating a screening check."
+description: "List locally cached watchlist sources with their shortName values, which you supply as dataSources when creating a screening check."
 ---
 
 <ParamField query="name" type="string">
@@ -9,7 +9,7 @@ description: "List locally cached sanctions.io watchlist sources with their shor
 </ParamField>
 
 <ParamField query="countryCode" type="string">
-  Country code from sanctions.io, for example US, GB, or INT
+  Country code filter, for example US, GB, or INT
 </ParamField>
 
 <ParamField query="isEnabled" type="boolean">
@@ -17,5 +17,5 @@ description: "List locally cached sanctions.io watchlist sources with their shor
 </ParamField>
 
 <ParamField query="shortName" type="string">
-  Case-insensitive exact match on sanctions.io short_name
+  Case-insensitive exact match on the source short_name
 </ParamField>
