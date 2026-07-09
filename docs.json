@@ -222,7 +222,10 @@
   },
   "api": {
     "mdx": {
-      "server": "https://uat.gateway.verify-group.io",
+      "server": [
+        "https://uat.gateway.verify-group.io",
+        "https://gateway.verify-group.io"
+      ],
       "auth": {
         "method": "bearer"
       }
