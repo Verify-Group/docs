@@ -1,11 +1,11 @@
 ---
 title: البدء السريع
-description: احصل على بيانات اعتماد Verify Group API، وصادِق، وأجرِ أول طلب KYC أو مطالبة في أقل من خمس دقائق مع أمثلة curl جاهزة للنسخ واللصق مباشرة.
+description: احصل على بيانات اعتماد Verify Group API، وقم بالمصادقة، ونفّذ أول استدعاء KYC أو مطالبة خلال أقل من خمس دقائق باستخدام أمثلة curl جاهزة للنسخ واللصق.
 ---
 
-## 1. احصل على بيانات الاعتماد الخاصة بك
+## 1. احصل على بيانات الاعتماد
 
-سجّل الدخول إلى [لوحة التحكم](https://app.verify-group.io) وانتقل إلى **Settings → API Keys**.
+سجّل الدخول إلى [لوحة التحكم](https://app.verify-group.io) وانتقل إلى **الإعدادات ← مفاتيح API**.
 
 ## 2. المصادقة
 
@@ -26,7 +26,7 @@ curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
 }
 ```
 
-## 3. ضمّن ترويسة المؤسسة
+## 3. تضمين ترويسة المؤسسة
 
 ```bash
 export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
@@ -37,7 +37,7 @@ curl https://gateway.verify-group.io/api/v1/participants \
   -H "X-Organization-ID: $ORG_ID"
 ```
 
-## 4. شغّل تحقّق KYC
+## 4. تشغيل تحقق KYC
 
 ```bash
 curl -X POST https://gateway.verify-group.io/api/v1/kyc \
@@ -56,11 +56,11 @@ curl -X POST https://gateway.verify-group.io/api/v1/kyc \
   }'
 ```
 
-<Check>لقد أكملت أول عملية تحقّق من الهوية!</Check>
+<Check>لقد أكملت أول تحقق من الهوية!</Check>
 
 <CardGroup cols={2}>
   <Card title="المصادقة" icon="lock" href="/authentication">تدفق تحديث JWT وإدارة الرموز.</Card>
-  <Card title="دليل المطالبات" icon="file-text" href="/guides/claims-management">أنشئ ومعالج المطالبات من البداية إلى النهاية.</Card>
+  <Card title="دليل المطالبات" icon="file-text" href="/guides/claims-management">أنشئ المطالبات وعالجها من البداية إلى النهاية.</Card>
   <Card title="فحص العقوبات" icon="shield" href="/guides/sanctions-screening">افحص مقابل قوائم المراقبة العالمية.</Card>
-  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">استخدم SDK المكتوبة بأنواع (typed).</Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">استخدم SDK ذا الأنواع المعرّفة.</Card>
 </CardGroup>

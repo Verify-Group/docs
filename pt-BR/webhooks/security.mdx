@@ -1,9 +1,9 @@
 ---
 title: Segurança de webhooks
-description: Verifique cabeçalhos X-VG-Signature-256 com um exemplo em Express.js e siga o checklist de hardening da Verify Group para endpoints de webhook em produção.
+description: Verifique cabeçalhos X-VG-Signature-256 com um exemplo em Express.js e siga o checklist de fortalecimento da Verify Group para endpoints de webhook em produção.
 ---
 
-## Exemplo com Express.js
+## Exemplo em Express.js
 
 ```typescript
 app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (req, res) => {
@@ -17,9 +17,9 @@ app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (r
 });
 ```
 
-## Checklist de hardening
+## Checklist de fortalecimento
 
 <Check>Somente HTTPS</Check>
-<Check>Verifique `X-VG-Signature-256` em toda requisição</Check>
-<Check>Responda em até 30 segundos — enfileire processamentos demorados</Check>
+<Check>Verifique `X-VG-Signature-256` em cada requisição</Check>
+<Check>Responda em até 30 segundos — enfileire processamentos longos</Check>
 <Check>Use `event.id` para idempotência em entregas reenviadas</Check>

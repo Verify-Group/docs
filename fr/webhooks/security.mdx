@@ -1,6 +1,6 @@
 ---
 title: Sécurité des webhooks
-description: Vérifiez les en-têtes X-VG-Signature-256 avec un exemple Express.js et suivez la checklist de durcissement Verify Group pour vos webhooks en production.
+description: Vérifiez les en-têtes X-VG-Signature-256 avec un exemple Express.js et suivez la checklist de durcissement Verify Group pour les points de terminaison webhook en production.
 ---
 
 ## Exemple Express.js
@@ -12,7 +12,7 @@ app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (r
     return res.status(401).json({ error: "Invalid signature" });
   }
   const event = JSON.parse(req.body.toString());
-  // gérer l'événement...
+  // handle event...
   res.status(200).json({ received: true });
 });
 ```
@@ -21,5 +21,5 @@ app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (r
 
 <Check>HTTPS uniquement</Check>
 <Check>Vérifiez `X-VG-Signature-256` sur chaque requête</Check>
-<Check>Répondez dans un délai de 30 secondes — mettez en file d'attente les traitements longs</Check>
+<Check>Répondez en moins de 30 secondes — mettez en file d'attente le traitement long</Check>
 <Check>Utilisez `event.id` pour l'idempotence sur les livraisons réessayées</Check>

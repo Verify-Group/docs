@@ -1,15 +1,15 @@
 ---
 title: 组织
-description: 深入了解 Verify Group 平台采用的多租户架构机制 — 每一次理赔提交、参与者创建以及 KYC 请求都会归属于一个特定组织，并通过必填的 X-Organization-ID 请求头进行数据隔离与租户标识，附组织级别 KYC 触发接口的操作示例与最佳实践说明。
+description: Verify Group 是多租户平台，每个理赔、参与人以及 KYC 请求都归属于由 X-Organization-ID 请求头标识的组织。
 ---
 
-每个资源（理赔、参与者、KYC 请求）都归属于一个**组织**。请在每次请求中传入您的 UUID：
+每一项资源（理赔、参与人、KYC 请求）都归属于某个**组织**。请在每次请求中传入你的 UUID：
 
 ```
 X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
 ```
 
-## 为您的组织运行 KYC
+## 为你的组织发起 KYC
 
 ```bash
 POST /api/v1/organizations/{id}/run-kyc
@@ -18,4 +18,4 @@ POST /api/v1/organizations/{id}/run-kyc
 {"autoSync": true}
 ```
 
-会自动创建一个企业参与者，运行 `business_ubo` 验证，并为每位董事生成对应的参与者记录。
+会自动创建一个企业类型的参与人，运行 `business_ubo` 验证，并为每位董事生成参与人记录。

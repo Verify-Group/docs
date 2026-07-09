@@ -1,6 +1,6 @@
 ---
 title: Autenticação
-description: Autentique requisições à API da Verify Group com tokens JWT bearer, renove o access token e envie o cabeçalho obrigatório de organização multi-tenant.
+description: Autentique requisições da API Verify Group com tokens JWT bearer, atualize o token de acesso e defina o cabeçalho de organização multi-tenant obrigatório.
 ---
 
 Toda requisição deve incluir `Authorization: Bearer <token>`.
@@ -19,7 +19,7 @@ POST /api/v1/auth/login
 {"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
 ```
 
-## Renovar um token
+## Atualizar um token
 
 ```bash
 POST /api/v1/auth/refresh
@@ -37,7 +37,7 @@ POST /api/v1/auth/refresh
 
 ## Boas práticas de segurança
 
-<Check>Armazene tokens de acesso em memória, não no localStorage</Check>
+<Check>Armazene tokens de acesso em memória, não em localStorage</Check>
 <Check>Armazene refresh tokens em cookies httpOnly seguros</Check>
 <Check>Use HTTPS em todos os lugares</Check>
-<Check>Revogue os tokens ao fazer logout</Check>
+<Check>Revogue tokens no logout</Check>

@@ -1,6 +1,6 @@
 ---
 title: Authentification
-description: Authentifiez vos requêtes à l'API Verify Group avec des jetons JWT bearer, rafraîchissez le jeton d'accès et fournissez l'en-tête multi-tenant.
+description: Authentifiez les requêtes de l'API Verify Group avec des jetons JWT bearer, renouvelez le jeton d'accès et définissez l'en-tête d'organisation multi-tenant requis.
 ---
 
 Chaque requête doit inclure `Authorization: Bearer <token>`.
@@ -19,7 +19,7 @@ POST /api/v1/auth/login
 {"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
 ```
 
-## Rafraîchir un jeton
+## Renouveler un jeton
 
 ```bash
 POST /api/v1/auth/refresh
@@ -33,11 +33,11 @@ POST /api/v1/auth/refresh
 | En-tête | Requis | Description |
 |---|---|---|
 | `Authorization` | Toujours | `Bearer <token>` |
-| `X-Organization-ID` | La plupart des endpoints | UUID de votre organisation |
+| `X-Organization-ID` | La plupart des points de terminaison | UUID de votre organisation |
 
 ## Bonnes pratiques de sécurité
 
 <Check>Stockez les jetons d'accès en mémoire, pas dans localStorage</Check>
-<Check>Stockez les jetons de rafraîchissement dans des cookies httpOnly sécurisés</Check>
+<Check>Stockez les jetons de rafraîchissement dans des cookies sécurisés httpOnly</Check>
 <Check>Utilisez HTTPS partout</Check>
-<Check>Révoquez les jetons à la déconnexion</Check>
+<Check>Révoquez les jetons lors de la déconnexion</Check>

@@ -1,17 +1,17 @@
 ---
-title: Screening sanctions
-description: Contrôlez les participants contre les listes ONU, OFAC et UE, activez la surveillance continue et recevez des alertes webhook en cas de correspondance.
+title: Filtrage des sanctions
+description: Filtrez les participants par rapport aux listes de surveillance de l'ONU, de l'OFAC et de l'UE, activez la surveillance continue et recevez des alertes webhook lors de nouvelles correspondances de sanctions.
 ---
 
-## Synchroniser les sources de listes de surveillance
+## Synchroniser les sources des listes de surveillance
 
 ```bash
 POST /api/v1/participants/sanctions-sources/sync
 ```
 
-Endpoint public — aucune authentification requise. Appelez-le depuis une tâche planifiée pour maintenir les sources à jour.
+Point de terminaison public — aucune authentification requise. Appelez-le depuis une tâche planifiée pour maintenir les sources à jour.
 
-## Effectuer un contrôle
+## Exécuter un contrôle
 
 ```bash
 POST /api/v1/participants/{participantId}/sanctions-check
@@ -23,7 +23,7 @@ POST /api/v1/participants/{participantId}/sanctions-check
 }
 ```
 
-<Note>`dataSources` est optionnel — omettez-le pour rechercher dans toutes les sources activées.</Note>
+<Note>`dataSources` est optionnel — omettez-le pour effectuer la recherche sur toutes les sources activées.</Note>
 
 ## Niveaux de risque
 
@@ -31,7 +31,7 @@ POST /api/v1/participants/{participantId}/sanctions-check
 
 ## Surveillance continue
 
-Lorsque `enableMonitoring: true`, vous recevez des webhooks lorsque de nouvelles correspondances apparaissent sur une liste enrôlée.
+Lorsque `enableMonitoring: true`, vous recevez des webhooks lorsque de nouvelles correspondances apparaissent sur toute liste inscrite.
 
 | Événement | Déclencheur |
 |---|---|

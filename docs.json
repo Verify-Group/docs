@@ -8,9 +8,9 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#42b549",
-    "light": "#5ecf65",
-    "dark": "#2e8e34"
+    "primary": "#E92627",
+    "light": "#F05555",
+    "dark": "#0B1C3E"
   },
   "theme": "maple",
   "topbarCtaButton": {

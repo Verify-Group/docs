@@ -1,6 +1,6 @@
 ---
 title: Webhooks
-description: Enregistrez des endpoints webhook, vérifiez les signatures HMAC-SHA256 et gérez les retries Verify Group avec backoff exponentiel pour les événements API.
+description: Enregistrez des points de terminaison webhook, vérifiez les signatures HMAC-SHA256 et gérez les nouvelles tentatives de Verify Group avec un backoff exponentiel pour les événements API en temps réel.
 ---
 
 ## Enregistrer un webhook
@@ -29,10 +29,10 @@ function verify(rawBody: string, signature: string, secret: string): boolean {
 }
 ```
 
-<Warning>Analysez le corps en tant qu'**octets bruts** avant vérification — analyser le JSON en premier modifie la représentation en octets et casse les vérifications de signature.</Warning>
+<Warning>Analysez le corps sous forme d'**octets bruts** avant de vérifier — parser d'abord le JSON modifie la représentation en octets et casse la vérification de signature.</Warning>
 
-## Politique de nouvelles tentatives
+## Politique de nouvelle tentative
 
-Les livraisons échouées font l'objet de nouvelles tentatives avec un backoff exponentiel : 5s → 30s → 5m → 30m → 2h. Après 5 échecs, le webhook est marqué `failed` et vous recevez une alerte par email.
+Nous réessayons les livraisons échouées avec un backoff exponentiel : 5s → 30s → 5m → 30m → 2h. Après 5 échecs, nous marquons le webhook comme `failed` et vous envoyons une alerte par email.
 
-<Warning>Votre endpoint doit répondre dans un délai de **30 secondes**, sinon la livraison est marquée comme échouée.</Warning>
+<Warning>Votre point de terminaison doit répondre en **30 secondes**, sinon nous marquons la livraison comme échouée.</Warning>

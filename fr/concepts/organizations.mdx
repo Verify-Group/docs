@@ -1,15 +1,15 @@
 ---
 title: Organisations
-description: "Verify Group est multi-tenant : chaque sinistre, participant et requête KYC est rattaché à une organisation identifiée par l'en-tête X-Organization-ID."
+description: Verify Group est multi-tenant. Chaque réclamation, participant et requête KYC est rattaché à une organisation identifiée par l'en-tête X-Organization-ID.
 ---
 
-Chaque ressource (sinistres, participants, requêtes KYC) appartient à une **organisation**. Transmettez votre UUID dans chaque requête :
+Chaque ressource (réclamations, participants, requêtes KYC) appartient à une **organisation**. Transmettez votre UUID dans chaque requête :
 
 ```
 X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
 ```
 
-## Lancer un KYC pour votre organisation
+## Exécuter un KYC pour votre organisation
 
 ```bash
 POST /api/v1/organizations/{id}/run-kyc
@@ -18,4 +18,4 @@ POST /api/v1/organizations/{id}/run-kyc
 {"autoSync": true}
 ```
 
-Crée automatiquement un participant entreprise, exécute la vérification `business_ubo` et génère des enregistrements de participants pour chaque dirigeant.
+Crée automatiquement un participant entreprise, exécute une vérification `business_ubo` et génère des enregistrements de participant pour chaque dirigeant.

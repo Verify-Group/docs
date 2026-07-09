@@ -1,6 +1,6 @@
 ---
 title: Postman 集合
-description: 将 Verify Group 平台 API 的 OpenAPI 规范文档一键导入 Postman、配置 baseUrl 与 accessToken 等所需的环境变量，并使用自动刷新访问令牌的 Pre-request Script 脚本便捷维护 Bearer 认证会话状态，享受高效的接口调试体验。
+description: 将 Verify Group 的 OpenAPI 规范导入 Postman，配置环境变量，并使用可自动刷新 bearer token 的请求前置脚本。
 ---
 
 ## 通过 OpenAPI URL 导入
@@ -14,10 +14,10 @@ description: 将 Verify Group 平台 API 的 OpenAPI 规范文档一键导入 Po
 | 变量 | 值 |
 |---|---|
 | `baseUrl` | `https://gateway.verify-group.io/api/v1` |
-| `accessToken` | *(登录后设置)* |
-| `organizationId` | 您所在组织的 UUID |
+| `accessToken` | *（登录后设置）* |
+| `organizationId` | 你的组织 UUID |
 
-## 集合的 Pre-request 脚本（自动刷新令牌）
+## 集合请求前置脚本（自动刷新）
 
 ```javascript
 const expiry = pm.environment.get("tokenExpiry");

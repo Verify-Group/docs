@@ -1,17 +1,17 @@
 ---
-title: 制裁筛查
-description: 针对联合国、美国 OFAC 财政部以及欧盟等全球主要制裁监控名单对参与者身份进行合规筛查、开启持续性监控订阅机制，并通过 Webhook 事件回调实时接收新的制裁名单命中告警通知，帮助保险公司全面提升反洗钱与合规风控能力，附完整的接口调用示例与集成实践参考建议。
+title: 制裁名单筛查
+description: 对照 UN、OFAC 和 EU 监控名单筛查参与人，开启持续监控，并在出现新的制裁命中时通过 webhook 接收告警。
 ---
 
-## 同步监控名单来源
+## 同步监控名单源
 
 ```bash
 POST /api/v1/participants/sanctions-sources/sync
 ```
 
-公开接口 — 无需身份认证。可通过定时任务调用，保持名单数据的时效性。
+公开接口 —— 无需认证。可通过定时任务调用以保持名单源新鲜。
 
-## 执行筛查
+## 发起筛查
 
 ```bash
 POST /api/v1/participants/{participantId}/sanctions-check
@@ -23,17 +23,17 @@ POST /api/v1/participants/{participantId}/sanctions-check
 }
 ```
 
-<Note>`dataSources` 为可选项 — 省略即表示检索所有已启用的来源。</Note>
+<Note>`dataSources` 可选 —— 省略则会搜索所有已启用的名单源。</Note>
 
 ## 风险等级
 
 `clear` · `low` · `medium` · `high` · `critical`
 
-## 持续监测
+## 持续监控
 
-当 `enableMonitoring: true` 时，只要任一已纳入监测的名单出现新的命中，您就会收到 Webhook 通知。
+当设置 `enableMonitoring: true` 时，任一已订阅名单出现新命中都会触发 webhook 通知。
 
-| 事件 | 触发时机 |
+| 事件 | 触发条件 |
 |---|---|
 | `sanctions.match.detected` | 发现新的命中 |
-| `sanctions.match.resolved` | 误报已被处置 |
+| `sanctions.match.resolved` | 误报已处理关闭 |

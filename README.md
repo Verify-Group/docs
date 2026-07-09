@@ -1,55 +1,90 @@
-# Mintlify Starter Kit
+# Verify Group API Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Partner-facing API documentation for the Verify Group Platform, built with [Mintlify](https://mintlify.com).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+Published at: **https://docs.verify-group.com**
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## What's documented
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+| Section | Description |
+|---|---|
+| **KYC Verification** | Individual standard/advanced, business, custom verification flows, and full history |
+| **Document Authenticity** | National IDs, driver's licences, vehicle logbooks, KRA PINs, vehicle plates, custom document types |
+| **Voice Intelligence** | Initiate calls, retrieve recordings & transcripts, trigger AI fraud analysis |
+| **Claims Management** | Full insurance claim lifecycle — create, investigate, approve, settle |
+| **Evidence Management** | Upload, tag, review, and attach supporting files to claims |
+| **Participants & Sanctions** | Create participants, run watchlist checks, review sanctions results |
 
-## AI-assisted writing
+## Repository structure
 
-Set up your AI coding tool to work with Mintlify:
+```
+docs/
+├── docs.json                       # Mintlify configuration (theme, navigation, API server)
+├── index.mdx                       # Introduction / landing page
+├── quickstart.mdx                  # 5-minute getting started guide
+├── authentication.mdx              # JWT auth and organisation headers
+├── environments.mdx                # Environment URLs (prod, UAT, staging, local)
+├── guides/                         # Step-by-step integration guides
+├── api-reference/                  # Manual API pages (one MDX per endpoint)
+│   ├── authentication/
+│   ├── kyc/
+│   ├── document-verification/
+│   ├── voice-intelligence/
+│   ├── claims/
+│   ├── evidence/
+│   └── participants/
+├── webhooks/                       # Webhook events and security
+├── sdks/                           # JavaScript SDK and Postman guides
+├── changelog/                      # Release notes
+├── logo/                           # Brand SVGs (light.svg + dark.svg)
+└── scripts/
+    ├── generate-manual-pages.py    # Regenerate MDX pages from openapi.json
+    └── update-openapi.sh           # Download latest OpenAPI spec from gateway
+```
+
+## Local preview
 
 ```bash
-npx skills add https://mintlify.com/docs
+pnpm add -g mintlify   # or: npm i -g mint
+mint dev               # serves at http://localhost:3000
 ```
 
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
+## Updating the OpenAPI spec
 
-See the [AI tools guides](/ai-tools) for tool-specific setup.
+The `api-reference/openapi.json` snapshot is used for parameter extraction. Refresh it from the live gateway:
 
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+./scripts/update-openapi.sh             # pulls from UAT (default)
+./scripts/update-openapi.sh production  # pulls from production
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Then regenerate the MDX pages:
 
+```bash
+python3 scripts/generate-manual-pages.py
+git add api-reference/ && git commit -m "chore(docs): refresh API pages from spec"
 ```
-mint dev
+
+## Deployment
+
+Merged to `main` → Mintlify auto-deploys to `docs.verify-group.com`.
+
+**DNS (Cloudflare):**
+```
+docs.verify-group.com  CNAME  mint.mintlify.com
 ```
 
-View your local preview at `http://localhost:3000`.
+## API playground server
 
-## Publishing changes
+The interactive playground sends live requests to:
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+| Environment | URL |
+|---|---|
+| UAT (current default) | `https://uat.gateway.verify-group.io` |
+| Production | `https://gateway.verify-group.io` |
 
-## Need help?
+To switch, update `api.mdx.server` in `docs.json`.
 
-### Troubleshooting
+## Support
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+[tech@verify-group.com](mailto:tech@verify-group.com)

@@ -1,6 +1,6 @@
 ---
-title: أمان Webhook
-description: تحقّق من ترويسات X-VG-Signature-256 بمثال Express.js، واتبع قائمة تدقيق التحصين من Verify Group لنقاط نهاية webhook الجاهزة لبيئة الإنتاج بأمان.
+title: أمان webhook
+description: تحقق من ترويسات X-VG-Signature-256 بمثال Express.js واتبع قائمة تدقيق التصلب في Verify Group لنقاط نهاية webhook في الإنتاج.
 ---
 
 ## مثال Express.js
@@ -17,9 +17,9 @@ app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (r
 });
 ```
 
-## قائمة تدقيق التقوية
+## قائمة تدقيق التصلب
 
 <Check>HTTPS فقط</Check>
-<Check>تحقّق من `X-VG-Signature-256` في كل طلب</Check>
-<Check>استجب خلال 30 ثانية — ضع المعالجة الطويلة في قائمة انتظار</Check>
-<Check>استخدم `event.id` لضمان عدم التكرار (idempotency) في عمليات التسليم المُعاد محاولتها</Check>
+<Check>تحقق من `X-VG-Signature-256` في كل طلب</Check>
+<Check>الاستجابة خلال 30 ثانية — ضع المعالجة الطويلة في قائمة انتظار</Check>
+<Check>استخدم `event.id` من أجل idempotency في التسليمات المُعاد محاولتها</Check>

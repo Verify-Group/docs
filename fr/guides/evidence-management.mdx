@@ -1,20 +1,20 @@
 ---
 title: Gestion des preuves
-description: Uploadez des preuves de sinistres via l'endpoint proxy, taggez les fichiers, exécutez les approbations et gérez les transitions de statut sur l'API.
+description: Téléversez les preuves de réclamation via le point de terminaison proxy, étiquetez les fichiers, exécutez les approbations par un relecteur et gérez les transitions de statut des preuves sur l'API Verify Group.
 ---
 
-## Upload (recommandé pour les clients navigateur)
+## Téléversement (recommandé pour les clients navigateur)
 
-Route l'upload via le backend pour éviter les problèmes CORS :
+Route le téléversement via le backend pour éviter les problèmes de CORS :
 
 ```bash
 POST /api/v1/evidence/public-upload/proxy-upload
 Content-Type: multipart/form-data
 ```
 
-Renvoie `evidenceId` et une `signedUrl` pour un aperçu immédiat.
+Renvoie un `evidenceId` et une `signedUrl` pour un aperçu immédiat.
 
-## Lister les preuves d'un sinistre
+## Lister les preuves d'une réclamation
 
 ```bash
 GET /api/v1/evidence?claimId={claimId}
@@ -40,7 +40,7 @@ POST /api/v1/evidence/{id}/review
 
 | Statut | Signification |
 |---|---|
-| `PENDING` | En attente de révision |
+| `PENDING` | En attente de relecture |
 | `APPROVED` | Vérifiée et acceptée |
 | `REJECTED` | Refusée |
 | `UNDER_REVIEW` | En analyse forensique |
