@@ -1,0 +1,40 @@
+---
+title: "Authorization Endpoint"
+api: "GET /api/v1/oauth/authorize"
+description: "Step 1 of the Authorization Code + PKCE flow. Redirect the end-user here to begin authentication."
+authMethod: "none"
+---
+
+Redirect the browser to this endpoint to start the Authorization Code flow. If the user is not already authenticated, they will be sent to the Verify Group login page with the original parameters preserved.
+
+**Required for Authorization Code flow:**
+1. Generate a random `code_verifier` (43–128 chars)
+2. Compute `code_challenge = BASE64URL(SHA256(code_verifier))`
+3. Redirect user to this endpoint
+4. After login, user is redirected to your `redirect_uri` with `?code=...&state=...`
+5. Exchange the code at the [Token endpoint](/api-reference/oidc/token)
+
+<ParamField query="response_type" type="code" required>
+  Must be `code`.
+</ParamField>
+<ParamField query="client_id" type="string" required>
+  Your OAuth App `client_id`.
+</ParamField>
+<ParamField query="redirect_uri" type="string" required>
+  Must exactly match a redirect URI registered with your OAuth App.
+</ParamField>
+<ParamField query="scope" type="string">
+  Space-separated scopes. Supported: `openid profile email org:read kyc:read claims:read voice:read evidence:read`
+</ParamField>
+<ParamField query="state" type="string">
+  Opaque CSRF protection value. Returned unchanged in the redirect.
+</ParamField>
+<ParamField query="code_challenge" type="string">
+  PKCE challenge — `BASE64URL(SHA256(code_verifier))`. Required for public clients.
+</ParamField>
+<ParamField query="code_challenge_method" type="S256">
+  Must be `S256`.
+</ParamField>
+<ParamField query="nonce" type="string">
+  OIDC replay protection nonce. Included in the `id_token` if provided.
+</ParamField>

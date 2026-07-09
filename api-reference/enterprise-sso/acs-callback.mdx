@@ -1,0 +1,14 @@
+---
+title: "SAML ACS Callback"
+api: "POST /api/v1/auth/saml/{orgId}/callback"
+description: "Receives the SAML response from the IdP (POST binding). Register this as the ACS URL in your IdP."
+authMethod: "none"
+---
+
+<ParamField path="orgId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+
+This endpoint is called by the IdP after successful authentication. Register it as the **Assertion Consumer Service (ACS) URL** in your IdP app settings.
+
+On success, the user is redirected to `FRONTEND_URL/auth/sso/complete?orgId={orgId}` with their session established.

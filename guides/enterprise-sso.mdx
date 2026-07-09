@@ -1,0 +1,105 @@
+---
+title: Enterprise SSO
+description: Connect your Azure AD, Okta, or any SAML 2.0 / OIDC Identity Provider so your team uses corporate credentials.
+---
+
+## Overview
+
+Verify Group supports:
+
+| Protocol | IdPs | Use case |
+|---|---|---|
+| SAML 2.0 | Azure AD / Microsoft Entra, Okta, Google Workspace, OneLogin | Org-wide SSO, domain enforcement |
+| OIDC Federation | Azure AD, Okta, Auth0, Keycloak | Delegated OIDC authentication |
+
+---
+
+## Azure AD (Microsoft Entra) — SAML setup
+
+### Step 1: Create the Enterprise Application
+
+1. In Azure Portal → **Microsoft Entra ID → Enterprise Applications → + New application → Create your own application**
+2. Select **Integrate any other application you don't find in the gallery**
+
+### Step 2: Configure SAML
+
+1. Go to **Single sign-on → SAML**
+2. In **Basic SAML Configuration** set:
+
+| Field | Value |
+|---|---|
+| Identifier (Entity ID) | `https://gateway.verify-group.io/api/v1/auth/saml/{orgId}/metadata` |
+| Reply URL (ACS) | `https://gateway.verify-group.io/api/v1/auth/saml/{orgId}/callback` |
+| Sign-on URL | `https://gateway.verify-group.io/api/v1/auth/saml/{orgId}/login` |
+
+3. In **SAML Signing Certificate** download the **Certificate (Base64)** (`.cer` file)
+
+### Step 3: Configure VG via API
+
+```bash
+curl -X PUT https://gateway.verify-group.io/api/v1/auth/sso/$ORG_ID/config \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "protocol": "saml",
+    "enabled": true,
+    "samlIdpEntityId": "https://sts.windows.net/{tenant-id}/",
+    "samlIdpSsoUrl": "https://login.microsoftonline.com/{tenant-id}/saml2",
+    "samlIdpCertificate": "<base64-cert-without-pem-headers>",
+    "attributeMapping": {
+      "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+      "name": "http://schemas.microsoft.com/identity/claims/displayname"
+    },
+    "enforcedDomains": ["yourcompany.com"],
+    "jitProvisioningEnabled": true,
+    "defaultRoles": ["member"]
+  }'
+```
+
+### Step 4: Test login
+
+Direct users to:
+```
+https://gateway.verify-group.io/api/v1/auth/saml/\{orgId\}/login
+```
+
+---
+
+## Okta — SAML setup
+
+1. In Okta Admin → **Applications → Create App Integration → SAML 2.0**
+2. Set the **Single sign-on URL** and **Audience URI** using the same values as above
+3. In **Attribute Statements** map:
+   - `email` → `user.email`
+   - `displayName` → `user.displayName`
+4. Download the **IdP metadata XML** to get the certificate
+5. Configure VG with the Okta IdP SSO URL and certificate
+
+---
+
+## Domain enforcement
+
+When `enforcedDomains` is set, users with those email domains will always be redirected to SSO login, even if they try to use a password.
+
+---
+
+## Just-in-time (JIT) provisioning
+
+When `jitProvisioningEnabled: true`, a Verify Group user account is automatically created on first SSO login using the email and name from the SAML/OIDC assertion.
+
+---
+
+## Verify your configuration
+
+```bash
+curl https://gateway.verify-group.io/api/v1/auth/sso/$ORG_ID/config \
+  -H "Authorization: Bearer $ACCESS_TOKEN"
+```
+
+---
+
+## Related
+
+- [SP Metadata endpoint](/api-reference/enterprise-sso/sp-metadata)
+- [Configure SSO endpoint](/api-reference/enterprise-sso/upsert-config)
+- [Developer Portal guide](/guides/developer-portal)

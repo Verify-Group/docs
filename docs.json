@@ -18,11 +18,22 @@
     "url": "https://platform.verify-score.com"
   },
   "topbarLinks": [
-    { "name": "Support", "url": "mailto:support@verify-group.com" }
+    {
+      "name": "Support",
+      "url": "mailto:support@verify-group.com"
+    }
   ],
   "anchors": [
-    { "name": "Status", "icon": "signal", "url": "https://status.verify-group.io" },
-    { "name": "GitHub", "icon": "github", "url": "https://github.com/Verify-Group" }
+    {
+      "name": "Status",
+      "icon": "signal",
+      "url": "https://status.verify-group.io"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/Verify-Group"
+    }
   ],
   "navigation": {
     "tabs": [
@@ -31,11 +42,18 @@
         "groups": [
           {
             "group": "Getting Started",
-            "pages": ["index", "quickstart", "authentication", "environments"]
+            "pages": [
+              "index",
+              "quickstart",
+              "authentication",
+              "environments"
+            ]
           },
           {
             "group": "Guides",
             "pages": [
+              "guides/enterprise-sso",
+              "guides/developer-portal",
               "guides/kyc-verification",
               "guides/claims-management",
               "guides/voice-intelligence",
@@ -45,21 +63,64 @@
           },
           {
             "group": "Webhooks",
-            "pages": ["webhooks/overview", "webhooks/events", "webhooks/security"]
+            "pages": [
+              "webhooks/overview",
+              "webhooks/events",
+              "webhooks/security"
+            ]
           },
           {
             "group": "SDKs & Tools",
-            "pages": ["sdks/javascript", "sdks/postman"]
+            "pages": [
+              "sdks/javascript",
+              "sdks/postman"
+            ]
           },
           {
             "group": "Changelog",
-            "pages": ["changelog/2026"]
+            "pages": [
+              "changelog/2026"
+            ]
           }
         ]
       },
       {
         "tab": "API Reference",
         "groups": [
+          {
+            "group": "Developer Portal",
+            "pages": [
+              "api-reference/developer-portal/register",
+              "api-reference/developer-portal/get-developer",
+              "api-reference/developer-portal/create-app",
+              "api-reference/developer-portal/list-apps",
+              "api-reference/developer-portal/get-app",
+              "api-reference/developer-portal/regenerate-secret",
+              "api-reference/developer-portal/generate-api-key",
+              "api-reference/developer-portal/revoke-api-key"
+            ]
+          },
+          {
+            "group": "OIDC / OAuth 2.0",
+            "pages": [
+              "api-reference/oidc/discovery",
+              "api-reference/oidc/authorize",
+              "api-reference/oidc/token",
+              "api-reference/oidc/userinfo",
+              "api-reference/oidc/introspect",
+              "api-reference/oidc/revoke"
+            ]
+          },
+          {
+            "group": "Enterprise SSO",
+            "pages": [
+              "api-reference/enterprise-sso/upsert-config",
+              "api-reference/enterprise-sso/get-config",
+              "api-reference/enterprise-sso/sp-metadata",
+              "api-reference/enterprise-sso/initiate-login",
+              "api-reference/enterprise-sso/acs-callback"
+            ]
+          },
           {
             "group": "Authentication",
             "pages": [
@@ -162,7 +223,9 @@
   "api": {
     "mdx": {
       "server": "https://uat.gateway.verify-group.io",
-      "auth": { "method": "bearer" }
+      "auth": {
+        "method": "bearer"
+      }
     }
   },
   "feedback": {

@@ -1,0 +1,134 @@
+---
+title: Developer Portal
+description: How to sign up, create an OAuth app, obtain API keys, top up credits, and make your first API call.
+---
+
+## Overview
+
+The Verify Group platform uses a two-track authentication model:
+
+| Track | Best for | Credential |
+|---|---|---|
+| **API Keys** | Server-to-server, scripts, backend services | `vg_live_` prefixed key |
+| **OAuth 2.0** | Web apps, SPAs, mobile apps with user context | `client_id` + `client_secret` |
+
+---
+
+## 1. Register your developer account
+
+After your organisation is onboarded, register a developer account:
+
+```bash
+curl -X POST https://uat.gateway.verify-group.io/api/v1/developers/register \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"organizationId": "'$ORG_ID'", "type": "organization", "tier": "starter"}'
+```
+
+---
+
+## 2. Create an OAuth App
+
+Register your application to get a `client_id` and `client_secret`:
+
+```bash
+curl -X POST https://uat.gateway.verify-group.io/api/v1/oauth-apps \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"My Integration","type":"server","organizationId":"'$ORG_ID'","scopes":["kyc:read","claims:read","voice:read"]}'
+```
+
+**Response** — save the `clientSecret` immediately, it is shown once:
+
+```json
+{
+  "data": {
+    "clientId": "vg_client_...",
+    "clientSecret": "vg_secret_...",
+    "status": "active"
+  }
+}
+```
+
+---
+
+## 3. Choose your access pattern
+
+### Option A — API Key (server-to-server)
+
+```bash
+# Generate a key
+curl -X POST https://uat.gateway.verify-group.io/api/v1/developers/$DEVELOPER_ID/api-keys \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -d '{"name":"production","permissions":["kyc:read","claims:read"]}'
+
+# Use it
+curl https://uat.gateway.verify-group.io/api/v1/kyc/verifications \
+  -H "X-API-Key: vg_live_xxxxx" \
+  -H "X-Organization-ID: $ORG_ID"
+```
+
+### Option B — Client Credentials (machine-to-machine OAuth)
+
+```bash
+curl -X POST https://uat.gateway.verify-group.io/api/v1/oauth/token \
+  -u "$CLIENT_ID:$CLIENT_SECRET" \
+  -d "grant_type=client_credentials&scope=kyc:read claims:read"
+```
+
+---
+
+## 4. Top up credits
+
+API calls consume tokens from your organisation wallet. Purchase more:
+
+```bash
+curl -X POST https://uat.gateway.verify-group.io/api/v1/tokens/purchase \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -d '{"amount": 1000, "currency": "KES"}'
+```
+
+Check your balance:
+
+```bash
+curl https://uat.gateway.verify-group.io/api/v1/tokens/me/balance \
+  -H "Authorization: Bearer $ACCESS_TOKEN"
+```
+
+---
+
+## 5. Make your first KYC call
+
+```bash
+curl -X POST https://uat.gateway.verify-group.io/api/v1/kyc/verifications \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -H "Content-Type: application/json" \
+  -d '{"participant_id":"<uuid>","type":"individual","scenario":"identity","payload":{"identifier_type":"national_id","identifier_number":"12345678","country":"KE"}}'
+```
+
+---
+
+## Supported scopes
+
+| Scope | Access |
+|---|---|
+| `openid` | OIDC ID token |
+| `profile` | Name and profile fields |
+| `email` | Email address |
+| `org:read` | Organisation info |
+| `kyc:read` | Read KYC results |
+| `kyc:write` | Create and sync KYC verifications |
+| `claims:read` | Read claims |
+| `claims:write` | Create and update claims |
+| `voice:read` | Read voice sessions and transcripts |
+| `evidence:read` | Read evidence files |
+| `evidence:write` | Upload and review evidence |
+| `tokens:read` | Read token balance and transactions |
+
+---
+
+## Enterprise SSO
+
+If your organisation uses Azure AD, Okta, or another SAML/OIDC IdP, configure Single Sign-On so your team members log in with their corporate credentials. See the [Enterprise SSO guide](/guides/enterprise-sso).

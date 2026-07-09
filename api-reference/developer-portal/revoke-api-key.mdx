@@ -1,0 +1,13 @@
+---
+title: "Revoke API Key"
+api: "DELETE /api/v1/developers/{developerId}/api-keys/{keyId}"
+description: "Permanently revoke an API key. All requests using this key will immediately return 401."
+authMethod: "bearer"
+---
+
+<ParamField path="developerId" type="string" required>
+  Your developer account UUID.
+</ParamField>
+<ParamField path="keyId" type="string" required>
+  The key ID to revoke.
+</ParamField>

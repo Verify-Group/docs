@@ -1,0 +1,10 @@
+---
+title: "List OAuth Apps"
+api: "GET /api/v1/oauth-apps"
+description: "List all OAuth apps registered to your organisation."
+authMethod: "bearer"
+---
+
+<ResponseField name="data" type="object[]">
+  Array of OAuth app objects (client secrets are not included).
+</ResponseField>

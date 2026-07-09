@@ -1,0 +1,40 @@
+---
+title: "Token Endpoint"
+api: "POST /api/v1/oauth/token"
+description: "Exchange an authorization code for tokens, obtain a machine-to-machine token, or rotate a refresh token."
+authMethod: "none"
+---
+
+**Client authentication:** Use HTTP Basic (`Authorization: Basic base64(client_id:client_secret)`) or pass `client_id` / `client_secret` in the request body.
+
+<ParamField body="grant_type" type="authorization_code | client_credentials | refresh_token" required>
+  The OAuth 2.0 grant type.
+</ParamField>
+
+**For `authorization_code`:**
+<ParamField body="code" type="string">
+  The authorization code received from the `/authorize` redirect.
+</ParamField>
+<ParamField body="redirect_uri" type="string">
+  Must match the `redirect_uri` used in the authorization request.
+</ParamField>
+<ParamField body="code_verifier" type="string">
+  The original PKCE code verifier (required if `code_challenge` was used).
+</ParamField>
+
+**For `client_credentials`:**
+<ParamField body="scope" type="string">
+  Space-separated scopes to request.
+</ParamField>
+
+**For `refresh_token`:**
+<ParamField body="refresh_token" type="string">
+  A valid refresh token issued by a previous token request.
+</ParamField>
+
+<ResponseField name="access_token" type="string">JWT access token.</ResponseField>
+<ResponseField name="token_type" type="string">`Bearer`</ResponseField>
+<ResponseField name="expires_in" type="number">Expiry in seconds (default: 3600).</ResponseField>
+<ResponseField name="id_token" type="string">OIDC ID token (only when `openid` scope was requested).</ResponseField>
+<ResponseField name="refresh_token" type="string">Refresh token (only for `authorization_code` grant).</ResponseField>
+<ResponseField name="scope" type="string">Granted scopes.</ResponseField>

@@ -1,0 +1,18 @@
+---
+title: "SP Metadata"
+api: "GET /api/v1/auth/saml/{orgId}/metadata"
+description: "Returns the SAML SP metadata XML for this organisation. Provide this URL to your IdP when configuring an Enterprise Application."
+authMethod: "none"
+---
+
+<ParamField path="orgId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+
+Returns an `application/xml` SAML Service Provider metadata document. In Azure AD / Microsoft Entra:
+
+1. Create a new **Enterprise Application → Non-gallery**
+2. Go to **Single sign-on → SAML**
+3. Click **Upload metadata file** and point to this URL, or manually set:
+   - **Entity ID (Identifier):** `https://gateway.verify-group.io/api/v1/auth/saml/{orgId}/metadata`
+   - **Reply URL (ACS):** `https://gateway.verify-group.io/api/v1/auth/saml/{orgId}/callback`

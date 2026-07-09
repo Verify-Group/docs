@@ -1,0 +1,52 @@
+---
+title: "Configure SSO"
+api: "PUT /api/v1/auth/sso/{orgId}/config"
+description: "Create or update the SSO configuration for an organisation. Supports SAML 2.0 and OIDC federation."
+authMethod: "bearer"
+---
+
+<ParamField path="orgId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+<ParamField body="protocol" type="saml | oidc" required>
+  SSO protocol to configure.
+</ParamField>
+<ParamField body="enabled" type="boolean">
+  Enable or disable SSO. Default `false`.
+</ParamField>
+
+**SAML-specific fields:**
+<ParamField body="samlIdpEntityId" type="string">
+  IdP Entity ID from the IdP metadata (e.g. `https://sts.windows.net/{tenant-id}/`).
+</ParamField>
+<ParamField body="samlIdpSsoUrl" type="string">
+  IdP SSO URL from the app's SAML settings (e.g. `https://login.microsoftonline.com/{tenant}/saml2`).
+</ParamField>
+<ParamField body="samlIdpCertificate" type="string">
+  Base64-encoded X.509 certificate from the IdP (no PEM headers). Download from your IdP's SAML signing certificate.
+</ParamField>
+<ParamField body="samlSignRequests" type="boolean">
+  Sign outgoing AuthnRequests with the SP private key. Default `false`.
+</ParamField>
+<ParamField body="attributeMapping" type="object">
+  Map IdP attribute URIs to VG fields. Example: `{"email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"}`
+</ParamField>
+<ParamField body="enforcedDomains" type="string[]">
+  Email domains that must authenticate via SSO. Example: `["apollo.com", "apollogroup.io"]`
+</ParamField>
+<ParamField body="jitProvisioningEnabled" type="boolean">
+  Auto-create user accounts on first SSO login. Default `true`.
+</ParamField>
+<ParamField body="defaultRoles" type="string[]">
+  Roles assigned to JIT-provisioned users. Default `["member"]`.
+</ParamField>
+
+**OIDC federation fields:**
+<ParamField body="oidcIssuer" type="string">
+  External OIDC IdP issuer URL (e.g. `https://login.microsoftonline.com/{tenant}/v2.0`).
+</ParamField>
+<ParamField body="oidcClientId" type="string">Client ID registered with the external IdP.</ParamField>
+<ParamField body="oidcClientSecret" type="string">Client secret (write-only — never returned).</ParamField>
+<ParamField body="oidcScopes" type="string">Space-separated scopes. Default `openid profile email`.</ParamField>
+
+<ResponseField name="message" type="string">`SSO configuration saved`</ResponseField>

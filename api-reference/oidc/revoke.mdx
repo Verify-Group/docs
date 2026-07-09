@@ -1,0 +1,13 @@
+---
+title: "Token Revocation"
+api: "POST /api/v1/oauth/revoke"
+description: "Revoke an access token or refresh token. Returns 200 even if the token was not found."
+authMethod: "none"
+---
+
+<ParamField body="token" type="string" required>
+  The token to revoke.
+</ParamField>
+<ParamField body="token_type_hint" type="string">
+  Hint: `access_token` or `refresh_token`.
+</ParamField>

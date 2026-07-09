@@ -1,0 +1,19 @@
+---
+title: "OIDC Discovery"
+api: "GET /.well-known/openid-configuration"
+description: "Returns the OpenID Connect discovery document. Use this to auto-configure any OIDC-compatible client library."
+authMethod: "none"
+---
+
+Use this document to auto-configure any OIDC-compatible client library (e.g. `openid-client`, `passport-openidconnect`, Azure AD app registration).
+
+<ResponseField name="issuer" type="string">Base URL of this identity server.</ResponseField>
+<ResponseField name="authorization_endpoint" type="string">Authorization Code flow redirect URL.</ResponseField>
+<ResponseField name="token_endpoint" type="string">Token exchange endpoint.</ResponseField>
+<ResponseField name="userinfo_endpoint" type="string">Returns claims about the authenticated user.</ResponseField>
+<ResponseField name="jwks_uri" type="string">JSON Web Key Set for token verification.</ResponseField>
+<ResponseField name="introspection_endpoint" type="string">Validate a token from a resource server.</ResponseField>
+<ResponseField name="revocation_endpoint" type="string">Revoke an access or refresh token.</ResponseField>
+<ResponseField name="scopes_supported" type="string[]">Available OAuth scopes.</ResponseField>
+<ResponseField name="grant_types_supported" type="string[]">`authorization_code`, `client_credentials`, `refresh_token`</ResponseField>
+<ResponseField name="code_challenge_methods_supported" type="string[]">PKCE methods — always `["S256"]`</ResponseField>

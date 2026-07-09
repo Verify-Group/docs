@@ -1,0 +1,12 @@
+---
+title: "Initiate SAML Login"
+api: "GET /api/v1/auth/saml/{orgId}/login"
+description: "Redirects the end-user to the configured Identity Provider login page. Use as your SSO login button URL."
+authMethod: "none"
+---
+
+<ParamField path="orgId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+
+Responds with `302 Found` redirecting to the IdP SSO URL with a signed SAML `AuthnRequest`.

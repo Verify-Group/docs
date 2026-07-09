@@ -1,0 +1,11 @@
+---
+title: "UserInfo"
+api: "GET /api/v1/oauth/userinfo"
+description: "Returns claims about the authenticated user. Requires an access token with openid scope."
+authMethod: "bearer"
+---
+
+<ResponseField name="sub" type="string">Subject — user UUID.</ResponseField>
+<ResponseField name="email" type="string">User email address.</ResponseField>
+<ResponseField name="name" type="string">User display name.</ResponseField>
+<ResponseField name="org_id" type="string">Organisation UUID the token is scoped to.</ResponseField>

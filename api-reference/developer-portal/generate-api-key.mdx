@@ -1,0 +1,34 @@
+---
+title: "Generate API Key"
+api: "POST /api/v1/developers/{developerId}/api-keys"
+description: "Generate a new API key for server-to-server calls. The key value is shown once — store it securely."
+authMethod: "bearer"
+---
+
+<ParamField path="developerId" type="string" required>
+  Your developer account UUID.
+</ParamField>
+<ParamField body="name" type="string" required>
+  Label for this key (e.g. `production-server`, `staging-worker`).
+</ParamField>
+<ParamField body="permissions" type="string[]">
+  Scopes this key can access. Defaults to all scopes on your developer account.
+</ParamField>
+<ParamField body="expiresAt" type="string">
+  ISO 8601 expiry date. Leave unset for no expiry.
+</ParamField>
+
+<ResponseField name="key" type="string">
+  The API key — prefixed `vg_live_` (production) or `vg_test_` (sandbox). **Shown once only.**
+</ResponseField>
+<ResponseField name="id" type="string">Key ID for revocation.</ResponseField>
+<ResponseField name="name" type="string">Key label.</ResponseField>
+
+Use the key in requests as:
+```
+Authorization: Bearer vg_live_xxxxx
+```
+or
+```
+X-API-Key: vg_live_xxxxx
+```

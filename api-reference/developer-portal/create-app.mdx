@@ -1,0 +1,32 @@
+---
+title: "Create OAuth App"
+api: "POST /api/v1/oauth-apps"
+description: "Register an OAuth 2.0 application to obtain a client_id and client_secret for the Authorization Code or Client Credentials flow."
+authMethod: "bearer"
+---
+
+<ParamField body="name" type="string" required>
+  Display name for your application.
+</ParamField>
+<ParamField body="type" type="web | native | spa | server" required>
+  Application type. Use `server` for machine-to-machine (Client Credentials).
+</ParamField>
+<ParamField body="description" type="string">
+  Human-readable description shown on the consent screen.
+</ParamField>
+<ParamField body="redirectUris" type="string[]">
+  Allowed redirect URIs for Authorization Code flow. Required for `web`, `native`, `spa` types.
+</ParamField>
+<ParamField body="scopes" type="string[]">
+  Requested OAuth scopes. Available: `openid profile email org:read kyc:read kyc:write claims:read claims:write voice:read evidence:read evidence:write tokens:read`
+</ParamField>
+<ParamField body="organizationId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+
+<ResponseField name="id" type="string">OAuth App UUID.</ResponseField>
+<ResponseField name="clientId" type="string">Your `client_id` — safe to share with clients.</ResponseField>
+<ResponseField name="clientSecret" type="string">
+  Your `client_secret` — shown once only. Store securely.
+</ResponseField>
+<ResponseField name="status" type="string">`active`</ResponseField>

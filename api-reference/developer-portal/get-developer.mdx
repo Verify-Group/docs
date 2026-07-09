@@ -1,0 +1,18 @@
+---
+title: "Get Developer Account"
+api: "GET /api/v1/developers/{developerId}"
+description: "Retrieve your developer account details, registered apps, and API key metadata."
+authMethod: "bearer"
+---
+
+<ParamField path="developerId" type="string" required>
+  Your developer account UUID.
+</ParamField>
+
+<ResponseField name="id" type="string">Developer account UUID.</ResponseField>
+<ResponseField name="organizationId" type="string">Linked organisation.</ResponseField>
+<ResponseField name="tier" type="string">Access tier.</ResponseField>
+<ResponseField name="status" type="string">Account status.</ResponseField>
+<ResponseField name="apiKeys" type="object[]">
+  List of active API keys (key values are never returned after initial creation).
+</ResponseField>

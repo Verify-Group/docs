@@ -1,0 +1,22 @@
+---
+title: "Token Introspection"
+api: "POST /api/v1/oauth/introspect"
+description: "Validate a token and retrieve its metadata. Use this from resource servers to verify caller tokens."
+authMethod: "none"
+---
+
+Allows resource servers to verify tokens without decoding JWT secrets.
+
+<ParamField body="token" type="string" required>
+  The access or refresh token to inspect.
+</ParamField>
+<ParamField body="token_type_hint" type="string">
+  Hint: `access_token` or `refresh_token`.
+</ParamField>
+
+<ResponseField name="active" type="boolean">Whether the token is valid and not expired.</ResponseField>
+<ResponseField name="sub" type="string">Subject (user UUID).</ResponseField>
+<ResponseField name="client_id" type="string">Client that requested the token.</ResponseField>
+<ResponseField name="scope" type="string">Granted scopes.</ResponseField>
+<ResponseField name="exp" type="number">Expiry timestamp (Unix).</ResponseField>
+<ResponseField name="org_id" type="string">Organisation UUID.</ResponseField>

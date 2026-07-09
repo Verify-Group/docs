@@ -1,0 +1,20 @@
+---
+title: "Register Developer Account"
+api: "POST /api/v1/developers/register"
+description: "Create a developer account linked to your organisation. Required before creating OAuth apps or API keys."
+authMethod: "bearer"
+---
+
+<ParamField body="organizationId" type="string" required>
+  Your Organisation UUID.
+</ParamField>
+<ParamField body="type" type="individual | organization">
+  Account type. Default `organization`.
+</ParamField>
+<ParamField body="tier" type="starter | professional | enterprise">
+  Access tier. Default `starter`.
+</ParamField>
+
+<ResponseField name="id" type="string">Developer account UUID.</ResponseField>
+<ResponseField name="status" type="string">`pending_verification` or `active`</ResponseField>
+<ResponseField name="tier" type="string">Access tier.</ResponseField>
