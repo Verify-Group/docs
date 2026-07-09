@@ -1,0 +1,29 @@
+---
+title: "Create KYC verification request"
+api: "POST /api/v1/kyc/verifications"
+description: "Initiates a new KYC verification request for a participant using CreditInfo"
+---
+
+<ParamField body="participant_id" type="string" required>
+  Participant ID to verify
+</ParamField>
+
+<ParamField body="type" type="individual | business | asset | bank" required>
+  Type of entity being verified
+</ParamField>
+
+<ParamField body="scenario" type="identity | financial | compliance | contact | biometrics | digital_footprint" required>
+  Verification scenario
+</ParamField>
+
+<ParamField body="provider" type="creditinfo | insightgenie | twilio | email">
+  Provider used to fulfill the request
+</ParamField>
+
+<ParamField body="auto_sync" type="boolean">
+  Enable automatic synchronization of verification results
+</ParamField>
+
+<ParamField body="payload" type="string" required>
+  Verification payload
+</ParamField>

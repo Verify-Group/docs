@@ -1,0 +1,53 @@
+---
+title: "Initiate voice call"
+api: "POST /api/v1/voice-calls/initiate"
+description: "Initiates a new voice call to a participant or person of interest."
+---
+
+<ParamField body="callType" type="live | recorded | automated" required>
+  Type of call
+</ParamField>
+
+<ParamField body="participantId" type="string" required>
+  Participant unique identifier
+</ParamField>
+
+<ParamField body="participantName" type="string" required>
+  Participant full name
+</ParamField>
+
+<ParamField body="participantRole" type="claimant | witness | agent | other" required>
+  Participant role
+</ParamField>
+
+<ParamField body="phoneNumber" type="string">
+  Phone number for automated calls
+</ParamField>
+
+<ParamField body="claimId" type="string">
+  Related claim ID
+</ParamField>
+
+<ParamField body="expectedDuration" type="number">
+  Expected call duration in seconds
+</ParamField>
+
+<ParamField body="sector" type="credit | loan | insurance">
+  Business sector
+</ParamField>
+
+<ParamField body="useCase" type="string">
+  Use case identifier
+</ParamField>
+
+<ParamField body="recordCall" type="boolean">
+  Whether to record the call
+</ParamField>
+
+<ParamField body="transcribeCall" type="boolean">
+  Whether to transcribe the call
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Additional metadata
+</ParamField>

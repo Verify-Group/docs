@@ -1,0 +1,28 @@
+---
+title: "Create new document verification session"
+api: "POST /api/v1/documents/verification"
+---
+
+<ParamField body="documentType" type="national-id | alien-id | passport | drivers-license | kra-pin | business-cert" required>
+  Type of document to verify
+</ParamField>
+
+<ParamField body="applicantId" type="string">
+  Applicant ID
+</ParamField>
+
+<ParamField body="applicantName" type="string">
+  Applicant name
+</ParamField>
+
+<ParamField body="documentNumber" type="string">
+  Document number
+</ParamField>
+
+<ParamField body="kraPin" type="string">
+  KRA PIN number
+</ParamField>
+
+<ParamField body="plateNumber" type="string">
+  Vehicle plate number
+</ParamField>

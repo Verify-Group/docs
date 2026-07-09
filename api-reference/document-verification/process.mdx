@@ -1,0 +1,11 @@
+---
+title: "Submit documents for automated verification"
+api: "POST /api/v1/documents/verification/{verificationId}/process"
+---
+
+<ParamField path="verificationId" type="string" required>
+</ParamField>
+
+<ParamField body="autoProcess" type="boolean" required>
+  Auto-process documents
+</ParamField>

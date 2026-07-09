@@ -1,0 +1,18 @@
+---
+title: "Upload and immediately process documents"
+api: "POST /api/v1/documents/verification/upload-and-process"
+---
+
+<ParamField body="documents" type="array">
+</ParamField>
+
+<ParamField body="verificationId" type="string">
+  Optional verification ID. If not provided, will be auto-generated.
+</ParamField>
+
+<ParamField body="documentType" type="string">
+</ParamField>
+
+<ParamField body="participantId" type="string">
+  Optional participant ID to link verification to
+</ParamField>

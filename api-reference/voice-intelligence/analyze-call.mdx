@@ -1,0 +1,13 @@
+---
+title: "Analyze call recording"
+api: "POST /api/v1/voice-calls/{id}/analyze"
+description: "Analyzes the call recording using InsightGenie AI for fraud detection and stress analysis."
+---
+
+<ParamField path="id" type="string" required>
+  Voice call ID
+</ParamField>
+
+<ParamField query="forceReanalysis" type="boolean">
+  Force re-analysis even if already analyzed
+</ParamField>

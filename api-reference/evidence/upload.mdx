@@ -1,21 +1,4 @@
 ---
-title: "Upload evidence file"
-api: "POST /api/v1/evidence/upload"
-description: "Upload evidence files such as documents, images, or video to a claim using multipart form data. Files are stored securely and linked to the case."
+title: "Proxy file upload to GCS (avoids browser CORS)"
+api: "POST /api/v1/evidence/public-upload/proxy-upload"
 ---
-
-<ParamField body="file" type="string" required>
-  File to upload
-</ParamField>
-
-<ParamField body="claimId" type="string">
-  Claim ID to associate evidence with
-</ParamField>
-
-<ParamField body="description" type="string">
-  Description of the evidence
-</ParamField>
-
-<ParamField body="metadata" type="object">
-  Additional metadata
-</ParamField>

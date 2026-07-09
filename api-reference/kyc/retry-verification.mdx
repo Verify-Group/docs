@@ -1,0 +1,9 @@
+---
+title: "Retry KYC verification request"
+api: "POST /api/v1/kyc/verifications/{id}/retry"
+description: "Create a new verification request using the same parameters as a previously failed, expired, or errored request. The original record is preserved for audit purposes."
+---
+
+<ParamField path="id" type="string" required>
+  Original KYC request ID to retry
+</ParamField>

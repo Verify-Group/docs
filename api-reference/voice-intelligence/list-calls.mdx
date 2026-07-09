@@ -1,0 +1,26 @@
+---
+title: "Get call history"
+api: "GET /api/v1/voice-calls"
+description: "Retrieves paginated call history for the organization."
+---
+
+<ParamField query="participantId" type="string">
+</ParamField>
+
+<ParamField query="personOfInterestId" type="string">
+</ParamField>
+
+<ParamField query="dateFrom" type="string">
+</ParamField>
+
+<ParamField query="dateTo" type="string">
+</ParamField>
+
+<ParamField query="page" type="number">
+</ParamField>
+
+<ParamField query="limit" type="number">
+</ParamField>
+
+<ParamField query="status" type="pending_approval | initiated | ringing | in_progress | completed | failed">
+</ParamField>

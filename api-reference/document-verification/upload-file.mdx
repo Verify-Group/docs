@@ -1,0 +1,11 @@
+---
+title: "Upload document images for verification"
+api: "POST /api/v1/documents/verification/{verificationId}/upload"
+description: "Upload document images (max 10). Files stored temporarily for processing. Future: cloud storage integration"
+---
+
+<ParamField path="verificationId" type="string" required>
+</ParamField>
+
+<ParamField body="documents" type="array">
+</ParamField>

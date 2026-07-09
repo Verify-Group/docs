@@ -18,22 +18,11 @@
     "url": "https://platform.verify-score.com"
   },
   "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:tech@verify-group.com"
-    }
+    { "name": "Support", "url": "mailto:support@verify-group.com" }
   ],
   "anchors": [
-    {
-      "name": "Status",
-      "icon": "signal",
-      "url": "https://status.verify-group.io"
-    },
-    {
-      "name": "GitHub",
-      "icon": "github",
-      "url": "https://github.com/Verify-Group"
-    }
+    { "name": "Status", "icon": "signal", "url": "https://status.verify-group.io" },
+    { "name": "GitHub", "icon": "github", "url": "https://github.com/Verify-Group" }
   ],
   "navigation": {
     "tabs": [
@@ -43,16 +32,6 @@
           {
             "group": "Getting Started",
             "pages": ["index", "quickstart", "authentication", "environments"]
-          },
-          {
-            "group": "Core Concepts",
-            "pages": [
-              "concepts/organizations",
-              "concepts/participants",
-              "concepts/claims",
-              "concepts/kyc",
-              "concepts/tokens"
-            ]
           },
           {
             "group": "Guides",
@@ -66,15 +45,15 @@
           },
           {
             "group": "Webhooks",
-            "pages": [
-              "webhooks/overview",
-              "webhooks/events",
-              "webhooks/security"
-            ]
+            "pages": ["webhooks/overview", "webhooks/events", "webhooks/security"]
           },
           {
             "group": "SDKs & Tools",
             "pages": ["sdks/javascript", "sdks/postman"]
+          },
+          {
+            "group": "Changelog",
+            "pages": ["changelog/2026"]
           }
         ]
       },
@@ -85,108 +64,96 @@
             "group": "Authentication",
             "pages": [
               "api-reference/authentication/login",
-              "api-reference/authentication/logout",
               "api-reference/authentication/refresh",
               "api-reference/authentication/me"
             ]
           },
           {
-            "group": "Multi-Factor Authentication",
+            "group": "KYC Verification",
             "pages": [
-              "api-reference/mfa/status",
-              "api-reference/mfa/enable",
-              "api-reference/mfa/verify",
-              "api-reference/mfa/disable"
+              "api-reference/kyc/create-verification",
+              "api-reference/kyc/list-verifications",
+              "api-reference/kyc/by-participant",
+              "api-reference/kyc/list-all",
+              "api-reference/kyc/get-verification",
+              "api-reference/kyc/verification-status",
+              "api-reference/kyc/poll-verification",
+              "api-reference/kyc/retry-verification",
+              "api-reference/kyc/upload-documents",
+              "api-reference/kyc/approve-verification",
+              "api-reference/kyc/sync-verification"
             ]
           },
           {
-            "group": "Users",
+            "group": "Document Authenticity",
             "pages": [
-              "api-reference/users/me",
-              "api-reference/users/update",
-              "api-reference/users/change-password",
-              "api-reference/users/notification-preferences",
-              "api-reference/users/update-notifications",
-              "api-reference/users/upload-avatar"
+              "api-reference/document-verification/upload-and-process",
+              "api-reference/document-verification/history",
+              "api-reference/document-verification/get-report",
+              "api-reference/document-verification/verify-vehicle-doc",
+              "api-reference/document-verification/get-vehicle-result",
+              "api-reference/document-verification/verify-kra-pin",
+              "api-reference/document-verification/get-kra-pin-result",
+              "api-reference/document-verification/verify-drivers-license",
+              "api-reference/document-verification/get-drivers-license-result",
+              "api-reference/document-verification/verify-vehicle-plate",
+              "api-reference/document-verification/get-vehicle-plate-result",
+              "api-reference/document-verification/custom-verification",
+              "api-reference/document-verification/create-session",
+              "api-reference/document-verification/upload-file",
+              "api-reference/document-verification/process",
+              "api-reference/document-verification/get-session"
             ]
           },
           {
-            "group": "Organizations",
+            "group": "Voice Intelligence",
             "pages": [
-              "api-reference/organizations/get",
-              "api-reference/organizations/update",
-              "api-reference/organizations/list-members",
-              "api-reference/organizations/dashboard",
-              "api-reference/organizations/token-balance",
-              "api-reference/organizations/run-kyc"
+              "api-reference/voice-intelligence/initiate-call",
+              "api-reference/voice-intelligence/end-call",
+              "api-reference/voice-intelligence/list-calls",
+              "api-reference/voice-intelligence/get-call",
+              "api-reference/voice-intelligence/call-status",
+              "api-reference/voice-intelligence/get-recording",
+              "api-reference/voice-intelligence/get-transcript",
+              "api-reference/voice-intelligence/analyze-call",
+              "api-reference/voice-intelligence/refresh-analysis",
+              "api-reference/voice-intelligence/calls-by-participant"
             ]
           },
           {
-            "group": "Participants",
+            "group": "Claims Management",
+            "pages": [
+              "api-reference/claims/create",
+              "api-reference/claims/list",
+              "api-reference/claims/get",
+              "api-reference/claims/update",
+              "api-reference/claims/update-status",
+              "api-reference/claims/assign",
+              "api-reference/claims/add-participant",
+              "api-reference/claims/list-participants"
+            ]
+          },
+          {
+            "group": "Evidence Management",
+            "pages": [
+              "api-reference/evidence/upload",
+              "api-reference/evidence/list-by-claim",
+              "api-reference/evidence/get",
+              "api-reference/evidence/update-tags",
+              "api-reference/evidence/review"
+            ]
+          },
+          {
+            "group": "Participants & Sanctions",
             "pages": [
               "api-reference/participants/create",
               "api-reference/participants/list",
               "api-reference/participants/get",
               "api-reference/participants/detail",
               "api-reference/participants/update",
-              "api-reference/participants/delete",
-              "api-reference/participants/sanctions-sources",
               "api-reference/participants/sanctions-check",
               "api-reference/participants/sanctions-checks"
             ]
-          },
-          {
-            "group": "Claims",
-            "pages": [
-              "api-reference/claims/create",
-              "api-reference/claims/list",
-              "api-reference/claims/get",
-              "api-reference/claims/update",
-              "api-reference/claims/delete",
-              "api-reference/claims/update-status",
-              "api-reference/claims/assign",
-              "api-reference/claims/add-poi",
-              "api-reference/claims/list-pois"
-            ]
-          },
-          {
-            "group": "Voice Interview",
-            "pages": [
-              "api-reference/voice-interview/initiate",
-              "api-reference/voice-interview/upload-audio",
-              "api-reference/voice-interview/list-sessions",
-              "api-reference/voice-interview/results"
-            ]
-          },
-          {
-            "group": "Evidence",
-            "pages": [
-              "api-reference/evidence/upload",
-              "api-reference/evidence/list-by-claim",
-              "api-reference/evidence/get",
-              "api-reference/evidence/delete",
-              "api-reference/evidence/update-tags",
-              "api-reference/evidence/review"
-            ]
-          },
-          {
-            "group": "Tokens",
-            "pages": [
-              "api-reference/tokens/my-balance",
-              "api-reference/tokens/my-transactions",
-              "api-reference/tokens/purchase",
-              "api-reference/tokens/consume",
-              "api-reference/tokens/balance"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "groups": [
-          {
-            "group": "Releases",
-            "pages": ["changelog/2026"]
           }
         ]
       }
@@ -195,9 +162,7 @@
   "api": {
     "mdx": {
       "server": "https://uat.gateway.verify-group.io",
-      "auth": {
-        "method": "bearer"
-      }
+      "auth": { "method": "bearer" }
     }
   },
   "feedback": {

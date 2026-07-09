@@ -1,0 +1,9 @@
+---
+title: "Sync KYC verification results"
+api: "POST /api/v1/kyc/verifications/{id}/sync"
+description: "Syncs verified data from successful KYC results to related entities. For bank verifications, automatically matches and verifies bank accounts. If multiple banks match, returns list for user confirmati"
+---
+
+<ParamField path="id" type="string" required>
+  KYC request ID to sync
+</ParamField>

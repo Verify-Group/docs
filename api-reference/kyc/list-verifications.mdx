@@ -1,0 +1,49 @@
+---
+title: "List KYC verification requests"
+api: "GET /api/v1/kyc/verifications"
+description: "Retrieve a paginated list of KYC verification requests"
+---
+
+<ParamField query="page" type="number">
+  Page number (1-indexed)
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Results per page
+</ParamField>
+
+<ParamField query="status" type="pending | processing | completed | failed | expired | error">
+  Filter by status
+</ParamField>
+
+<ParamField query="type" type="individual | business | asset | bank">
+  Filter by type
+</ParamField>
+
+<ParamField query="scenario" type="identity | financial | compliance | contact | biometrics | digital_footprint">
+  Filter by scenario
+</ParamField>
+
+<ParamField query="identifier_type" type="national_id | alien_id | krapin | plate | business | business_ubo">
+  Filter by identifier type
+</ParamField>
+
+<ParamField query="identifier_number" type="string">
+  Filter by identifier number/value. Matching is case-insensitive and ignores spaces.
+</ParamField>
+
+<ParamField query="organization_id" type="string">
+  Filter by organization ID (must match current organization context)
+</ParamField>
+
+<ParamField query="participant_id" type="string">
+  Filter by participant ID
+</ParamField>
+
+<ParamField query="search" type="string">
+  Full text search across identifier, type, scenario, status, participant, and requester fields
+</ParamField>
+
+<ParamField query="q" type="string">
+  Alias for search
+</ParamField>

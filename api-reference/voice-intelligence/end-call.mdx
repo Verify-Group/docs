@@ -1,0 +1,12 @@
+---
+title: "End voice call"
+api: "POST /api/v1/voice-calls/{id}/end"
+description: "Manually ends an active voice call."
+---
+
+<ParamField path="id" type="string" required>
+  Voice call ID
+</ParamField>
+
+<ParamField body="reason" type="string">
+</ParamField>

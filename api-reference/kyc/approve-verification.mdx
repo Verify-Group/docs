@@ -1,0 +1,17 @@
+---
+title: "Approve verification"
+api: "POST /api/v1/kyc/verifications/{id}/approve"
+description: "Approve a verification after review using current user as reviewer."
+---
+
+<ParamField path="id" type="string" required>
+  KYC verification ID
+</ParamField>
+
+<ParamField body="expiry_days" type="number">
+  Approval validity period in days
+</ParamField>
+
+<ParamField body="note" type="string">
+  Optional approval note
+</ParamField>

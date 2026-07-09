@@ -1,0 +1,25 @@
+---
+title: "Add document to verification"
+api: "POST /api/v1/kyc/verifications/{id}/documents"
+description: "Add a verification document for the selected KYC verification record."
+---
+
+<ParamField path="id" type="string" required>
+  KYC verification ID
+</ParamField>
+
+<ParamField body="document_id" type="string" required>
+  Document ID
+</ParamField>
+
+<ParamField body="document_type" type="PASSPORT | NATIONAL_ID | DRIVERS_LICENSE | UTILITY_BILL | BANK_STATEMENT | RESIDENCE_PERMIT" required>
+  Document type
+</ParamField>
+
+<ParamField body="document_url" type="string" required>
+  Document URL
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Optional document metadata
+</ParamField>

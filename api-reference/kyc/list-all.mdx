@@ -1,0 +1,61 @@
+---
+title: "List all KYC verification requests (advanced)"
+api: "GET /api/v1/kyc/verifications/all"
+description: "Retrieve KYC verification requests with configurable grouping, filtering and ordering."
+---
+
+<ParamField query="page" type="number">
+  Page number (1-indexed)
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Results per page
+</ParamField>
+
+<ParamField query="status" type="pending | processing | completed | failed | expired | error">
+  Filter by status
+</ParamField>
+
+<ParamField query="type" type="individual | business | asset | bank">
+  Filter by type
+</ParamField>
+
+<ParamField query="scenario" type="identity | financial | compliance | contact | biometrics | digital_footprint">
+  Filter by scenario
+</ParamField>
+
+<ParamField query="identifier_type" type="national_id | alien_id | krapin | plate | business | business_ubo">
+  Filter by identifier type
+</ParamField>
+
+<ParamField query="identifier_number" type="string">
+  Filter by identifier number/value. Matching is case-insensitive and ignores spaces.
+</ParamField>
+
+<ParamField query="organization_id" type="string">
+  Filter by organization ID (must match current organization context)
+</ParamField>
+
+<ParamField query="participant_id" type="string">
+  Filter by participant ID
+</ParamField>
+
+<ParamField query="search" type="string">
+  Full text search across identifier, type, scenario, status, participant, and requester fields
+</ParamField>
+
+<ParamField query="q" type="string">
+  Alias for search
+</ParamField>
+
+<ParamField query="group_by" type="none | participant | scenario | status | participant_scenario_status | participant,scenario,status">
+  Grouping mode for list results
+</ParamField>
+
+<ParamField query="order_by" type="requested_at | created_at | updated_at | status | type | scenario">
+  Field to order by
+</ParamField>
+
+<ParamField query="order_dir" type="asc | desc">
+  Sort direction
+</ParamField>

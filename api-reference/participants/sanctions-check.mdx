@@ -1,7 +1,7 @@
 ---
 title: "Create and execute sanctions/PEP/AML screening check"
 api: "POST /api/v1/participants/{id}/sanctions-check"
-description: "Create and execute a single granular sanctions, PEP, or AML watchlist screening check against the specified data sources for a participant."
+description: "Initiates one granular compliance screening check for the participant."
 ---
 
 <ParamField path="id" type="string" required>
@@ -37,7 +37,7 @@ description: "Create and execute a single granular sanctions, PEP, or AML watchl
 </ParamField>
 
 <ParamField body="dataSources" type="array">
-  Watchlist source short_name values to include in the search. Required for source-based screening.
+  the watchlist provider source short_name values to include in the search. Required for source-based watchlist screening.
 </ParamField>
 
 <ParamField body="enableMonitoring" type="boolean">

@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """
 Generate Mintlify manual API pages from openapi.json.
-Each selected endpoint becomes an MDX file with proper frontmatter.
+Focused on integration partner capabilities:
+  - KYC Verification (history, individual standard/advanced, business, custom)
+  - Document Authenticity
+  - Voice Intelligence
+  - Claims Management
+  - Evidence Management
+  - Participants & Sanctions
 """
 import json, os, re
 
@@ -9,68 +15,79 @@ SPEC = json.load(open('api-reference/openapi.json'))
 
 # (method, path, group-dir, slug)
 ENDPOINTS = [
-    # Authentication
-    ('post',   '/api/v1/auth/login',                                            'authentication', 'login'),
-    ('post',   '/api/v1/auth/logout',                                           'authentication', 'logout'),
-    ('post',   '/api/v1/auth/refresh',                                          'authentication', 'refresh'),
-    ('get',    '/api/v1/auth/me',                                               'authentication', 'me'),
-    # MFA
-    ('get',    '/api/v1/mfa/status',                                            'mfa', 'status'),
-    ('post',   '/api/v1/mfa/enable',                                            'mfa', 'enable'),
-    ('post',   '/api/v1/mfa/verify',                                            'mfa', 'verify'),
-    ('delete', '/api/v1/mfa',                                                   'mfa', 'disable'),
-    # Users
-    ('get',    '/api/v1/users/me',                                              'users', 'me'),
-    ('put',    '/api/v1/users/{id}',                                            'users', 'update'),
-    ('post',   '/api/v1/users/me/change-password',                              'users', 'change-password'),
-    ('get',    '/api/v1/users/me/notification-preferences',                     'users', 'notification-preferences'),
-    ('put',    '/api/v1/users/me/notification-preferences',                     'users', 'update-notifications'),
-    ('post',   '/api/v1/users/me/avatar',                                       'users', 'upload-avatar'),
-    # Organizations
-    ('get',    '/api/v1/organizations/{id}',                                    'organizations', 'get'),
-    ('put',    '/api/v1/organizations/{id}',                                    'organizations', 'update'),
-    ('get',    '/api/v1/organizations/{id}/members',                            'organizations', 'list-members'),
-    ('get',    '/api/v1/organizations/{id}/dashboard',                          'organizations', 'dashboard'),
-    ('get',    '/api/v1/organizations/{id}/token-balance',                      'organizations', 'token-balance'),
-    ('post',   '/api/v1/organizations/{id}/run-kyc',                           'organizations', 'run-kyc'),
-    # Participants
-    ('post',   '/api/v1/participants',                                          'participants', 'create'),
-    ('get',    '/api/v1/participants',                                          'participants', 'list'),
-    ('get',    '/api/v1/participants/{id}',                                     'participants', 'get'),
-    ('get',    '/api/v1/participants/{id}/detail',                              'participants', 'detail'),
-    ('patch',  '/api/v1/participants/{id}',                                     'participants', 'update'),
-    ('delete', '/api/v1/participants/{id}',                                     'participants', 'delete'),
-    ('get',    '/api/v1/participants/sanctions-sources',                        'participants', 'sanctions-sources'),
-    ('post',   '/api/v1/participants/{id}/sanctions-check',                    'participants', 'sanctions-check'),
-    ('get',    '/api/v1/participants/{id}/sanctions-checks',                   'participants', 'sanctions-checks'),
-    # Claims
-    ('post',   '/api/v1/claims',                                                'claims', 'create'),
-    ('get',    '/api/v1/claims',                                                'claims', 'list'),
-    ('get',    '/api/v1/claims/{id}',                                           'claims', 'get'),
-    ('patch',  '/api/v1/claims/{id}',                                           'claims', 'update'),
-    ('delete', '/api/v1/claims/{id}',                                           'claims', 'delete'),
-    ('patch',  '/api/v1/claims/{id}/status',                                   'claims', 'update-status'),
-    ('post',   '/api/v1/claims/{id}/assign',                                   'claims', 'assign'),
-    ('post',   '/api/v1/claims/{id}/pois',                                     'claims', 'add-poi'),
-    ('get',    '/api/v1/claims/{id}/pois',                                     'claims', 'list-pois'),
-    # Voice Interview
-    ('post',   '/api/v1/claims/voice-interview/{claimId}/initiate',            'voice-interview', 'initiate'),
-    ('patch',  '/api/v1/claims/voice-interview/sessions/{sessionId}/audio',    'voice-interview', 'upload-audio'),
-    ('get',    '/api/v1/claims/voice-interview/{claimId}/sessions',            'voice-interview', 'list-sessions'),
-    ('get',    '/api/v1/claims/voice-interview/sessions/{sessionId}/results',  'voice-interview', 'results'),
-    # Evidence
-    ('post',   '/api/v1/evidence/upload',                                      'evidence', 'upload'),
-    ('get',    '/api/v1/evidence/claim/{claimId}',                             'evidence', 'list-by-claim'),
-    ('get',    '/api/v1/evidence/{id}',                                        'evidence', 'get'),
-    ('delete', '/api/v1/evidence/{id}',                                        'evidence', 'delete'),
-    ('patch',  '/api/v1/evidence/{id}/tags',                                   'evidence', 'update-tags'),
-    ('post',   '/api/v1/evidence/{id}/review',                                 'evidence', 'review'),
-    # Tokens
-    ('get',    '/api/v1/tokens/me/balance',                                    'tokens', 'my-balance'),
-    ('get',    '/api/v1/tokens/me/transactions',                               'tokens', 'my-transactions'),
-    ('post',   '/api/v1/tokens/purchase',                                      'tokens', 'purchase'),
-    ('post',   '/api/v1/tokens/consume',                                       'tokens', 'consume'),
-    ('get',    '/api/v1/tokens/balance/{ownerId}',                             'tokens', 'balance'),
+    # ── Authentication ──────────────────────────────────────────────────────
+    ('post', '/api/v1/auth/login',   'authentication', 'login'),
+    ('post', '/api/v1/auth/refresh', 'authentication', 'refresh'),
+    ('get',  '/api/v1/auth/me',      'authentication', 'me'),
+
+    # ── KYC Verification ────────────────────────────────────────────────────
+    ('post', '/api/v1/kyc/verifications',                      'kyc', 'create-verification'),
+    ('get',  '/api/v1/kyc/verifications',                      'kyc', 'list-verifications'),
+    ('get',  '/api/v1/kyc/verifications/by-participant',       'kyc', 'by-participant'),
+    ('get',  '/api/v1/kyc/verifications/all',                  'kyc', 'list-all'),
+    ('get',  '/api/v1/kyc/verifications/{id}',                 'kyc', 'get-verification'),
+    ('get',  '/api/v1/kyc/verifications/{id}/status',          'kyc', 'verification-status'),
+    ('post', '/api/v1/kyc/verifications/{id}/poll',            'kyc', 'poll-verification'),
+    ('post', '/api/v1/kyc/verifications/{id}/retry',           'kyc', 'retry-verification'),
+    ('post', '/api/v1/kyc/verifications/{id}/documents',       'kyc', 'upload-documents'),
+    ('post', '/api/v1/kyc/verifications/{id}/approve',         'kyc', 'approve-verification'),
+    ('post', '/api/v1/kyc/verifications/{id}/sync',            'kyc', 'sync-verification'),
+
+    # ── Document Authenticity ────────────────────────────────────────────────
+    ('post', '/api/v1/documents/verification/upload-and-process',          'document-verification', 'upload-and-process'),
+    ('post', '/api/v1/documents/verification',                             'document-verification', 'create-session'),
+    ('post', '/api/v1/documents/verification/{verificationId}/upload',     'document-verification', 'upload-file'),
+    ('post', '/api/v1/documents/verification/{verificationId}/process',    'document-verification', 'process'),
+    ('get',  '/api/v1/documents/verification/history',                     'document-verification', 'history'),
+    ('get',  '/api/v1/documents/verification/{verificationId}',            'document-verification', 'get-session'),
+    ('get',  '/api/v1/documents/verification/{verificationId}/report',     'document-verification', 'get-report'),
+    ('post', '/api/v1/documents/verification/vehicle',                     'document-verification', 'verify-vehicle-doc'),
+    ('get',  '/api/v1/documents/verification/vehicle/{verificationId}',    'document-verification', 'get-vehicle-result'),
+    ('post', '/api/v1/documents/verification/custom',                      'document-verification', 'custom-verification'),
+    ('post', '/api/v1/documents/verification/kra-pin',                     'document-verification', 'verify-kra-pin'),
+    ('get',  '/api/v1/documents/verification/kra-pin/{verificationId}',    'document-verification', 'get-kra-pin-result'),
+    ('post', '/api/v1/documents/verification/drivers-license',             'document-verification', 'verify-drivers-license'),
+    ('get',  '/api/v1/documents/verification/drivers-license/{verificationId}', 'document-verification', 'get-drivers-license-result'),
+    ('post', '/api/v1/documents/verification/vehicle-plate',               'document-verification', 'verify-vehicle-plate'),
+    ('get',  '/api/v1/documents/verification/vehicle-plate/{verificationId}', 'document-verification', 'get-vehicle-plate-result'),
+
+    # ── Voice Intelligence ───────────────────────────────────────────────────
+    ('post', '/api/v1/voice-calls/initiate',               'voice-intelligence', 'initiate-call'),
+    ('post', '/api/v1/voice-calls/{id}/end',               'voice-intelligence', 'end-call'),
+    ('get',  '/api/v1/voice-calls/{id}',                   'voice-intelligence', 'get-call'),
+    ('get',  '/api/v1/voice-calls',                        'voice-intelligence', 'list-calls'),
+    ('get',  '/api/v1/voice-calls/{id}/recording',         'voice-intelligence', 'get-recording'),
+    ('get',  '/api/v1/voice-calls/{id}/transcript',        'voice-intelligence', 'get-transcript'),
+    ('post', '/api/v1/voice-calls/{id}/analyze',           'voice-intelligence', 'analyze-call'),
+    ('post', '/api/v1/voice-calls/{id}/refresh-analysis',  'voice-intelligence', 'refresh-analysis'),
+    ('get',  '/api/v1/voice-calls/{id}/vapi-status',       'voice-intelligence', 'call-status'),
+    ('get',  '/api/v1/voice-calls/participant/{participantId}', 'voice-intelligence', 'calls-by-participant'),
+
+    # ── Claims Management ────────────────────────────────────────────────────
+    ('post',   '/api/v1/claims',               'claims', 'create'),
+    ('get',    '/api/v1/claims',               'claims', 'list'),
+    ('get',    '/api/v1/claims/{id}',          'claims', 'get'),
+    ('patch',  '/api/v1/claims/{id}',          'claims', 'update'),
+    ('patch',  '/api/v1/claims/{id}/status',   'claims', 'update-status'),
+    ('post',   '/api/v1/claims/{id}/assign',   'claims', 'assign'),
+    ('post',   '/api/v1/claims/{id}/pois',     'claims', 'add-participant'),
+    ('get',    '/api/v1/claims/{id}/pois',     'claims', 'list-participants'),
+
+    # ── Evidence Management ──────────────────────────────────────────────────
+    ('post',  '/api/v1/evidence/public-upload/proxy-upload', 'evidence', 'upload'),
+    ('get',   '/api/v1/evidence/claim/{claimId}',            'evidence', 'list-by-claim'),
+    ('get',   '/api/v1/evidence/{id}',                       'evidence', 'get'),
+    ('patch', '/api/v1/evidence/{id}/tags',                  'evidence', 'update-tags'),
+    ('post',  '/api/v1/evidence/{id}/review',                'evidence', 'review'),
+
+    # ── Participants ─────────────────────────────────────────────────────────
+    ('post',   '/api/v1/participants',                       'participants', 'create'),
+    ('get',    '/api/v1/participants',                       'participants', 'list'),
+    ('get',    '/api/v1/participants/{id}',                  'participants', 'get'),
+    ('patch',  '/api/v1/participants/{id}',                  'participants', 'update'),
+    ('get',    '/api/v1/participants/{id}/detail',           'participants', 'detail'),
+    ('post',   '/api/v1/participants/{id}/sanctions-check',  'participants', 'sanctions-check'),
+    ('get',    '/api/v1/participants/{id}/sanctions-checks', 'participants', 'sanctions-checks'),
 ]
 
 def resolve(schema):
@@ -104,14 +121,16 @@ def param_field(pin, name, schema, required, description=''):
     lines.append('</ParamField>')
     return '\n'.join(lines)
 
-nav = {}  # group -> [page_path]
+nav = {}
 created = 0
+skipped = 0
 
 for method, path, group, slug in ENDPOINTS:
     path_item = SPEC.get('paths', {}).get(path, {})
     op = path_item.get(method, {})
     if not op:
         print(f'  SKIP (not found): {method.upper()} {path}')
+        skipped += 1
         continue
 
     title = op.get('summary', f'{method.upper()} {path}')
@@ -123,18 +142,12 @@ for method, path, group, slug in ENDPOINTS:
         lines.append(f'description: "{desc}"')
     lines.extend(['---', ''])
 
-    # Path + query params
     for p in op.get('parameters', []):
         if p.get('in') in ('path', 'query', 'header'):
-            lines.append(param_field(
-                p['in'], p['name'],
-                p.get('schema', {}),
-                p.get('required', False),
-                p.get('description', '')
-            ))
+            lines.append(param_field(p['in'], p['name'], p.get('schema', {}),
+                                     p.get('required', False), p.get('description', '')))
             lines.append('')
 
-    # Request body (top-level properties, max 12)
     rb = op.get('requestBody', {})
     if rb:
         content = rb.get('content', {})
@@ -146,11 +159,8 @@ for method, path, group, slug in ENDPOINTS:
         if schema:
             required_props = schema.get('required', [])
             for prop_name, prop_schema in list(schema.get('properties', {}).items())[:12]:
-                lines.append(param_field(
-                    'body', prop_name,
-                    prop_schema,
-                    prop_name in required_props
-                ))
+                lines.append(param_field('body', prop_name, prop_schema,
+                                         prop_name in required_props))
                 lines.append('')
 
     out_dir = f'api-reference/{group}'
@@ -159,28 +169,25 @@ for method, path, group, slug in ENDPOINTS:
     with open(out_file, 'w') as f:
         f.write('\n'.join(lines))
 
-    page_ref = f'api-reference/{group}/{slug}'
-    nav.setdefault(group, []).append(page_ref)
+    nav.setdefault(group, []).append(f'api-reference/{group}/{slug}')
     created += 1
     print(f'  ✅ {out_file}')
 
-print(f'\nCreated {created} pages.\n')
-print('Navigation snippet for docs.json:\n')
+print(f'\nCreated {created}, skipped {skipped}')
 
-groups_json = []
 GROUP_LABELS = {
-    'authentication': 'Authentication',
-    'mfa': 'Multi-Factor Authentication',
-    'users': 'Users',
-    'organizations': 'Organizations',
-    'participants': 'Participants',
-    'claims': 'Claims',
-    'voice-interview': 'Voice Interview',
-    'evidence': 'Evidence',
-    'tokens': 'Tokens',
+    'authentication':         'Authentication',
+    'kyc':                    'KYC Verification',
+    'document-verification':  'Document Authenticity',
+    'voice-intelligence':     'Voice Intelligence',
+    'claims':                 'Claims Management',
+    'evidence':               'Evidence Management',
+    'participants':           'Participants & Sanctions',
 }
+
+print('\nNavigation JSON:\n')
+groups_json = []
 for grp, pages in nav.items():
     label = GROUP_LABELS.get(grp, grp.title())
     groups_json.append({'group': label, 'pages': pages})
-
 print(json.dumps({'tab': 'API Reference', 'groups': groups_json}, indent=2))
