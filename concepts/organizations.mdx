@@ -1,15 +1,15 @@
 ---
-title: Organisations
-description: Verify Group is multi-tenant, every claim, participant, and KYC request is scoped to an organisation identified by the X-Organization-ID header.
+title: Organizations
+description: Verify Group is multi-tenant, every claim, participant, and KYC request is scoped to an organization identified by the X-Organization-ID header.
 ---
 
-Every resource (claims, participants, KYC requests) belongs to an **Organisation**. Pass your UUID in every request:
+Every resource (claims, participants, KYC requests) belongs to an **organization**. Pass your UUID in every request:
 
 ```
 X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
 ```
 
-## Run KYC for your organisation
+## Run KYC for your organization
 
 ```bash
 POST /api/v1/organizations/{id}/run-kyc
