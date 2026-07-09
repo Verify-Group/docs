@@ -93,7 +93,7 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "openapi.json"
+        "openapi": "https://gateway.verify-group.io/api/swagger.json"
       },
       {
         "tab": "Changelog",
