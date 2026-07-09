@@ -1,0 +1,25 @@
+---
+title: Sécurité des webhooks
+description: Vérification des signatures et durcissement des endpoints.
+---
+
+## Exemple Express.js
+
+```typescript
+app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (req, res) => {
+  const sig = req.headers["x-vg-signature-256"] as string;
+  if (!verify(req.body.toString(), sig, process.env.VG_WEBHOOK_SECRET!)) {
+    return res.status(401).json({ error: "Invalid signature" });
+  }
+  const event = JSON.parse(req.body.toString());
+  // gérer l'événement...
+  res.status(200).json({ received: true });
+});
+```
+
+## Checklist de durcissement
+
+<Check>HTTPS uniquement</Check>
+<Check>Vérifiez `X-VG-Signature-256` sur chaque requête</Check>
+<Check>Répondez dans un délai de 30 secondes — mettez en file d'attente les traitements longs</Check>
+<Check>Utilisez `event.id` pour l'idempotence sur les livraisons réessayées</Check>

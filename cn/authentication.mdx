@@ -1,0 +1,43 @@
+---
+title: 身份认证
+description: JWT Bearer 令牌、刷新流程与多租户请求头。
+---
+
+每个请求都必须携带 `Authorization: Bearer <token>`。
+
+## 登录
+
+```bash
+POST /api/v1/auth/login
+```
+```json
+{"email":"user@example.com","password":"yourpassword"}
+```
+
+**响应：**
+```json
+{"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
+```
+
+## 刷新令牌
+
+```bash
+POST /api/v1/auth/refresh
+```
+```json
+{"refreshToken":"eyJ..."}
+```
+
+## 必需请求头
+
+| 请求头 | 是否必需 | 说明 |
+|---|---|---|
+| `Authorization` | 始终必需 | `Bearer <token>` |
+| `X-Organization-ID` | 大多数接口 | 您所在组织的 UUID |
+
+## 安全最佳实践
+
+<Check>将访问令牌保存在内存中，而非 localStorage</Check>
+<Check>将刷新令牌保存在 httpOnly 安全 Cookie 中</Check>
+<Check>全程使用 HTTPS</Check>
+<Check>用户登出时吊销令牌</Check>

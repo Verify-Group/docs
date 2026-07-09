@@ -1,0 +1,25 @@
+---
+title: أمان Webhook
+description: التحقق من التوقيع وتقوية النقاط الطرفية.
+---
+
+## مثال Express.js
+
+```typescript
+app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (req, res) => {
+  const sig = req.headers["x-vg-signature-256"] as string;
+  if (!verify(req.body.toString(), sig, process.env.VG_WEBHOOK_SECRET!)) {
+    return res.status(401).json({ error: "Invalid signature" });
+  }
+  const event = JSON.parse(req.body.toString());
+  // handle event...
+  res.status(200).json({ received: true });
+});
+```
+
+## قائمة تدقيق التقوية
+
+<Check>HTTPS فقط</Check>
+<Check>تحقّق من `X-VG-Signature-256` في كل طلب</Check>
+<Check>استجب خلال 30 ثانية — ضع المعالجة الطويلة في قائمة انتظار</Check>
+<Check>استخدم `event.id` لضمان عدم التكرار (idempotency) في عمليات التسليم المُعاد محاولتها</Check>

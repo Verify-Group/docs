@@ -1,0 +1,66 @@
+---
+title: البدء السريع
+description: أنجز أول طلب API خاص بك في أقل من 5 دقائق.
+---
+
+## 1. احصل على بيانات الاعتماد الخاصة بك
+
+سجّل الدخول إلى [لوحة التحكم](https://app.verify-group.io) وانتقل إلى **Settings → API Keys**.
+
+## 2. المصادقة
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","password":"yourpassword"}'
+```
+
+**الاستجابة:**
+```json
+{
+  "data": {
+    "accessToken": "eyJhbGciOiJSUzI1NiJ9...",
+    "refreshToken": "...",
+    "expiresIn": 3600
+  }
+}
+```
+
+## 3. ضمّن ترويسة المؤسسة
+
+```bash
+export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
+export ORG_ID="cfa70c25-1800-4748-97b0-ce675940a537"
+
+curl https://gateway.verify-group.io/api/v1/participants \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID"
+```
+
+## 4. شغّل تحقّق KYC
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/kyc \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "participant_id": "<uuid>",
+    "type": "individual",
+    "scenario": "identity",
+    "payload": {
+      "identifier_type": "national_id",
+      "identifier_number": "12345678",
+      "country": "KE"
+    }
+  }'
+```
+
+<Check>لقد أكملت أول عملية تحقّق من الهوية!</Check>
+
+<CardGroup cols={2}>
+  <Card title="المصادقة" icon="lock" href="/authentication">تدفق تحديث JWT وإدارة الرموز.</Card>
+  <Card title="دليل المطالبات" icon="file-text" href="/guides/claims-management">أنشئ ومعالج المطالبات من البداية إلى النهاية.</Card>
+  <Card title="فحص العقوبات" icon="shield" href="/guides/sanctions-screening">افحص مقابل قوائم المراقبة العالمية.</Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">استخدم SDK المكتوبة بأنواع (typed).</Card>
+</CardGroup>

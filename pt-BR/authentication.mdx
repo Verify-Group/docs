@@ -1,0 +1,43 @@
+---
+title: Autenticação
+description: Tokens JWT bearer, fluxo de refresh e cabeçalhos multi-tenant.
+---
+
+Toda requisição deve incluir `Authorization: Bearer <token>`.
+
+## Login
+
+```bash
+POST /api/v1/auth/login
+```
+```json
+{"email":"user@example.com","password":"yourpassword"}
+```
+
+**Resposta:**
+```json
+{"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
+```
+
+## Renovar um token
+
+```bash
+POST /api/v1/auth/refresh
+```
+```json
+{"refreshToken":"eyJ..."}
+```
+
+## Cabeçalhos obrigatórios
+
+| Cabeçalho | Obrigatório | Descrição |
+|---|---|---|
+| `Authorization` | Sempre | `Bearer <token>` |
+| `X-Organization-ID` | Maioria dos endpoints | UUID da sua organização |
+
+## Boas práticas de segurança
+
+<Check>Armazene tokens de acesso em memória, não no localStorage</Check>
+<Check>Armazene refresh tokens em cookies httpOnly seguros</Check>
+<Check>Use HTTPS em todos os lugares</Check>
+<Check>Revogue os tokens ao fazer logout</Check>

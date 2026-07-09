@@ -1,0 +1,28 @@
+---
+title: المشاركون
+description: الأشخاص والكيانات المرتبطون بالمطالبات وعمليات التحقق.
+---
+
+## الأنواع
+
+| النوع | الوصف |
+|---|---|
+| `individual` | شخص طبيعي |
+| `business` | كيان اعتباري |
+
+## الأدوار في المطالبة
+
+`claimant` · `witness` · `third_party` · `beneficiary` · `agent` · `insured`
+
+## الإنشاء
+
+```bash
+POST /api/v1/participants
+```
+```json
+{"firstName":"James","lastName":"Kamau","type":"individual","nationalId":"12345678","phone":"+254722000001","country":"KE"}
+```
+
+## حالة التحقق
+
+`unverified` → `pending` → `verified` / `failed`

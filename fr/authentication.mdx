@@ -1,0 +1,43 @@
+---
+title: Authentification
+description: Jetons JWT bearer, flux de rafraîchissement et en-têtes multi-tenant.
+---
+
+Chaque requête doit inclure `Authorization: Bearer <token>`.
+
+## Connexion
+
+```bash
+POST /api/v1/auth/login
+```
+```json
+{"email":"user@example.com","password":"yourpassword"}
+```
+
+**Réponse :**
+```json
+{"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
+```
+
+## Rafraîchir un jeton
+
+```bash
+POST /api/v1/auth/refresh
+```
+```json
+{"refreshToken":"eyJ..."}
+```
+
+## En-têtes requis
+
+| En-tête | Requis | Description |
+|---|---|---|
+| `Authorization` | Toujours | `Bearer <token>` |
+| `X-Organization-ID` | La plupart des endpoints | UUID de votre organisation |
+
+## Bonnes pratiques de sécurité
+
+<Check>Stockez les jetons d'accès en mémoire, pas dans localStorage</Check>
+<Check>Stockez les jetons de rafraîchissement dans des cookies httpOnly sécurisés</Check>
+<Check>Utilisez HTTPS partout</Check>
+<Check>Révoquez les jetons à la déconnexion</Check>

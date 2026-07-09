@@ -1,0 +1,43 @@
+---
+title: المصادقة
+description: رموز JWT bearer، وتدفق التحديث، وترويسات تعدد المستأجرين.
+---
+
+يجب أن يتضمن كل طلب `Authorization: Bearer <token>`.
+
+## تسجيل الدخول
+
+```bash
+POST /api/v1/auth/login
+```
+```json
+{"email":"user@example.com","password":"yourpassword"}
+```
+
+**الاستجابة:**
+```json
+{"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
+```
+
+## تحديث رمز
+
+```bash
+POST /api/v1/auth/refresh
+```
+```json
+{"refreshToken":"eyJ..."}
+```
+
+## الترويسات المطلوبة
+
+| الترويسة | مطلوبة | الوصف |
+|---|---|---|
+| `Authorization` | دائماً | `Bearer <token>` |
+| `X-Organization-ID` | لمعظم النقاط الطرفية | UUID خاص بمؤسستك |
+
+## أفضل ممارسات الأمان
+
+<Check>احفظ رموز الوصول في الذاكرة، وليس في localStorage</Check>
+<Check>احفظ رموز التحديث في ملفات تعريف ارتباط httpOnly آمنة</Check>
+<Check>استخدم HTTPS في كل مكان</Check>
+<Check>ألغِ الرموز عند تسجيل الخروج</Check>

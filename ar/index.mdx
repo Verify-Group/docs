@@ -1,0 +1,68 @@
+---
+title: مقدمة
+description: واجهة برمجة تطبيقات Verify Group Platform — التحقق من الهوية على مستوى المؤسسات وإدارة المطالبات والامتثال للأسواق الأفريقية.
+---
+
+## أهلاً بك في Verify Group
+
+**Verify Group Platform** هي واجهة API متعددة المستأجرين على مستوى المؤسسات لأجل:
+
+- **KYC / التحقق من الهوية** — التحقق من الأفراد والشركات مدعوماً بـ CreditInfo وInsightGenie وذكاء اصطناعي مملوك خاص
+- **إدارة المطالبات** — دورة حياة كاملة لمطالبات التأمين تشمل الاستقبال والتحقق والتحقيق ومسارات التسوية
+- **فحص العقوبات ومكافحة غسل الأموال (AML)** — فحص قوائم المراقبة في الوقت الفعلي عبر Sanctions.io مع مراقبة مستمرة
+- **ذكاء الصوت** — تحليل بيومتري للصوت مدعوم بالذكاء الاصطناعي واكتشاف الاحتيال باستخدام InsightGenie
+- **التحقق من صحة المستندات** — التعرف الضوئي على الحروف (OCR) والتحليل الجنائي للتحقق من المستندات
+
+<CardGroup cols={2}>
+  <Card title="البدء السريع" icon="rocket" href="/quickstart">
+    شغّل أول طلب API خاص بك في أقل من 5 دقائق.
+  </Card>
+  <Card title="المصادقة" icon="lock" href="/authentication">
+    تعلّم كيف تصادق طلبات API الخاصة بك.
+  </Card>
+  <Card title="مرجع API" icon="code" href="/api-reference">
+    تصفّح مرجع API التفاعلي الكامل.
+  </Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">
+    استخدم TypeScript SDK الرسمي لدينا.
+  </Card>
+</CardGroup>
+
+## عناوين URL الأساسية
+
+| البيئة | عنوان URL |
+|---|---|
+| الإنتاج | `https://gateway.verify-group.io/api/v1` |
+| UAT | `https://uat.gateway.verify-group.io/api/v1` |
+| التطوير المحلي | `http://localhost:4008/api/v1` |
+
+## تنسيق الاستجابة
+
+تتبع جميع الاستجابات الناجحة مغلفاً موحداً:
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Success",
+  "data": { ... },
+  "metadata": {
+    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "timestamp": "2026-07-09T10:00:00.000Z"
+  }
+}
+```
+
+## تنسيق الخطأ
+
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": "BadRequestException"
+}
+```
+
+## الدعم
+
+البريد الإلكتروني: [support@verify-group.io](mailto:support@verify-group.io)

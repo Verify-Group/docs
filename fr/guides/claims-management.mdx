@@ -1,0 +1,45 @@
+---
+title: Gestion des sinistres
+description: Créez et traitez les sinistres d'assurance sur l'ensemble du cycle de vie.
+---
+
+## Créer un sinistre
+
+```bash
+POST /api/v1/claims
+```
+```json
+{
+  "type": "MOTOR",
+  "policyNumber": "POL-MT-KE-2025-8847",
+  "description": "Rear-end collision on Mombasa Road",
+  "incidentDate": "2026-06-15",
+  "claimAmount": 185000
+}
+```
+
+## Mettre à jour le statut
+
+```bash
+PATCH /api/v1/claims/{id}/status
+```
+```json
+{"status": "INVESTIGATING", "reason": "Elevated fraud score"}
+```
+
+## Ajouter des participants
+
+```bash
+POST /api/v1/claims/{claimId}/pois
+```
+```json
+{"personId": "participant-uuid", "role": "claimant"}
+```
+
+<Note>L'affectation d'un enquêteur fait automatiquement passer le sinistre à `INVESTIGATING`.</Note>
+
+## Piste d'audit
+
+```bash
+GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc
+```

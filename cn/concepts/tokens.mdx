@@ -1,0 +1,17 @@
+---
+title: 令牌
+description: JWT 访问令牌与刷新令牌。
+---
+
+| 类型 | 有效期 |
+|---|---|
+| 访问令牌（Access token） | 1 小时 |
+| 刷新令牌（Refresh token） | 30 天 |
+
+## 解码后的载荷
+
+```json
+{"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
+```
+
+每次使用刷新令牌都会**同时轮换**两种令牌 — 旧的一对将立即失效。

@@ -1,0 +1,46 @@
+---
+title: Gestão de evidências
+description: Faça upload, etiquete, revise e gerencie evidências de sinistros.
+---
+
+## Upload (recomendado para clientes em navegador)
+
+Roteia o upload pelo backend para evitar problemas de CORS:
+
+```bash
+POST /api/v1/evidence/public-upload/proxy-upload
+Content-Type: multipart/form-data
+```
+
+Retorna `evidenceId` e uma `signedUrl` para pré-visualização imediata.
+
+## Listar evidências de um sinistro
+
+```bash
+GET /api/v1/evidence?claimId={claimId}
+```
+
+## Etiquetar evidência
+
+```bash
+PATCH /api/v1/evidence/{id}/tags
+```
+```json
+{"tags": ["police_report", "verified", "high_priority"]}
+```
+
+## Aprovar ou recusar evidência
+
+```bash
+POST /api/v1/evidence/{id}/review
+```
+```json
+{"status": "APPROVED", "notes": "Document authenticated against police database."}
+```
+
+| Status | Significado |
+|---|---|
+| `PENDING` | Aguardando revisão |
+| `APPROVED` | Verificada e aceita |
+| `REJECTED` | Recusada |
+| `UNDER_REVIEW` | Em análise forense |

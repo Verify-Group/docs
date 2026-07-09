@@ -1,0 +1,21 @@
+---
+title: Organizações
+description: Multi-tenancy — todo recurso é vinculado a uma organização.
+---
+
+Todo recurso (sinistros, participantes, solicitações de KYC) pertence a uma **Organização**. Informe seu UUID em cada requisição:
+
+```
+X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
+```
+
+## Executar KYC para sua organização
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+Cria automaticamente um participante do tipo empresa, executa a verificação `business_ubo` e gera registros de participante para cada diretor.

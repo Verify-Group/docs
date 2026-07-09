@@ -1,0 +1,25 @@
+---
+title: Webhook 安全
+description: 签名校验与接收端安全加固。
+---
+
+## Express.js 示例
+
+```typescript
+app.post("/webhooks/verify-group", express.raw({ type: "application/json" }), (req, res) => {
+  const sig = req.headers["x-vg-signature-256"] as string;
+  if (!verify(req.body.toString(), sig, process.env.VG_WEBHOOK_SECRET!)) {
+    return res.status(401).json({ error: "Invalid signature" });
+  }
+  const event = JSON.parse(req.body.toString());
+  // 处理事件...
+  res.status(200).json({ received: true });
+});
+```
+
+## 加固清单
+
+<Check>仅使用 HTTPS</Check>
+<Check>对每个请求都校验 `X-VG-Signature-256`</Check>
+<Check>在 30 秒内响应 — 将耗时较长的处理放入队列</Check>
+<Check>基于 `event.id` 实现幂等，以应对重试投递</Check>

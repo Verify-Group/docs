@@ -1,0 +1,40 @@
+---
+title: مجموعة Postman
+description: استورد Verify Group API إلى Postman لإجراء اختبار تفاعلي.
+---
+
+## الاستيراد عبر عنوان URL لـ OpenAPI
+
+1. افتح Postman → **Import** → **Link**
+2. الصق: `https://gateway.verify-group.io/api/swagger.json`
+3. انقر **Continue → Import**
+
+## متغيرات البيئة
+
+| المتغير | القيمة |
+|---|---|
+| `baseUrl` | `https://gateway.verify-group.io/api/v1` |
+| `accessToken` | *(يُضبط بعد تسجيل الدخول)* |
+| `organizationId` | UUID مؤسستك |
+
+## سكربت ما قبل الطلب للمجموعة (تحديث تلقائي)
+
+```javascript
+const expiry = pm.environment.get("tokenExpiry");
+if (!expiry || Date.now() > parseInt(expiry) - 60000) {
+  pm.sendRequest({
+    url: pm.environment.get("baseUrl") + "/auth/refresh",
+    method: "POST",
+    header: { "Content-Type": "application/json" },
+    body: { mode: "raw", raw: JSON.stringify({ refreshToken: pm.environment.get("refreshToken") }) }
+  }, (err, res) => {
+    if (!err && res.code === 200) {
+      const { accessToken, expiresIn } = res.json().data;
+      pm.environment.set("accessToken", accessToken);
+      pm.environment.set("tokenExpiry", String(Date.now() + expiresIn * 1000));
+    }
+  });
+}
+```
+
+اضبط ترويسة `Authorization` للمجموعة على `Bearer {{accessToken}}`.

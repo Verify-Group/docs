@@ -1,0 +1,25 @@
+---
+title: المطالبات
+description: كائن مطالبة التأمين — البنية ودورة الحياة وسير العمل.
+---
+
+## خطوط الأعمال
+
+`MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
+
+## دورة حياة الحالة
+
+```
+DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
+                                                  ↘ PENDING_EVIDENCE / REJECTED
+```
+
+## البيانات الوصفية لسير العمل
+
+| المفتاح | المرحلة |
+|---|---|
+| `metadata.intake[]` | استقبال FNOL |
+| `metadata.validation[]` | التحقق من التغطية |
+| `metadata.investigation[]` | التحقيق الميداني |
+| `metadata.approval[]` | قرار الموافقة |
+| `metadata.settlement[]` | تأكيد الدفع |

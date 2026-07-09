@@ -1,0 +1,17 @@
+---
+title: Tokens
+description: Tokens JWT de acesso e refresh tokens.
+---
+
+| Tipo | Duração |
+|---|---|
+| Token de acesso | 1 hora |
+| Refresh token | 30 dias |
+
+## Payload decodificado
+
+```json
+{"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
+```
+
+Cada uso do refresh token **rotaciona** os dois tokens — o par antigo é invalidado imediatamente.

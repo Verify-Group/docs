@@ -1,0 +1,55 @@
+---
+title: التحقق عبر KYC
+description: شغّل التحقق من هوية الأفراد والشركات.
+---
+
+## تشغيل KYC
+
+```bash
+POST /api/v1/kyc
+```
+```json
+{
+  "participant_id": "uuid",
+  "type": "individual",
+  "scenario": "identity",
+  "payload": {
+    "identifier_type": "national_id",
+    "identifier_number": "12345678",
+    "country": "KE"
+  }
+}
+```
+
+## التحقق من الحالة
+
+```bash
+GET /api/v1/kyc/{id}
+```
+
+| الحالة | المعنى |
+|---|---|
+| `pending` | في قائمة الانتظار |
+| `processing` | قيد التنفيذ |
+| `verified` | تم تأكيد الهوية |
+| `failed` | تعذّر التحقق |
+| `manual_review` | يحتاج مراجعة بشرية |
+
+## مزامنة النتيجة إلى المشارك
+
+```bash
+POST /api/v1/kyc/{id}/sync
+```
+
+يحدّث المشارك بالاسم الموثّق وتاريخ الميلاد والعنوان وصورة الوجه المستخرجة.
+
+## KYC للمؤسسة
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+ينشئ سجلات مشاركين لكل المديرين المحددين تلقائياً.

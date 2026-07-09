@@ -1,0 +1,65 @@
+---
+title: JavaScript / TypeScript SDK
+description: TypeScript SDK الرسمي من Verify Group.
+---
+
+## التثبيت
+
+```bash
+npm install @verify-group/sdk
+# or
+pnpm add @verify-group/sdk
+```
+
+## التهيئة
+
+```typescript
+import { VerifyGroupClient } from "@verify-group/sdk";
+
+const vg = new VerifyGroupClient({
+  baseUrl: "https://gateway.verify-group.io/api/v1",
+  accessToken: process.env.VG_ACCESS_TOKEN,
+  organizationId: process.env.VG_ORG_ID,
+});
+```
+
+## KYC
+
+```typescript
+const kyc = await vg.kyc.create({
+  participant_id: "uuid",
+  type: "individual",
+  scenario: "identity",
+  payload: { identifier_type: "national_id", identifier_number: "12345678", country: "KE" },
+});
+await vg.kyc.sync(kyc.data.id);
+```
+
+## المطالبات
+
+```typescript
+const claim = await vg.claims.create({ type: "MOTOR", policyNumber: "POL-MT-KE-2025-8847", incidentDate: "2026-06-15", claimAmount: 185000 });
+await vg.claims.updateStatus(claim.data.id, { status: "INVESTIGATING" });
+```
+
+## المشاركون والعقوبات
+
+```typescript
+const p = await vg.participants.create({ firstName: "James", lastName: "Kamau", type: "individual", nationalId: "12345678", phone: "+254722000001", country: "KE" });
+await vg.participants.createSanctionsCheck({ participantId: p.data.id, enableMonitoring: true });
+```
+
+## الأدلة
+
+```typescript
+await vg.evidence.setTags(evidenceId, ["police_report", "verified"]);
+await vg.evidence.review(evidenceId, { status: "APPROVED", notes: "Authentic." });
+```
+
+## تحليل الصوت
+
+```typescript
+await vg.voice.commands.analyzeCallRecording({ sessionId: "uuid", forceReanalysis: false });
+const session = await vg.voice.queries.getCallRecordingSession("uuid");
+console.log(session.data.analysisResults.keyScores);
+```

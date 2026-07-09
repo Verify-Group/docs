@@ -1,0 +1,28 @@
+---
+title: 参与者
+description: 与理赔和验证关联的自然人与实体。
+---
+
+## 类型
+
+| 类型 | 说明 |
+|---|---|
+| `individual` | 自然人 |
+| `business` | 法人实体 |
+
+## 在理赔中的角色
+
+`claimant` · `witness` · `third_party` · `beneficiary` · `agent` · `insured`
+
+## 创建参与者
+
+```bash
+POST /api/v1/participants
+```
+```json
+{"firstName":"James","lastName":"Kamau","type":"individual","nationalId":"12345678","phone":"+254722000001","country":"KE"}
+```
+
+## 验证状态
+
+`unverified` → `pending` → `verified` / `failed`

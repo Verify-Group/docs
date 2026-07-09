@@ -1,0 +1,17 @@
+---
+title: Jetons
+description: Jetons d'accès JWT et jetons de rafraîchissement.
+---
+
+| Type | Durée de vie |
+|---|---|
+| Jeton d'accès | 1 heure |
+| Jeton de rafraîchissement | 30 jours |
+
+## Payload décodé
+
+```json
+{"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
+```
+
+Chaque utilisation d'un jeton de rafraîchissement **fait tourner** les deux jetons — l'ancienne paire est immédiatement invalidée.

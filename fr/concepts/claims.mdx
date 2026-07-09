@@ -1,0 +1,25 @@
+---
+title: Sinistres
+description: L'objet sinistre d'assurance — structure, cycle de vie et workflow.
+---
+
+## Lignes d'activité
+
+`MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
+
+## Cycle de vie des statuts
+
+```
+DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
+                                                  ↘ PENDING_EVIDENCE / REJECTED
+```
+
+## Métadonnées de workflow
+
+| Clé | Étape |
+|---|---|
+| `metadata.intake[]` | Réception FNOL |
+| `metadata.validation[]` | Vérification de la couverture |
+| `metadata.investigation[]` | Enquête sur le terrain |
+| `metadata.approval[]` | Décision d'approbation |
+| `metadata.settlement[]` | Confirmation du paiement |

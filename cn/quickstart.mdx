@@ -1,0 +1,66 @@
+---
+title: 快速开始
+description: 在 5 分钟内完成您的第一次 API 调用。
+---
+
+## 1. 获取您的凭证
+
+登录[控制台](https://app.verify-group.io)，进入 **Settings → API Keys**。
+
+## 2. 进行身份认证
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","password":"yourpassword"}'
+```
+
+**响应：**
+```json
+{
+  "data": {
+    "accessToken": "eyJhbGciOiJSUzI1NiJ9...",
+    "refreshToken": "...",
+    "expiresIn": 3600
+  }
+}
+```
+
+## 3. 附加您的组织请求头
+
+```bash
+export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
+export ORG_ID="cfa70c25-1800-4748-97b0-ce675940a537"
+
+curl https://gateway.verify-group.io/api/v1/participants \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID"
+```
+
+## 4. 运行一次 KYC 验证
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/kyc \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "participant_id": "<uuid>",
+    "type": "individual",
+    "scenario": "identity",
+    "payload": {
+      "identifier_type": "national_id",
+      "identifier_number": "12345678",
+      "country": "KE"
+    }
+  }'
+```
+
+<Check>您已完成首次身份验证！</Check>
+
+<CardGroup cols={2}>
+  <Card title="身份认证" icon="lock" href="/authentication">JWT 刷新流程与令牌管理。</Card>
+  <Card title="理赔指南" icon="file-text" href="/guides/claims-management">端到端创建并处理理赔。</Card>
+  <Card title="制裁筛查" icon="shield" href="/guides/sanctions-screening">对全球监控名单进行筛查。</Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">使用带类型定义的 SDK。</Card>
+</CardGroup>

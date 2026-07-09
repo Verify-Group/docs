@@ -1,0 +1,45 @@
+---
+title: إدارة المطالبات
+description: أنشئ ومعالج مطالبات التأمين خلال دورة الحياة الكاملة.
+---
+
+## إنشاء مطالبة
+
+```bash
+POST /api/v1/claims
+```
+```json
+{
+  "type": "MOTOR",
+  "policyNumber": "POL-MT-KE-2025-8847",
+  "description": "Rear-end collision on Mombasa Road",
+  "incidentDate": "2026-06-15",
+  "claimAmount": 185000
+}
+```
+
+## تحديث الحالة
+
+```bash
+PATCH /api/v1/claims/{id}/status
+```
+```json
+{"status": "INVESTIGATING", "reason": "Elevated fraud score"}
+```
+
+## إضافة مشاركين
+
+```bash
+POST /api/v1/claims/{claimId}/pois
+```
+```json
+{"personId": "participant-uuid", "role": "claimant"}
+```
+
+<Note>تعيين محقّق ينقل المطالبة تلقائياً إلى `INVESTIGATING`.</Note>
+
+## سجل المراجعة
+
+```bash
+GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc
+```

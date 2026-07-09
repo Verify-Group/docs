@@ -1,0 +1,43 @@
+---
+title: 更新日志 — 2026
+description: Verify Group 平台 API 的版本发布说明。
+---
+
+## 2026 年 7 月
+
+### v2.3.0 — 证据管理
+
+- `PATCH /evidence/:id/tags` — 为证据打上可搜索的标签
+- `POST /evidence/:id/review` — 审核证据，支持通过或拒绝并附加审核备注
+- `POST /evidence/public-upload/proxy-upload` — 浏览器安全上传（无 CORS 限制）
+
+### v2.2.0 — 语音智能
+
+- 用于受理 / FNOL（首次报案）通话的默认场景已改为 `customerSupportComplaint`
+- 出现 `SCENARIO_MISMATCH_NOT_SCORED` 时，会使用 API 建议的场景自动重试
+- 更丰富的结果字段：`headline`、`recommendedDecision`、`executiveSummary`、`keyScores`、`importantCallSignals`
+
+### v2.1.0 — 取证分析
+
+- `POST /forensics/poi-fraud-check` — 结合语音、KYC 与证据信号，为每位参与者计算综合欺诈评分
+
+### v2.0.0 — 审计日志
+
+- 全局拦截器会记录每一次变更请求，包含操作人姓名、邮箱、IP 与耗时
+- `GET /audit/logs` 支持 `sortBy`、`sortOrder`、`page`、`limit`、`resourceType`、`resourceId` 等筛选参数
+
+## 2026 年 6 月
+
+### v1.9.0 — 组织 KYC
+
+- `POST /organizations/:id/run-kyc` — 企业身份验证，同时自动创建董事参与者记录
+
+### v1.8.0 — 理赔工作流
+
+- 分配调查员后，理赔状态会自动流转到 `INVESTIGATING`
+- 新增调查字段：`partiesContacted`、`riskIndicators`、`evidenceReviewed`
+
+### v1.7.0 — 制裁筛查
+
+- `POST /participants/sanctions-sources/sync` — 用于刷新监控名单来源的公开接口
+- `organizationId` 现已改由服务端根据 JWT 上下文推断

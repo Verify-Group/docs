@@ -1,0 +1,43 @@
+---
+title: Journal des modifications — 2026
+description: Notes de version pour l'API Verify Group Platform.
+---
+
+## Juillet 2026
+
+### v2.3.0 — Gestion des preuves
+
+- `PATCH /evidence/:id/tags` — Étiquetez les preuves avec des libellés recherchables
+- `POST /evidence/:id/review` — Approuvez ou refusez les preuves avec des notes du réviseur
+- `POST /evidence/public-upload/proxy-upload` — Upload compatible navigateur (sans CORS)
+
+### v2.2.0 — Voice intelligence
+
+- Le scénario par défaut est désormais `customerSupportComplaint` pour les appels de réception/FNOL
+- Nouvelle tentative automatique en cas de `SCENARIO_MISMATCH_NOT_SCORED` avec le scénario suggéré par l'API
+- Résultats enrichis : `headline`, `recommendedDecision`, `executiveSummary`, `keyScores`, `importantCallSignals`
+
+### v2.1.0 — Forensique
+
+- `POST /forensics/poi-fraud-check` — Score de fraude composite combinant voix, KYC et preuves par participant
+
+### v2.0.0 — Journalisation d'audit
+
+- Un intercepteur global journalise chaque requête modifiante avec le nom, l'email, l'IP et le timing de l'acteur
+- `GET /audit/logs` prend en charge les filtres `sortBy`, `sortOrder`, `page`, `limit`, `resourceType`, `resourceId`
+
+## Juin 2026
+
+### v1.9.0 — KYC d'organisation
+
+- `POST /organizations/:id/run-kyc` — Vérification d'entreprise avec création automatique des participants dirigeants
+
+### v1.8.0 — Workflow des sinistres
+
+- L'affectation d'un enquêteur fait automatiquement passer le sinistre à `INVESTIGATING`
+- Nouveaux champs d'enquête : `partiesContacted`, `riskIndicators`, `evidenceReviewed`
+
+### v1.7.0 — Screening sanctions
+
+- `POST /participants/sanctions-sources/sync` — endpoint public pour rafraîchir les sources de listes de surveillance
+- `organizationId` est désormais déduit côté serveur à partir du contexte JWT

@@ -1,0 +1,28 @@
+---
+title: Participantes
+description: Pessoas e entidades vinculadas a sinistros e verificações.
+---
+
+## Tipos
+
+| Tipo | Descrição |
+|---|---|
+| `individual` | Pessoa física |
+| `business` | Pessoa jurídica |
+
+## Papéis em um sinistro
+
+`claimant` · `witness` · `third_party` · `beneficiary` · `agent` · `insured`
+
+## Criar
+
+```bash
+POST /api/v1/participants
+```
+```json
+{"firstName":"James","lastName":"Kamau","type":"individual","nationalId":"12345678","phone":"+254722000001","country":"KE"}
+```
+
+## Status de verificação
+
+`unverified` → `pending` → `verified` / `failed`

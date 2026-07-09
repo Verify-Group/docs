@@ -1,0 +1,23 @@
+---
+title: KYC
+description: 个人与企业身份验证相关概念。
+---
+
+## 验证类型
+
+| 类型 | 场景 |
+|---|---|
+| 身份证件查询 | `identity` |
+| 生物识别 | `biometric` |
+| 企业 UBO（实际受益人） | `business_ubo` |
+
+## 生命周期
+
+`created` → `processing` → `verified` / `failed` / `manual_review`
+
+## 供应商
+
+| 供应商 | 覆盖区域 | 能力 |
+|---|---|---|
+| CreditInfo | 东非 | 个人身份证件、征信 |
+| InsightGenie | 全球 | 生物识别、文档 OCR、语音 |

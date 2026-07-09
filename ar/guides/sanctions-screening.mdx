@@ -1,0 +1,39 @@
+---
+title: فحص العقوبات
+description: افحص المشاركين مقابل قوائم مراقبة عالمية لمكافحة غسل الأموال (AML) والأشخاص المعرّضين سياسياً (PEP) والعقوبات.
+---
+
+## مزامنة مصادر قوائم المراقبة
+
+```bash
+POST /api/v1/participants/sanctions-sources/sync
+```
+
+نقطة طرفية عامة — لا تتطلب مصادقة. استدعِها من مهمة مجدولة للحفاظ على تحديث المصادر.
+
+## تشغيل فحص
+
+```bash
+POST /api/v1/participants/{participantId}/sanctions-check
+```
+```json
+{
+  "dataSources": ["UN_CONSOLIDATED", "OFAC_SDN", "EU_FINANCIAL_SANCTIONS"],
+  "enableMonitoring": true
+}
+```
+
+<Note>`dataSources` اختياري — احذفه للبحث في جميع المصادر المُفعّلة.</Note>
+
+## مستويات المخاطرة
+
+`clear` · `low` · `medium` · `high` · `critical`
+
+## المراقبة المستمرة
+
+عندما `enableMonitoring: true`، ستستقبل webhooks عند ظهور مطابقات جديدة على أي قائمة مسجّلة.
+
+| الحدث | المُشغّل |
+|---|---|
+| `sanctions.match.detected` | تم العثور على مطابقة جديدة |
+| `sanctions.match.resolved` | تم حلّ نتيجة إيجابية كاذبة |

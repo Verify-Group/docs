@@ -1,0 +1,21 @@
+---
+title: 组织
+description: 多租户机制 — 每个资源都归属于某个组织。
+---
+
+每个资源（理赔、参与者、KYC 请求）都归属于一个**组织**。请在每次请求中传入您的 UUID：
+
+```
+X-Organization-ID: cfa70c25-1800-4748-97b0-ce675940a537
+```
+
+## 为您的组织运行 KYC
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+会自动创建一个企业参与者，运行 `business_ubo` 验证，并为每位董事生成对应的参与者记录。

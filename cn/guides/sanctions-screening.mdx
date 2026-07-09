@@ -1,0 +1,39 @@
+---
+title: 制裁筛查
+description: 针对全球 AML / PEP / 制裁监控名单对参与者进行筛查。
+---
+
+## 同步监控名单来源
+
+```bash
+POST /api/v1/participants/sanctions-sources/sync
+```
+
+公开接口 — 无需身份认证。可通过定时任务调用，保持名单数据的时效性。
+
+## 执行筛查
+
+```bash
+POST /api/v1/participants/{participantId}/sanctions-check
+```
+```json
+{
+  "dataSources": ["UN_CONSOLIDATED", "OFAC_SDN", "EU_FINANCIAL_SANCTIONS"],
+  "enableMonitoring": true
+}
+```
+
+<Note>`dataSources` 为可选项 — 省略即表示检索所有已启用的来源。</Note>
+
+## 风险等级
+
+`clear` · `low` · `medium` · `high` · `critical`
+
+## 持续监测
+
+当 `enableMonitoring: true` 时，只要任一已纳入监测的名单出现新的命中，您就会收到 Webhook 通知。
+
+| 事件 | 触发时机 |
+|---|---|
+| `sanctions.match.detected` | 发现新的命中 |
+| `sanctions.match.resolved` | 误报已被处置 |

@@ -1,0 +1,37 @@
+---
+title: أحداث Webhook
+description: جميع أنواع أحداث webhook في Verify Group وحمولاتها.
+---
+
+## أحداث KYC
+
+| الحدث | المُشغّل |
+|---|---|
+| `kyc.created` | تم بدء طلب KYC جديد |
+| `kyc.verified` | تم تأكيد الهوية |
+| `kyc.failed` | فشل التحقق |
+| `kyc.manual_review` | يتطلب مراجعة بشرية |
+
+## أحداث المطالبات
+
+| الحدث | المُشغّل |
+|---|---|
+| `claim.created` | تم تقديم مطالبة جديدة |
+| `claim.status_changed` | تغيير في الحالة |
+| `claim.approved` | تمت الموافقة على المطالبة للتسوية |
+| `claim.rejected` | تم رفض المطالبة |
+
+## أحداث العقوبات
+
+| الحدث | المُشغّل |
+|---|---|
+| `sanctions.check.completed` | اكتمل تشغيل الفحص |
+| `sanctions.match.detected` | تم العثور على مطابقة جديدة (المراقبة) |
+| `sanctions.match.resolved` | تم حلّ المطابقة كنتيجة إيجابية كاذبة |
+
+## أحداث الأدلة
+
+| الحدث | المُشغّل |
+|---|---|
+| `evidence.uploaded` | تم إرفاق ملف جديد |
+| `evidence.reviewed` | تمت الموافقة على الدليل أو رفضه |

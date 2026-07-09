@@ -1,0 +1,40 @@
+---
+title: Postman 集合
+description: 将 Verify Group API 导入 Postman 进行交互式测试。
+---
+
+## 通过 OpenAPI URL 导入
+
+1. 打开 Postman → **Import** → **Link**
+2. 粘贴：`https://gateway.verify-group.io/api/swagger.json`
+3. 点击 **Continue → Import**
+
+## 环境变量
+
+| 变量 | 值 |
+|---|---|
+| `baseUrl` | `https://gateway.verify-group.io/api/v1` |
+| `accessToken` | *(登录后设置)* |
+| `organizationId` | 您所在组织的 UUID |
+
+## 集合的 Pre-request 脚本（自动刷新令牌）
+
+```javascript
+const expiry = pm.environment.get("tokenExpiry");
+if (!expiry || Date.now() > parseInt(expiry) - 60000) {
+  pm.sendRequest({
+    url: pm.environment.get("baseUrl") + "/auth/refresh",
+    method: "POST",
+    header: { "Content-Type": "application/json" },
+    body: { mode: "raw", raw: JSON.stringify({ refreshToken: pm.environment.get("refreshToken") }) }
+  }, (err, res) => {
+    if (!err && res.code === 200) {
+      const { accessToken, expiresIn } = res.json().data;
+      pm.environment.set("accessToken", accessToken);
+      pm.environment.set("tokenExpiry", String(Date.now() + expiresIn * 1000));
+    }
+  });
+}
+```
+
+将集合的 `Authorization` 请求头设置为 `Bearer {{accessToken}}`。

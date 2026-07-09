@@ -1,0 +1,66 @@
+---
+title: Início rápido
+description: Faça sua primeira chamada de API em menos de 5 minutos.
+---
+
+## 1. Obtenha suas credenciais
+
+Acesse o [Dashboard](https://app.verify-group.io) e vá para **Settings → API Keys**.
+
+## 2. Autentique-se
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com","password":"yourpassword"}'
+```
+
+**Resposta:**
+```json
+{
+  "data": {
+    "accessToken": "eyJhbGciOiJSUzI1NiJ9...",
+    "refreshToken": "...",
+    "expiresIn": 3600
+  }
+}
+```
+
+## 3. Inclua o cabeçalho da sua organização
+
+```bash
+export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
+export ORG_ID="cfa70c25-1800-4748-97b0-ce675940a537"
+
+curl https://gateway.verify-group.io/api/v1/participants \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID"
+```
+
+## 4. Execute uma verificação KYC
+
+```bash
+curl -X POST https://gateway.verify-group.io/api/v1/kyc \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "X-Organization-ID: $ORG_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "participant_id": "<uuid>",
+    "type": "individual",
+    "scenario": "identity",
+    "payload": {
+      "identifier_type": "national_id",
+      "identifier_number": "12345678",
+      "country": "KE"
+    }
+  }'
+```
+
+<Check>Você concluiu sua primeira verificação de identidade!</Check>
+
+<CardGroup cols={2}>
+  <Card title="Autenticação" icon="lock" href="/authentication">Fluxo de refresh JWT e gerenciamento de tokens.</Card>
+  <Card title="Guia de sinistros" icon="file-text" href="/guides/claims-management">Crie e processe sinistros de ponta a ponta.</Card>
+  <Card title="Triagem de sanções" icon="shield" href="/guides/sanctions-screening">Faça triagem contra listas globais de vigilância.</Card>
+  <Card title="SDK JavaScript" icon="box" href="/sdks/javascript">Use o SDK tipado.</Card>
+</CardGroup>
