@@ -33,6 +33,6 @@ function verify(rawBody: string, signature: string, secret: string): boolean {
 
 ## Retry policy
 
-Failed deliveries are retried with exponential backoff: 5s → 30s → 5m → 30m → 2h. After 5 failures the webhook is marked `failed` and you receive an email alert.
+We retry failed deliveries with exponential backoff: 5s → 30s → 5m → 30m → 2h. After 5 failures, we mark the webhook `failed` and send you an email alert.
 
-<Warning>Your endpoint must respond within **30 seconds** or the delivery is marked failed.</Warning>
+<Warning>Your endpoint must respond within **30 seconds**, or we mark the delivery failed.</Warning>
