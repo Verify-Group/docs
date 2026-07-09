@@ -1,6 +1,6 @@
 ---
 title: Webhooks
-description: Registre endpoints de webhook, verifique assinaturas HMAC-SHA256 e trate retentativas com backoff exponencial da Verify Group em eventos de API em tempo real.
+description: Registre endpoints de webhook, verifique assinaturas HMAC-SHA256 e trate retentativas da Verify Group com backoff exponencial para eventos de API em tempo real.
 ---
 
 ## Registrar um webhook
@@ -29,10 +29,10 @@ function verify(rawBody: string, signature: string, secret: string): boolean {
 }
 ```
 
-<Warning>Faça o parse do corpo como **bytes brutos** antes de verificar — fazer o parse do JSON primeiro altera a representação em bytes e quebra a verificação da assinatura.</Warning>
+<Warning>Analise o corpo como **bytes brutos** antes de verificar — fazer o parse do JSON primeiro altera a representação em bytes e quebra a verificação da assinatura.</Warning>
 
-## Política de novas tentativas
+## Política de retentativa
 
-Entregas com falha são reenviadas com backoff exponencial: 5s → 30s → 5min → 30min → 2h. Após 5 falhas, o webhook é marcado como `failed` e você recebe um alerta por e-mail.
+Reenviamos entregas com falha usando backoff exponencial: 5s → 30s → 5m → 30m → 2h. Após 5 falhas, marcamos o webhook como `failed` e enviamos um alerta por e-mail.
 
-<Warning>Seu endpoint deve responder em até **30 segundos**, caso contrário a entrega é marcada como falha.</Warning>
+<Warning>Seu endpoint deve responder em até **30 segundos**, caso contrário marcamos a entrega como falha.</Warning>

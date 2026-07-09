@@ -1,6 +1,6 @@
 ---
 title: 理赔管理
-description: 通过 Verify Group 平台 API 创建保险理赔案件、进行理赔状态流转、关联多个参与者角色信息以及查询完整的审计日志跟踪记录，全流程覆盖从理赔受理登记、审查调查、审批决策到最终结案的业务生命周期管理，附具体接口调用示例与集成最佳实践操作指南与开发建议。
+description: 创建保险理赔、切换状态、关联参与人，并在 Verify Group 完整的理赔生命周期中查看审计轨迹。
 ---
 
 ## 创建理赔
@@ -27,7 +27,7 @@ PATCH /api/v1/claims/{id}/status
 {"status": "INVESTIGATING", "reason": "Elevated fraud score"}
 ```
 
-## 添加参与者
+## 添加参与人
 
 ```bash
 POST /api/v1/claims/{claimId}/pois
@@ -36,9 +36,9 @@ POST /api/v1/claims/{claimId}/pois
 {"personId": "participant-uuid", "role": "claimant"}
 ```
 
-<Note>分配调查员时，理赔状态会自动流转到 `INVESTIGATING`。</Note>
+<Note>指派调查员会自动将理赔状态切换为 `INVESTIGATING`。</Note>
 
-## 审计追溯
+## 审计轨迹
 
 ```bash
 GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc

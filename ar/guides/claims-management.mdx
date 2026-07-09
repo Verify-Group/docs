@@ -1,6 +1,6 @@
 ---
 title: إدارة المطالبات
-description: أنشئ مطالبات التأمين وانتقل بين الحالات وأرفق المشاركين وافحص سجل التدقيق عبر دورة حياة المطالبات الكاملة في منصة Verify Group بسهولة تامة.
+description: أنشئ مطالبات التأمين، وانقل الحالات، وأرفق المشاركين، وافحص مسار التدقيق عبر دورة حياة المطالبات الكاملة في Verify Group.
 ---
 
 ## إنشاء مطالبة
@@ -27,7 +27,7 @@ PATCH /api/v1/claims/{id}/status
 {"status": "INVESTIGATING", "reason": "Elevated fraud score"}
 ```
 
-## إضافة مشاركين
+## إضافة المشاركين
 
 ```bash
 POST /api/v1/claims/{claimId}/pois
@@ -36,9 +36,9 @@ POST /api/v1/claims/{claimId}/pois
 {"personId": "participant-uuid", "role": "claimant"}
 ```
 
-<Note>تعيين محقّق ينقل المطالبة تلقائياً إلى `INVESTIGATING`.</Note>
+<Note>تعيين محقق ينقل المطالبة تلقائيًا إلى `INVESTIGATING`.</Note>
 
-## سجل المراجعة
+## مسار التدقيق
 
 ```bash
 GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc

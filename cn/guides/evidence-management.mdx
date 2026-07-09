@@ -1,18 +1,18 @@
 ---
 title: 证据管理
-description: 通过代理上传接口向 Verify Group 平台安全上传理赔证据文件、为证据打上可搜索的分类标签、执行审核人员的通过或拒绝操作决策，以及管理证据在整个审核过程中的状态流转，本指南详细讲解全流程接口调用示例、CORS 规避方案与业务集成的实践方法与开发接入建议。
+description: 通过代理接口上传理赔证据、为文件打标签、执行审核审批，并管理证据在 Verify Group API 中的状态流转。
 ---
 
-## 上传（推荐用于浏览器客户端）
+## 上传（推荐浏览器端使用）
 
-通过后端中转上传，以规避 CORS 问题：
+将上传通过后端进行中转，以避免 CORS 问题：
 
 ```bash
 POST /api/v1/evidence/public-upload/proxy-upload
 Content-Type: multipart/form-data
 ```
 
-返回 `evidenceId` 以及用于即时预览的 `signedUrl`。
+返回 `evidenceId` 以及可立即用于预览的 `signedUrl`。
 
 ## 列出某个理赔的证据
 
@@ -29,7 +29,7 @@ PATCH /api/v1/evidence/{id}/tags
 {"tags": ["police_report", "verified", "high_priority"]}
 ```
 
-## 审核证据（通过或拒绝）
+## 审批或驳回证据
 
 ```bash
 POST /api/v1/evidence/{id}/review
@@ -40,7 +40,7 @@ POST /api/v1/evidence/{id}/review
 
 | 状态 | 含义 |
 |---|---|
-| `PENDING` | 待审核 |
-| `APPROVED` | 已核实并采纳 |
-| `REJECTED` | 已拒绝 |
-| `UNDER_REVIEW` | 正在进行取证分析 |
+| `PENDING` | 等待审核 |
+| `APPROVED` | 已核验通过 |
+| `REJECTED` | 已驳回 |
+| `UNDER_REVIEW` | 鉴证分析中 |

@@ -1,6 +1,6 @@
 ---
 title: Collection Postman
-description: Importez la spec OpenAPI de Verify Group dans Postman, configurez les variables d'environnement et utilisez un script pre-request auto-refresh des jetons.
+description: Importez la spécification OpenAPI de Verify Group dans Postman, configurez les variables d'environnement et utilisez un script pre-request de rafraîchissement automatique pour les jetons bearer.
 ---
 
 ## Importer via l'URL OpenAPI
@@ -14,10 +14,10 @@ description: Importez la spec OpenAPI de Verify Group dans Postman, configurez l
 | Variable | Valeur |
 |---|---|
 | `baseUrl` | `https://gateway.verify-group.io/api/v1` |
-| `accessToken` | *(défini après connexion)* |
+| `accessToken` | *(à définir après connexion)* |
 | `organizationId` | UUID de votre organisation |
 
-## Script pre-request de la collection (auto-rafraîchissement)
+## Script pre-request de la collection (rafraîchissement automatique)
 
 ```javascript
 const expiry = pm.environment.get("tokenExpiry");

@@ -1,30 +1,30 @@
 ---
 title: Introdução
-description: A API da Verify Group Platform oferece KYC corporativo, gestão de sinistros, triagem de sanções e voice intelligence para mercados africanos.
+description: Acesso via API para verificação KYC, autenticidade de documentos, inteligência de voz e gestão de sinistros.
 ---
 
-## Boas-vindas à Verify Group
+## Bem-vindo à Verify Group
 
-A **Verify Group Platform** é uma API multi-tenant corporativa para:
+A **API Verify Group** oferece acesso pronto para integração a serviços corporativos de identidade e prevenção a fraudes:
 
-- **KYC / Verificação de identidade** — Verificação de pessoas físicas e empresas com IA e fontes de dados confiáveis
-- **Gestão de sinistros** — Ciclo de vida completo de sinistros de seguro com workflows de intake, validação, investigação e liquidação
-- **Triagem de sanções e AML** — Triagem em tempo real contra listas de vigilância com monitoramento contínuo em tempo real
-- **Voice intelligence** — Análise biométrica de voz com IA e detecção de fraude 
-- **Autenticidade de documentos** — OCR e análise forense para verificação de documentos
+- **Verificação KYC** — Fluxos de verificação individual padrão, individual avançada, empresarial e personalizada, com histórico completo
+- **Autenticidade de Documentos** — Envie e verifique documentos: RGs nacionais, carteiras de habilitação, DUTs de veículos, KRA PINs, placas de veículos e tipos de documentos personalizados
+- **Inteligência de Voz** — Inicie chamadas de voz com IA, obtenha gravações e transcrições e acione análises de fraude
+- **Gestão de Sinistros** — Ciclo completo de sinistros de seguros — criar, investigar, aprovar e liquidar
+- **Gestão de Evidências** — Anexe, revise e etiquete arquivos de apoio aos sinistros
 
 <CardGroup cols={2}>
   <Card title="Início rápido" icon="rocket" href="/quickstart">
     Faça sua primeira chamada de API em menos de 5 minutos.
   </Card>
   <Card title="Autenticação" icon="lock" href="/authentication">
-    Aprenda a autenticar suas requisições de API.
+    Tokens JWT bearer e cabeçalhos de organização.
   </Card>
-  <Card title="Referência da API" icon="code" href="/api-reference">
-    Navegue pela referência completa e interativa da API.
+  <Card title="Verificação KYC" icon="user-check" href="/api-reference/kyc/create-verification">
+    Execute verificações de identidade em pessoas e empresas.
   </Card>
-  <Card title="SDK JavaScript" icon="box" href="/sdks/javascript">
-    Use nosso SDK oficial em TypeScript.
+  <Card title="Autenticidade de Documentos" icon="file-check" href="/api-reference/document-verification/upload-and-process">
+    Verifique a autenticidade de documentos em uma única chamada de API.
   </Card>
 </CardGroup>
 
@@ -34,35 +34,23 @@ A **Verify Group Platform** é uma API multi-tenant corporativa para:
 |---|---|
 | Produção | `https://gateway.verify-group.io/api/v1` |
 | UAT | `https://uat.gateway.verify-group.io/api/v1` |
-| Desenvolvimento local | `http://localhost:4008/api/v1` |
+| Staging | `https://stage.gateway.verify-group.io/api/v1` |
+| Dev local | `http://localhost:4008/api/v1` |
 
 ## Formato de resposta
-
-Todas as respostas de sucesso seguem um envelope consistente:
 
 ```json
 {
   "success": true,
   "statusCode": 200,
-  "message": "Success",
   "data": { ... },
   "metadata": {
-    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "requestId": "uuid",
     "timestamp": "2026-07-09T10:00:00.000Z"
   }
 }
 ```
 
-## Formato de erro
-
-```json
-{
-  "statusCode": 400,
-  "message": "Validation failed",
-  "error": "BadRequestException"
-}
-```
-
 ## Suporte
 
-E-mail: [support@verify-group.io](mailto:support@verify-group.io)
+[support@verify-group.io](mailto:support@verify-group.io)

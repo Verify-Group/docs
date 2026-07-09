@@ -1,17 +1,17 @@
 ---
-title: Voice Intelligence
-description: Déclenchez l'analyse vocale IA sur les sessions d'appel, interprétez les scores de stress et de tromperie et combinez-les en un score de fraude composite.
+title: Intelligence vocale
+description: Déclenchez l'analyse vocale par IA sur les sessions d'appel, interprétez les scores de stress et de tromperie et combinez les signaux dans un score de fraude composite par participant.
 ---
 
 ## Scénarios
 
 | Scénario | Cas d'usage |
 |---|---|
-| `customerSupportComplaint` | Appels FNOL / de réception (par défaut) |
-| `fraudSignalDetection` | SIU / enquête de fraude |
+| `customerSupportComplaint` | Appels FNOL / de prise en charge (par défaut) |
+| `fraudSignalDetection` | Enquêtes SIU / fraude |
 | `debtCollection` | Appels de recouvrement |
 
-## Déclencher l'analyse
+## Déclencher une analyse
 
 ```bash
 POST /api/v1/voice/sessions/{sessionId}/analyze

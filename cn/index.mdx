@@ -1,30 +1,30 @@
 ---
 title: 简介
-description: Verify Group 平台 API 面向非洲保险市场提供企业级 KYC 身份验证、理赔全流程管理、全球制裁名单合规筛查以及基于 AI 的语音智能欺诈检测等核心能力，构建端到端的一站式保险科技基础设施与多租户 SaaS 服务解决方案，加速保险业务的数字化转型进程。
+description: 提供 KYC 验证、文档真伪核验、语音智能分析和理赔管理的 API 接入。
 ---
 
 ## 欢迎使用 Verify Group
 
-**Verify Group 平台**是一套企业级多租户 API，提供以下能力：
+**Verify Group API** 提供开箱即用的企业级身份识别和反欺诈服务接入：
 
-- **KYC / 身份验证** — 由 AI 和可信数据源 驱动的个人与企业身份验证
-- **理赔管理** — 覆盖受理、审核、调查与结案的完整保险理赔生命周期工作流
-- **制裁与反洗钱筛查** — 实时全球监控名单筛查与持续监测
-- **语音智能** — AI 驱动的语音生物识别分析与欺诈信号检测
-- **文档真伪核验** — 基于 OCR 与取证分析的文档验证能力
+- **KYC 验证** — 个人标准、个人高级、企业以及自定义验证流程，附带完整历史记录
+- **文档真伪核验** — 上传并验证各类文档：身份证、驾驶执照、车辆行驶证、KRA PIN、车牌以及自定义文档类型
+- **语音智能** — 发起 AI 驱动的语音通话、获取录音和文字转录，并触发欺诈分析
+- **理赔管理** — 覆盖保险理赔全生命周期 —— 创建、调查、审批和结案
+- **证据管理** — 关联、审查并为理赔配套文件打标签
 
 <CardGroup cols={2}>
   <Card title="快速开始" icon="rocket" href="/quickstart">
-    在 5 分钟内完成您的第一次 API 调用。
+    在 5 分钟内完成你的第一次 API 调用。
   </Card>
   <Card title="身份认证" icon="lock" href="/authentication">
-    了解如何对 API 请求进行身份认证。
+    JWT bearer token 以及组织标识请求头。
   </Card>
-  <Card title="API 参考" icon="code" href="/api-reference">
-    浏览完整的交互式 API 参考文档。
+  <Card title="KYC 验证" icon="user-check" href="/api-reference/kyc/create-verification">
+    对个人和企业进行身份核验。
   </Card>
-  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">
-    使用我们官方的 TypeScript SDK。
+  <Card title="文档真伪核验" icon="file-check" href="/api-reference/document-verification/upload-and-process">
+    一次 API 调用完成文档真伪判定。
   </Card>
 </CardGroup>
 
@@ -34,35 +34,23 @@ description: Verify Group 平台 API 面向非洲保险市场提供企业级 KYC
 |---|---|
 | 生产环境 | `https://gateway.verify-group.io/api/v1` |
 | UAT | `https://uat.gateway.verify-group.io/api/v1` |
+| Staging | `https://stage.gateway.verify-group.io/api/v1` |
 | 本地开发 | `http://localhost:4008/api/v1` |
 
 ## 响应格式
-
-所有成功响应均遵循统一的封装结构：
 
 ```json
 {
   "success": true,
   "statusCode": 200,
-  "message": "Success",
   "data": { ... },
   "metadata": {
-    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "requestId": "uuid",
     "timestamp": "2026-07-09T10:00:00.000Z"
   }
 }
 ```
 
-## 错误格式
-
-```json
-{
-  "statusCode": 400,
-  "message": "Validation failed",
-  "error": "BadRequestException"
-}
-```
-
 ## 技术支持
 
-邮箱：[support@verify-group.io](mailto:support@verify-group.io)
+[support@verify-group.io](mailto:support@verify-group.io)

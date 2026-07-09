@@ -1,13 +1,13 @@
 ---
 title: 快速开始
-description: 快速获取您的 Verify Group 平台 API 访问凭证、完成 JWT Bearer 令牌身份认证，并在 5 分钟内通过随附的 curl 复制粘贴示例代码，完成您的第一次 KYC 身份验证或者保险理赔管理接口调用测试，帮助您快速体验平台的核心能力与基础工作流程。
+description: 获取 Verify Group API 凭据，完成认证，并在 5 分钟内通过可复制粘贴的 curl 示例发起首次 KYC 或理赔调用。
 ---
 
-## 1. 获取您的凭证
+## 1. 获取凭据
 
-登录[控制台](https://app.verify-group.io)，进入 **Settings → API Keys**。
+登录 [控制台](https://app.verify-group.io)，进入 **Settings → API Keys**。
 
-## 2. 进行身份认证
+## 2. 进行认证
 
 ```bash
 curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
@@ -26,7 +26,7 @@ curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
 }
 ```
 
-## 3. 附加您的组织请求头
+## 3. 附上组织请求头
 
 ```bash
 export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
@@ -37,7 +37,7 @@ curl https://gateway.verify-group.io/api/v1/participants \
   -H "X-Organization-ID: $ORG_ID"
 ```
 
-## 4. 运行一次 KYC 验证
+## 4. 发起一次 KYC 验证
 
 ```bash
 curl -X POST https://gateway.verify-group.io/api/v1/kyc \
@@ -56,11 +56,11 @@ curl -X POST https://gateway.verify-group.io/api/v1/kyc \
   }'
 ```
 
-<Check>您已完成首次身份验证！</Check>
+<Check>你已完成首次身份验证！</Check>
 
 <CardGroup cols={2}>
-  <Card title="身份认证" icon="lock" href="/authentication">JWT 刷新流程与令牌管理。</Card>
+  <Card title="身份认证" icon="lock" href="/authentication">JWT 刷新流程和令牌管理。</Card>
   <Card title="理赔指南" icon="file-text" href="/guides/claims-management">端到端创建并处理理赔。</Card>
-  <Card title="制裁筛查" icon="shield" href="/guides/sanctions-screening">对全球监控名单进行筛查。</Card>
-  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">使用带类型定义的 SDK。</Card>
+  <Card title="制裁名单筛查" icon="shield" href="/guides/sanctions-screening">对照全球监控名单进行筛查。</Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">使用带类型的 SDK。</Card>
 </CardGroup>

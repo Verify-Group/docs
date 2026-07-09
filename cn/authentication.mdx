@@ -1,9 +1,9 @@
 ---
 title: 身份认证
-description: 学习如何使用 JWT Bearer 令牌对 Verify Group 平台 API 请求进行身份认证，涵盖登录接口调用流程、访问令牌获取与刷新令牌自动轮换机制，以及多租户架构下必需的组织请求头 X-Organization-ID 的正确配置方式，附完整的 curl 代码示例。
+description: 使用 JWT bearer token 对 Verify Group API 请求进行认证，刷新访问令牌，并设置多租户所需的组织请求头。
 ---
 
-每个请求都必须携带 `Authorization: Bearer <token>`。
+每个请求都必须包含 `Authorization: Bearer <token>`。
 
 ## 登录
 
@@ -28,16 +28,16 @@ POST /api/v1/auth/refresh
 {"refreshToken":"eyJ..."}
 ```
 
-## 必需请求头
+## 必需的请求头
 
-| 请求头 | 是否必需 | 说明 |
+| 请求头 | 是否必需 | 描述 |
 |---|---|---|
 | `Authorization` | 始终必需 | `Bearer <token>` |
-| `X-Organization-ID` | 大多数接口 | 您所在组织的 UUID |
+| `X-Organization-ID` | 大多数接口 | 你所在组织的 UUID |
 
 ## 安全最佳实践
 
-<Check>将访问令牌保存在内存中，而非 localStorage</Check>
-<Check>将刷新令牌保存在 httpOnly 安全 Cookie 中</Check>
+<Check>将访问令牌保存在内存中，而不是 localStorage</Check>
+<Check>将刷新令牌保存在 httpOnly 的安全 cookie 中</Check>
 <Check>全程使用 HTTPS</Check>
 <Check>用户登出时吊销令牌</Check>

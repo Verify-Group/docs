@@ -1,13 +1,13 @@
 ---
 title: 理赔
-description: 深入了解 Verify Group 平台保险理赔对象的数据结构、状态生命周期与工作流元数据，全面覆盖车险、健康险、寿险、财产险以及工伤险等主要业务线的字段定义、状态流转规则、审批流程与关键属性说明，帮助开发者高效对接理赔管理接口，构建可靠的自动化理赔处理系统与业务集成方案。
+description: 保险理赔对象在车险、健康险、寿险、财产险和工伤保险各业务线中的结构、状态流转与工作流元数据。
 ---
 
 ## 业务线
 
 `MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
 
-## 状态生命周期
+## 状态流转
 
 ```
 DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
@@ -18,8 +18,8 @@ DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → 
 
 | 键 | 阶段 |
 |---|---|
-| `metadata.intake[]` | FNOL（首次报案）受理 |
+| `metadata.intake[]` | 报案（FNOL）受理 |
 | `metadata.validation[]` | 保障范围核验 |
 | `metadata.investigation[]` | 现场调查 |
-| `metadata.approval[]` | 审批决策 |
+| `metadata.approval[]` | 审批决定 |
 | `metadata.settlement[]` | 付款确认 |

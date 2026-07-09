@@ -1,43 +1,43 @@
 ---
 title: سجل التغييرات — 2026
-description: ملاحظات إصدار Verify Group Platform API لعام 2026 تغطي تحديثات الأدلة وذكاء الصوت والطب الشرعي وسجلات التدقيق وفحوصات العقوبات على المنصة.
+description: ملاحظات إصدار Verify Group Platform API لعام 2026، تغطي إدارة الأدلة، وذكاء الصوت، والتحقيقات الجنائية، وسجلات التدقيق، وتحديثات العقوبات.
 ---
 
 ## يوليو 2026
 
-### v2.3.0 \u2014 إدارة الأدلة
+### v2.3.0 — إدارة الأدلة
 
-- `PATCH /evidence/:id/tags` \u2014 وسم الأدلة بعلامات قابلة للبحث
-- `POST /evidence/:id/review` \u2014 الموافقة على الأدلة أو رفضها مع ملاحظات المراجع
-- `POST /evidence/public-upload/proxy-upload` \u2014 رفع آمن من المتصفح (بدون CORS)
+- `PATCH /evidence/:id/tags` — وسم الأدلة بعلامات قابلة للبحث
+- `POST /evidence/:id/review` — الموافقة على الأدلة أو رفضها مع ملاحظات المراجع
+- `POST /evidence/public-upload/proxy-upload` — رفع آمن من المتصفح (بدون CORS)
 
-### v2.2.0 \u2014 ذكاء الصوت
+### v2.2.0 — ذكاء الصوت
 
 - تم تغيير السيناريو الافتراضي إلى `customerSupportComplaint` لمكالمات الاستقبال / FNOL
-- إعادة المحاولة تلقائياً عند `SCENARIO_MISMATCH_NOT_SCORED` بالسيناريو الذي تقترحه API
-- نتائج مُثراة: `headline`، `recommendedDecision`، `executiveSummary`، `keyScores`، `importantCallSignals`
+- إعادة المحاولة التلقائية عند `SCENARIO_MISMATCH_NOT_SCORED` باستخدام السيناريو الذي تقترحه API
+- نتائج مُثراة: `headline`، و`recommendedDecision`، و`executiveSummary`، و`keyScores`، و`importantCallSignals`
 
-### v2.1.0 \u2014 التحليل الجنائي
+### v2.1.0 — التحقيقات الجنائية
 
-- `POST /forensics/poi-fraud-check` \u2014 درجة احتيال مركّبة تجمع بين الصوت وKYC والأدلة لكل مشارك
+- `POST /forensics/poi-fraud-check` — درجة احتيال مركبة تجمع بين الصوت وKYC والأدلة لكل مشارك
 
-### v2.0.0 \u2014 تدوين المراجعة (Audit logging)
+### v2.0.0 — سجلات التدقيق
 
-- معترض عام (interceptor) يسجّل كل طلب يُعدّل البيانات مع اسم الفاعل وبريده الإلكتروني وعنوان IP والتوقيت
-- يدعم `GET /audit/logs` عوامل التصفية `sortBy`، `sortOrder`، `page`، `limit`، `resourceType`، `resourceId`
+- يعترض معترض عام كل طلب تعديل ويسجل اسم الفاعل والبريد الإلكتروني وعنوان IP والتوقيت
+- يدعم `GET /audit/logs` مرشحات `sortBy`، و`sortOrder`، و`page`، و`limit`، و`resourceType`، و`resourceId`
 
 ## يونيو 2026
 
-### v1.9.0 \u2014 KYC للمؤسسات
+### v1.9.0 — KYC للمؤسسة
 
-- `POST /organizations/:id/run-kyc` \u2014 التحقق من الشركات مع إنشاء تلقائي لمشاركين من المديرين
+- `POST /organizations/:id/run-kyc` — التحقق من الأعمال مع إنشاء تلقائي لمشاركي المديرين
 
-### v1.8.0 \u2014 سير عمل المطالبات
+### v1.8.0 — سير عمل المطالبات
 
-- تعيين محقّق يُنقل المطالبة تلقائياً إلى `INVESTIGATING`
-- حقول تحقيق جديدة: `partiesContacted`، `riskIndicators`، `evidenceReviewed`
+- تعيين محقق ينقل المطالبة تلقائيًا إلى `INVESTIGATING`
+- حقول تحقيق جديدة: `partiesContacted`، و`riskIndicators`، و`evidenceReviewed`
 
-### v1.7.0 \u2014 فحص العقوبات
+### v1.7.0 — فحص العقوبات
 
-- `POST /participants/sanctions-sources/sync` \u2014 نقطة طرفية عامة لتحديث مصادر قوائم المراقبة
-- `organizationId` أصبح يُستنتج الآن من جانب الخادم من سياق JWT
+- `POST /participants/sanctions-sources/sync` — نقطة نهاية عامة لتحديث مصادر قوائم المراقبة
+- يتم الآن استنتاج `organizationId` من جانب الخادم من سياق JWT

@@ -1,6 +1,6 @@
 ---
 title: Coleção do Postman
-description: Importe a spec OpenAPI da Verify Group no Postman, configure variáveis de ambiente e use um script pre-request de auto-refresh para tokens bearer.
+description: Importe a especificação OpenAPI da Verify Group no Postman, configure variáveis de ambiente e use um script de pré-requisição que atualiza automaticamente tokens bearer.
 ---
 
 ## Importar via URL do OpenAPI
@@ -17,7 +17,7 @@ description: Importe a spec OpenAPI da Verify Group no Postman, configure variá
 | `accessToken` | *(definido após o login)* |
 | `organizationId` | UUID da sua organização |
 
-## Script de pré-requisição da coleção (refresh automático)
+## Script de pré-requisição da coleção (auto-refresh)
 
 ```javascript
 const expiry = pm.environment.get("tokenExpiry");
@@ -37,4 +37,4 @@ if (!expiry || Date.now() > parseInt(expiry) - 60000) {
 }
 ```
 
-Configure o cabeçalho `Authorization` da coleção como `Bearer {{accessToken}}`.
+Defina o cabeçalho `Authorization` da coleção como `Bearer {{accessToken}}`.

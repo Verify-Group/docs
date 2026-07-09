@@ -1,6 +1,6 @@
 ---
 title: Événements webhook
-description: "Référence des événements webhook Verify Group : KYC, cycle de vie des sinistres, correspondances sanctions et revues de preuves, avec déclencheurs."
+description: Référence de chaque événement webhook Verify Group, y compris les notifications de KYC, du cycle de vie des réclamations, des correspondances de sanctions et de la relecture des preuves avec leurs déclencheurs.
 ---
 
 ## Événements KYC
@@ -9,27 +9,27 @@ description: "Référence des événements webhook Verify Group : KYC, cycle de 
 |---|---|
 | `kyc.created` | Nouvelle requête KYC initiée |
 | `kyc.verified` | Identité confirmée |
-| `kyc.failed` | Échec de vérification |
-| `kyc.manual_review` | Révision humaine requise |
+| `kyc.failed` | Échec de la vérification |
+| `kyc.manual_review` | Nécessite une relecture humaine |
 
-## Événements sinistres
+## Événements de réclamation
 
 | Événement | Déclencheur |
 |---|---|
-| `claim.created` | Nouveau sinistre soumis |
+| `claim.created` | Nouvelle réclamation soumise |
 | `claim.status_changed` | Transition de statut |
-| `claim.approved` | Sinistre approuvé pour règlement |
-| `claim.rejected` | Sinistre refusé |
+| `claim.approved` | Réclamation approuvée pour règlement |
+| `claim.rejected` | Réclamation refusée |
 
-## Événements sanctions
+## Événements de sanctions
 
 | Événement | Déclencheur |
 |---|---|
-| `sanctions.check.completed` | Screening terminé |
+| `sanctions.check.completed` | Filtrage terminé |
 | `sanctions.match.detected` | Nouvelle correspondance trouvée (surveillance) |
 | `sanctions.match.resolved` | Correspondance résolue comme faux positif |
 
-## Événements preuves
+## Événements de preuve
 
 | Événement | Déclencheur |
 |---|---|

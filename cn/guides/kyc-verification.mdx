@@ -1,9 +1,9 @@
 ---
 title: KYC 验证
-description: 使用 Verify Group 平台 API 运行个人和企业级 KYC 身份验证请求、查询验证任务的实时状态与结果、将验证结果自动同步回写到关联的参与者档案信息中，以及一键触发面向整个组织的批量 KYC 复核操作，本指南提供完整的接口调用实践与集成方法参考说明。
+description: 通过 Verify Group 运行个人和企业 KYC，查询验证状态，将结果同步到参与人，并触发组织级 KYC。
 ---
 
-## 运行 KYC
+## 发起 KYC
 
 ```bash
 POST /api/v1/kyc
@@ -33,15 +33,15 @@ GET /api/v1/kyc/{id}
 | `processing` | 处理中 |
 | `verified` | 身份已确认 |
 | `failed` | 无法完成验证 |
-| `manual_review` | 需要人工审核 |
+| `manual_review` | 需人工审核 |
 
-## 将结果同步到参与者
+## 将结果同步到参与人
 
 ```bash
 POST /api/v1/kyc/{id}/sync
 ```
 
-会用已验证的姓名、出生日期、地址以及提取到的人脸照片更新参与者信息。
+用核验后的姓名、出生日期、住址以及提取的人脸照片更新参与人。
 
 ## 组织 KYC
 
@@ -52,4 +52,4 @@ POST /api/v1/organizations/{id}/run-kyc
 {"autoSync": true}
 ```
 
-自动为所有识别到的董事创建对应的参与者记录。
+自动为所有识别到的董事创建参与人记录。

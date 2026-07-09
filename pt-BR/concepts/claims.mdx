@@ -1,24 +1,24 @@
 ---
 title: Sinistros
-description: Estrutura, ciclo de vida de status e metadados de workflow do objeto de sinistro nos ramos motor, saúde, vida, patrimonial e acidentes de trabalho.
+description: Estrutura, ciclo de vida de status e metadados de fluxo de trabalho do objeto de sinistro de seguros nas linhas de automóvel, saúde, vida, patrimônio e acidentes de trabalho.
 ---
 
-## Ramos de negócio
+## Linhas de negócio
 
 `MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
 
-## Ciclo de vida de status
+## Ciclo de vida do status
 
 ```
 DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
                                                   ↘ PENDING_EVIDENCE / REJECTED
 ```
 
-## Metadados de workflow
+## Metadados de fluxo de trabalho
 
 | Chave | Etapa |
 |---|---|
-| `metadata.intake[]` | Registro do FNOL |
+| `metadata.intake[]` | Recepção FNOL |
 | `metadata.validation[]` | Verificação de cobertura |
 | `metadata.investigation[]` | Investigação em campo |
 | `metadata.approval[]` | Decisão de aprovação |

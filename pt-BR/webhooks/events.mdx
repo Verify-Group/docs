@@ -1,13 +1,13 @@
 ---
 title: Eventos de webhook
-description: Referência dos eventos de webhook da Verify Group, incluindo KYC, ciclo de vida de sinistros, match de sanções e revisão de evidências com seus gatilhos.
+description: Referência de todo evento de webhook da Verify Group, incluindo notificações de KYC, ciclo de vida de sinistros, match de sanções e revisão de evidências com seus gatilhos.
 ---
 
 ## Eventos de KYC
 
 | Evento | Gatilho |
 |---|---|
-| `kyc.created` | Nova solicitação de KYC iniciada |
+| `kyc.created` | Nova requisição KYC iniciada |
 | `kyc.verified` | Identidade confirmada |
 | `kyc.failed` | Verificação falhou |
 | `kyc.manual_review` | Requer revisão humana |
@@ -19,19 +19,19 @@ description: Referência dos eventos de webhook da Verify Group, incluindo KYC, 
 | `claim.created` | Novo sinistro enviado |
 | `claim.status_changed` | Transição de status |
 | `claim.approved` | Sinistro aprovado para liquidação |
-| `claim.rejected` | Sinistro recusado |
+| `claim.rejected` | Sinistro rejeitado |
 
 ## Eventos de sanções
 
 | Evento | Gatilho |
 |---|---|
-| `sanctions.check.completed` | Triagem concluída |
-| `sanctions.match.detected` | Nova correspondência encontrada (monitoramento) |
-| `sanctions.match.resolved` | Correspondência resolvida como falso positivo |
+| `sanctions.check.completed` | Execução de triagem concluída |
+| `sanctions.match.detected` | Novo match encontrado (monitoramento) |
+| `sanctions.match.resolved` | Match resolvido como falso positivo |
 
 ## Eventos de evidências
 
 | Evento | Gatilho |
 |---|---|
 | `evidence.uploaded` | Novo arquivo anexado |
-| `evidence.reviewed` | Evidência aprovada ou recusada |
+| `evidence.reviewed` | Evidência aprovada ou rejeitada |
