@@ -1,7 +1,7 @@
 ---
 title: "Verify MFA"
 api: "POST /api/v1/mfa/verify"
-description: "Verify MFA token to complete authentication or validate MFA setup."
+description: "Verify a TOTP code from the user's authenticator app to complete a login challenge or confirm MFA setup during initial enrollment."
 ---
 
 <ParamField body="token" type="string" required>
