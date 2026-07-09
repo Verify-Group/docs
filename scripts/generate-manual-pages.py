@@ -95,7 +95,7 @@ def param_field(pin, name, schema, required, description=''):
     ptype = schema.get('type', 'string')
     if 'enum' in schema:
         vals = [str(v) for v in schema['enum'][:6]]
-        ptype = ' | '.join(f'"{v}"' for v in vals)
+        ptype = ' | '.join(vals)  # no inner quotes — would break MDX JSX parsing
     req = ' required' if required else ''
     desc = description or schema.get('description', '')
     lines = [f'<ParamField {pin}="{name}" type="{ptype}"{req}>']

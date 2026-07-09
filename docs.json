@@ -12,7 +12,7 @@
     "light": "#5ecf65",
     "dark": "#2e8e34"
   },
-  "theme": "willow",
+  "theme": "maple",
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://platform.verify-score.com"

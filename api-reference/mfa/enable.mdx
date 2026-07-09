@@ -4,7 +4,7 @@ api: "POST /api/v1/mfa/enable"
 description: "Enable multi-factor authentication for the current user and receive a TOTP secret and QR code for enrolling an authenticator application."
 ---
 
-<ParamField body="method" type=""totp" | "sms" | "email"" required>
+<ParamField body="method" type="totp | sms | email" required>
   MFA method to enable
 </ParamField>
 

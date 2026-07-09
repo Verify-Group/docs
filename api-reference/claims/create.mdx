@@ -4,7 +4,7 @@ api: "POST /api/v1/claims"
 description: "Create a new fraud investigation claim with metadata, priority, and initial fraud score. Consumes 10 tokens from the organization wallet."
 ---
 
-<ParamField body="type" type=""MOTOR" | "PROPERTY" | "LIFE" | "HEALTH" | "WORKERS_COMPENSATION" | "FRAUD"" required>
+<ParamField body="type" type="MOTOR | PROPERTY | LIFE | HEALTH | WORKERS_COMPENSATION | FRAUD" required>
   Type of claim
 </ParamField>
 
@@ -12,7 +12,7 @@ description: "Create a new fraud investigation claim with metadata, priority, an
   Detailed description of the claim
 </ParamField>
 
-<ParamField body="priority" type=""LOW" | "MEDIUM" | "HIGH" | "CRITICAL"">
+<ParamField body="priority" type="LOW | MEDIUM | HIGH | CRITICAL">
   Priority level of the claim
 </ParamField>
 
