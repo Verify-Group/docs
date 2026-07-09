@@ -1,0 +1,46 @@
+---
+title: Gestion des preuves
+description: Uploadez, étiquetez, révisez et gérez les preuves de sinistres.
+---
+
+## Upload (recommandé pour les clients navigateur)
+
+Route l'upload via le backend pour éviter les problèmes CORS :
+
+```bash
+POST /api/v1/evidence/public-upload/proxy-upload
+Content-Type: multipart/form-data
+```
+
+Renvoie `evidenceId` et une `signedUrl` pour un aperçu immédiat.
+
+## Lister les preuves d'un sinistre
+
+```bash
+GET /api/v1/evidence?claimId={claimId}
+```
+
+## Étiqueter une preuve
+
+```bash
+PATCH /api/v1/evidence/{id}/tags
+```
+```json
+{"tags": ["police_report", "verified", "high_priority"]}
+```
+
+## Approuver ou refuser une preuve
+
+```bash
+POST /api/v1/evidence/{id}/review
+```
+```json
+{"status": "APPROVED", "notes": "Document authenticated against police database."}
+```
+
+| Statut | Signification |
+|---|---|
+| `PENDING` | En attente de révision |
+| `APPROVED` | Vérifiée et acceptée |
+| `REJECTED` | Refusée |
+| `UNDER_REVIEW` | En analyse forensique |

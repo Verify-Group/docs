@@ -1,0 +1,25 @@
+---
+title: Sinistros
+description: O objeto de sinistro de seguro — estrutura, ciclo de vida e workflow.
+---
+
+## Ramos de negócio
+
+`MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
+
+## Ciclo de vida de status
+
+```
+DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
+                                                  ↘ PENDING_EVIDENCE / REJECTED
+```
+
+## Metadados de workflow
+
+| Chave | Etapa |
+|---|---|
+| `metadata.intake[]` | Registro do FNOL |
+| `metadata.validation[]` | Verificação de cobertura |
+| `metadata.investigation[]` | Investigação em campo |
+| `metadata.approval[]` | Decisão de aprovação |
+| `metadata.settlement[]` | Confirmação de pagamento |

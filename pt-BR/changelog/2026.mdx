@@ -1,0 +1,43 @@
+---
+title: Changelog \u2014 2026
+description: Notas de versão da API da Verify Group Platform.
+---
+
+## Julho de 2026
+
+### v2.3.0 \u2014 Gestão de evidências
+
+- `PATCH /evidence/:id/tags` \u2014 Etiquete evidências com rótulos pesquisáveis
+- `POST /evidence/:id/review` \u2014 Aprove ou recuse evidências com observações do revisor
+- `POST /evidence/public-upload/proxy-upload` \u2014 Upload seguro para navegador (sem CORS)
+
+### v2.2.0 \u2014 Voice intelligence
+
+- O cenário padrão foi alterado para `customerSupportComplaint` em chamadas de intake/FNOL
+- Nova tentativa automática em `SCENARIO_MISMATCH_NOT_SCORED` com o cenário sugerido pela API
+- Resultados enriquecidos: `headline`, `recommendedDecision`, `executiveSummary`, `keyScores`, `importantCallSignals`
+
+### v2.1.0 \u2014 Forensics
+
+- `POST /forensics/poi-fraud-check` \u2014 Pontuação composta de fraude combinando voz, KYC e evidências por participante
+
+### v2.0.0 \u2014 Log de auditoria
+
+- Interceptador global registra cada requisição que altera dados, com nome do ator, e-mail, IP e tempo
+- `GET /audit/logs` suporta filtros `sortBy`, `sortOrder`, `page`, `limit`, `resourceType`, `resourceId`
+
+## Junho de 2026
+
+### v1.9.0 \u2014 KYC de organização
+
+- `POST /organizations/:id/run-kyc` \u2014 Verificação de empresa com criação automática de participantes para os diretores
+
+### v1.8.0 \u2014 Workflow de sinistros
+
+- Atribuir um investigador transiciona o sinistro automaticamente para `INVESTIGATING`
+- Novos campos de investigação: `partiesContacted`, `riskIndicators`, `evidenceReviewed`
+
+### v1.7.0 \u2014 Triagem de sanções
+
+- `POST /participants/sanctions-sources/sync` \u2014 endpoint público para atualizar as fontes de listas de vigilância
+- `organizationId` agora é inferido no servidor a partir do contexto do JWT

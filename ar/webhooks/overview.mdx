@@ -1,0 +1,38 @@
+---
+title: Webhooks
+description: استقبل إشعارات الأحداث في الوقت الفعلي من Verify Group.
+---
+
+## تسجيل webhook
+
+```bash
+POST /api/v1/webhooks
+```
+```json
+{
+  "url": "https://your-system.io/webhooks/verify-group",
+  "events": ["kyc.verified", "claim.status_changed", "sanctions.match.detected"],
+  "secret": "whsec_your_signing_secret"
+}
+```
+
+## التحقق من التواقيع
+
+يتضمن كل تسليم `X-VG-Signature-256`. تحقّق دائماً قبل المعالجة:
+
+```typescript
+import crypto from "crypto";
+
+function verify(rawBody: string, signature: string, secret: string): boolean {
+  const expected = `sha256=${crypto.createHmac("sha256", secret).update(rawBody).digest("hex")}`;
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+}
+```
+
+<Warning>حلّل الجسم (body) على شكل **بايتات خام** قبل التحقق — تحليل JSON أولاً يغيّر تمثيل البايتات ويُفسد فحوصات التوقيع.</Warning>
+
+## سياسة إعادة المحاولة
+
+تُعاد محاولة عمليات التسليم الفاشلة بتأخير أُسّي: 5 ث → 30 ث → 5 د → 30 د → ساعتان. بعد 5 حالات فشل، يُوسم webhook بـ `failed` وستستقبل تنبيهاً عبر البريد الإلكتروني.
+
+<Warning>يجب أن تستجيب نقطتك الطرفية خلال **30 ثانية** وإلا فسيُوسم التسليم على أنه فاشل.</Warning>

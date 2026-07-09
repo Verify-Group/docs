@@ -1,0 +1,46 @@
+---
+title: إدارة الأدلة
+description: رفع أدلة المطالبة، وسمها، ومراجعتها، وإدارتها.
+---
+
+## الرفع (موصى به لعملاء المتصفح)
+
+يوجّه الرفع عبر الخادم لتجنّب مشكلات CORS:
+
+```bash
+POST /api/v1/evidence/public-upload/proxy-upload
+Content-Type: multipart/form-data
+```
+
+يُرجع `evidenceId` و`signedUrl` للمعاينة الفورية.
+
+## سرد الأدلة الخاصة بمطالبة
+
+```bash
+GET /api/v1/evidence?claimId={claimId}
+```
+
+## وسم الأدلة
+
+```bash
+PATCH /api/v1/evidence/{id}/tags
+```
+```json
+{"tags": ["police_report", "verified", "high_priority"]}
+```
+
+## الموافقة على الأدلة أو رفضها
+
+```bash
+POST /api/v1/evidence/{id}/review
+```
+```json
+{"status": "APPROVED", "notes": "Document authenticated against police database."}
+```
+
+| الحالة | المعنى |
+|---|---|
+| `PENDING` | بانتظار المراجعة |
+| `APPROVED` | تم التحقق منها وقبولها |
+| `REJECTED` | مرفوضة |
+| `UNDER_REVIEW` | قيد التحليل الجنائي |

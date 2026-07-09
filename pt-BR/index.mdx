@@ -1,0 +1,68 @@
+---
+title: Introdução
+description: A API da Verify Group Platform — verificação de identidade corporativa, gestão de sinistros e compliance para mercados africanos.
+---
+
+## Boas-vindas à Verify Group
+
+A **Verify Group Platform** é uma API multi-tenant corporativa para:
+
+- **KYC / Verificação de identidade** — Verificação de pessoas físicas e empresas com CreditInfo, InsightGenie e IA proprietária
+- **Gestão de sinistros** — Ciclo de vida completo de sinistros de seguro com workflows de intake, validação, investigação e liquidação
+- **Triagem de sanções e AML** — Triagem em tempo real contra listas de vigilância via Sanctions.io com monitoramento contínuo
+- **Voice intelligence** — Análise biométrica de voz com IA e detecção de fraude usando o InsightGenie
+- **Autenticidade de documentos** — OCR e análise forense para verificação de documentos
+
+<CardGroup cols={2}>
+  <Card title="Início rápido" icon="rocket" href="/quickstart">
+    Faça sua primeira chamada de API em menos de 5 minutos.
+  </Card>
+  <Card title="Autenticação" icon="lock" href="/authentication">
+    Aprenda a autenticar suas requisições de API.
+  </Card>
+  <Card title="Referência da API" icon="code" href="/api-reference">
+    Navegue pela referência completa e interativa da API.
+  </Card>
+  <Card title="SDK JavaScript" icon="box" href="/sdks/javascript">
+    Use nosso SDK oficial em TypeScript.
+  </Card>
+</CardGroup>
+
+## URLs base
+
+| Ambiente | URL |
+|---|---|
+| Produção | `https://gateway.verify-group.io/api/v1` |
+| UAT | `https://uat.gateway.verify-group.io/api/v1` |
+| Desenvolvimento local | `http://localhost:4008/api/v1` |
+
+## Formato de resposta
+
+Todas as respostas de sucesso seguem um envelope consistente:
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Success",
+  "data": { ... },
+  "metadata": {
+    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "timestamp": "2026-07-09T10:00:00.000Z"
+  }
+}
+```
+
+## Formato de erro
+
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": "BadRequestException"
+}
+```
+
+## Suporte
+
+E-mail: [support@verify-group.io](mailto:support@verify-group.io)

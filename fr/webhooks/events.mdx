@@ -1,0 +1,37 @@
+---
+title: Événements webhook
+description: Tous les types d'événements webhook de Verify Group et leurs payloads.
+---
+
+## Événements KYC
+
+| Événement | Déclencheur |
+|---|---|
+| `kyc.created` | Nouvelle requête KYC initiée |
+| `kyc.verified` | Identité confirmée |
+| `kyc.failed` | Échec de vérification |
+| `kyc.manual_review` | Révision humaine requise |
+
+## Événements sinistres
+
+| Événement | Déclencheur |
+|---|---|
+| `claim.created` | Nouveau sinistre soumis |
+| `claim.status_changed` | Transition de statut |
+| `claim.approved` | Sinistre approuvé pour règlement |
+| `claim.rejected` | Sinistre refusé |
+
+## Événements sanctions
+
+| Événement | Déclencheur |
+|---|---|
+| `sanctions.check.completed` | Screening terminé |
+| `sanctions.match.detected` | Nouvelle correspondance trouvée (surveillance) |
+| `sanctions.match.resolved` | Correspondance résolue comme faux positif |
+
+## Événements preuves
+
+| Événement | Déclencheur |
+|---|---|
+| `evidence.uploaded` | Nouveau fichier attaché |
+| `evidence.reviewed` | Preuve approuvée ou refusée |

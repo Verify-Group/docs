@@ -1,0 +1,48 @@
+---
+title: 语音智能
+description: 基于 AI 的语音分析与欺诈信号检测。
+---
+
+## 场景
+
+| 场景 | 使用场景 |
+|---|---|
+| `customerSupportComplaint` | FNOL / 受理通话（默认） |
+| `fraudSignalDetection` | SIU / 反欺诈调查 |
+| `debtCollection` | 催收通话 |
+
+## 触发分析
+
+```bash
+POST /api/v1/voice/sessions/{sessionId}/analyze
+```
+```json
+{"forceReanalysis": false}
+```
+
+## 结果结构
+
+```json
+{
+  "analysisResults": {
+    "primaryScore": 62,
+    "recommendedDecision": "MANUAL_REVIEW",
+    "headline": "Moderate stress detected",
+    "keyScores": {"stress": 68, "deception": 45, "coaching": 31},
+    "importantCallSignals": [{"type": "elevated_stress", "confidence": 0.78}]
+  }
+}
+```
+
+## 综合欺诈评分
+
+```bash
+POST /api/v1/forensics/poi-fraud-check
+```
+```json
+{"claimId": "claim-uuid"}
+```
+
+返回每位参与者的综合评分，融合了语音、KYC 与证据信号。
+
+<Tip>当返回 `SCENARIO_MISMATCH_NOT_SCORED` 警告时，后端会使用建议的场景自动重试。</Tip>

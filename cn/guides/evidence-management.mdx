@@ -1,0 +1,46 @@
+---
+title: 证据管理
+description: 上传、打标签、审核及管理理赔证据。
+---
+
+## 上传（推荐用于浏览器客户端）
+
+通过后端中转上传，以规避 CORS 问题：
+
+```bash
+POST /api/v1/evidence/public-upload/proxy-upload
+Content-Type: multipart/form-data
+```
+
+返回 `evidenceId` 以及用于即时预览的 `signedUrl`。
+
+## 列出某个理赔的证据
+
+```bash
+GET /api/v1/evidence?claimId={claimId}
+```
+
+## 为证据打标签
+
+```bash
+PATCH /api/v1/evidence/{id}/tags
+```
+```json
+{"tags": ["police_report", "verified", "high_priority"]}
+```
+
+## 审核证据（通过或拒绝）
+
+```bash
+POST /api/v1/evidence/{id}/review
+```
+```json
+{"status": "APPROVED", "notes": "Document authenticated against police database."}
+```
+
+| 状态 | 含义 |
+|---|---|
+| `PENDING` | 待审核 |
+| `APPROVED` | 已核实并采纳 |
+| `REJECTED` | 已拒绝 |
+| `UNDER_REVIEW` | 正在进行取证分析 |

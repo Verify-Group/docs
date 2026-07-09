@@ -1,0 +1,39 @@
+---
+title: Triagem de sanções
+description: Faça a triagem de participantes contra listas globais de AML/PEP/sanções.
+---
+
+## Sincronizar fontes de listas de vigilância
+
+```bash
+POST /api/v1/participants/sanctions-sources/sync
+```
+
+Endpoint público — não requer autenticação. Chame a partir de um job agendado para manter as fontes atualizadas.
+
+## Executar uma verificação
+
+```bash
+POST /api/v1/participants/{participantId}/sanctions-check
+```
+```json
+{
+  "dataSources": ["UN_CONSOLIDATED", "OFAC_SDN", "EU_FINANCIAL_SANCTIONS"],
+  "enableMonitoring": true
+}
+```
+
+<Note>`dataSources` é opcional — omita para pesquisar em todas as fontes habilitadas.</Note>
+
+## Níveis de risco
+
+`clear` · `low` · `medium` · `high` · `critical`
+
+## Monitoramento contínuo
+
+Quando `enableMonitoring: true`, você recebe webhooks sempre que novas correspondências aparecem em qualquer lista cadastrada.
+
+| Evento | Gatilho |
+|---|---|
+| `sanctions.match.detected` | Nova correspondência encontrada |
+| `sanctions.match.resolved` | Falso positivo resolvido |

@@ -1,0 +1,25 @@
+---
+title: 理赔
+description: 保险理赔对象 — 结构、生命周期与工作流。
+---
+
+## 业务线
+
+`MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
+
+## 状态生命周期
+
+```
+DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → APPROVED → SETTLED → CLOSED
+                                                  ↘ PENDING_EVIDENCE / REJECTED
+```
+
+## 工作流元数据
+
+| 键 | 阶段 |
+|---|---|
+| `metadata.intake[]` | FNOL（首次报案）受理 |
+| `metadata.validation[]` | 保障范围核验 |
+| `metadata.investigation[]` | 现场调查 |
+| `metadata.approval[]` | 审批决策 |
+| `metadata.settlement[]` | 付款确认 |

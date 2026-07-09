@@ -1,0 +1,48 @@
+---
+title: ذكاء الصوت
+description: تحليل صوتي مدعوم بالذكاء الاصطناعي واكتشاف إشارات الاحتيال.
+---
+
+## السيناريوهات
+
+| السيناريو | حالة الاستخدام |
+|---|---|
+| `customerSupportComplaint` | مكالمات FNOL / الاستقبال (الافتراضي) |
+| `fraudSignalDetection` | SIU / التحقيق في الاحتيال |
+| `debtCollection` | مكالمات التحصيل |
+
+## تشغيل التحليل
+
+```bash
+POST /api/v1/voice/sessions/{sessionId}/analyze
+```
+```json
+{"forceReanalysis": false}
+```
+
+## بنية النتيجة
+
+```json
+{
+  "analysisResults": {
+    "primaryScore": 62,
+    "recommendedDecision": "MANUAL_REVIEW",
+    "headline": "Moderate stress detected",
+    "keyScores": {"stress": 68, "deception": 45, "coaching": 31},
+    "importantCallSignals": [{"type": "elevated_stress", "confidence": 0.78}]
+  }
+}
+```
+
+## درجة احتيال مركّبة
+
+```bash
+POST /api/v1/forensics/poi-fraud-check
+```
+```json
+{"claimId": "claim-uuid"}
+```
+
+يُرجع درجات مركّبة لكل مشارك تجمع بين إشارات الصوت وKYC والأدلة.
+
+<Tip>عندما تُعاد استجابة تحذير `SCENARIO_MISMATCH_NOT_SCORED`، يعيد الخادم المحاولة تلقائياً بالسيناريو المقترح.</Tip>

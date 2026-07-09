@@ -1,0 +1,37 @@
+---
+title: Webhook 事件
+description: Verify Group 所有 Webhook 事件类型与载荷。
+---
+
+## KYC 事件
+
+| 事件 | 触发时机 |
+|---|---|
+| `kyc.created` | 发起新的 KYC 请求 |
+| `kyc.verified` | 身份已确认 |
+| `kyc.failed` | 验证失败 |
+| `kyc.manual_review` | 需要人工审核 |
+
+## 理赔事件
+
+| 事件 | 触发时机 |
+|---|---|
+| `claim.created` | 新理赔已提交 |
+| `claim.status_changed` | 状态发生流转 |
+| `claim.approved` | 理赔审批通过，可进入结案 |
+| `claim.rejected` | 理赔被拒 |
+
+## 制裁事件
+
+| 事件 | 触发时机 |
+|---|---|
+| `sanctions.check.completed` | 筛查任务已完成 |
+| `sanctions.match.detected` | 监测中发现新的命中 |
+| `sanctions.match.resolved` | 命中被处置为误报 |
+
+## 证据事件
+
+| 事件 | 触发时机 |
+|---|---|
+| `evidence.uploaded` | 新文件已附加 |
+| `evidence.reviewed` | 证据已通过或拒绝 |

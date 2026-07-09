@@ -1,0 +1,37 @@
+---
+title: Eventos de webhook
+description: Todos os tipos de eventos e payloads de webhook da Verify Group.
+---
+
+## Eventos de KYC
+
+| Evento | Gatilho |
+|---|---|
+| `kyc.created` | Nova solicitação de KYC iniciada |
+| `kyc.verified` | Identidade confirmada |
+| `kyc.failed` | Verificação falhou |
+| `kyc.manual_review` | Requer revisão humana |
+
+## Eventos de sinistros
+
+| Evento | Gatilho |
+|---|---|
+| `claim.created` | Novo sinistro enviado |
+| `claim.status_changed` | Transição de status |
+| `claim.approved` | Sinistro aprovado para liquidação |
+| `claim.rejected` | Sinistro recusado |
+
+## Eventos de sanções
+
+| Evento | Gatilho |
+|---|---|
+| `sanctions.check.completed` | Triagem concluída |
+| `sanctions.match.detected` | Nova correspondência encontrada (monitoramento) |
+| `sanctions.match.resolved` | Correspondência resolvida como falso positivo |
+
+## Eventos de evidências
+
+| Evento | Gatilho |
+|---|---|
+| `evidence.uploaded` | Novo arquivo anexado |
+| `evidence.reviewed` | Evidência aprovada ou recusada |

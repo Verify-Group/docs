@@ -1,0 +1,45 @@
+---
+title: 理赔管理
+description: 创建并处理保险理赔，覆盖完整生命周期。
+---
+
+## 创建理赔
+
+```bash
+POST /api/v1/claims
+```
+```json
+{
+  "type": "MOTOR",
+  "policyNumber": "POL-MT-KE-2025-8847",
+  "description": "Rear-end collision on Mombasa Road",
+  "incidentDate": "2026-06-15",
+  "claimAmount": 185000
+}
+```
+
+## 更新状态
+
+```bash
+PATCH /api/v1/claims/{id}/status
+```
+```json
+{"status": "INVESTIGATING", "reason": "Elevated fraud score"}
+```
+
+## 添加参与者
+
+```bash
+POST /api/v1/claims/{claimId}/pois
+```
+```json
+{"personId": "participant-uuid", "role": "claimant"}
+```
+
+<Note>分配调查员时，理赔状态会自动流转到 `INVESTIGATING`。</Note>
+
+## 审计追溯
+
+```bash
+GET /api/v1/audit/logs?resourceType=claim&resourceId={claimId}&sortBy=createdAt&sortOrder=desc
+```

@@ -1,0 +1,55 @@
+---
+title: KYC 验证
+description: 运行个人与企业身份验证。
+---
+
+## 运行 KYC
+
+```bash
+POST /api/v1/kyc
+```
+```json
+{
+  "participant_id": "uuid",
+  "type": "individual",
+  "scenario": "identity",
+  "payload": {
+    "identifier_type": "national_id",
+    "identifier_number": "12345678",
+    "country": "KE"
+  }
+}
+```
+
+## 查询状态
+
+```bash
+GET /api/v1/kyc/{id}
+```
+
+| 状态 | 含义 |
+|---|---|
+| `pending` | 已排队 |
+| `processing` | 处理中 |
+| `verified` | 身份已确认 |
+| `failed` | 无法完成验证 |
+| `manual_review` | 需要人工审核 |
+
+## 将结果同步到参与者
+
+```bash
+POST /api/v1/kyc/{id}/sync
+```
+
+会用已验证的姓名、出生日期、地址以及提取到的人脸照片更新参与者信息。
+
+## 组织 KYC
+
+```bash
+POST /api/v1/organizations/{id}/run-kyc
+```
+```json
+{"autoSync": true}
+```
+
+自动为所有识别到的董事创建对应的参与者记录。

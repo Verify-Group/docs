@@ -1,0 +1,43 @@
+---
+title: سجل التغييرات \u2014 2026
+description: ملاحظات الإصدار لواجهة برمجة تطبيقات Verify Group Platform.
+---
+
+## يوليو 2026
+
+### v2.3.0 \u2014 إدارة الأدلة
+
+- `PATCH /evidence/:id/tags` \u2014 وسم الأدلة بعلامات قابلة للبحث
+- `POST /evidence/:id/review` \u2014 الموافقة على الأدلة أو رفضها مع ملاحظات المراجع
+- `POST /evidence/public-upload/proxy-upload` \u2014 رفع آمن من المتصفح (بدون CORS)
+
+### v2.2.0 \u2014 ذكاء الصوت
+
+- تم تغيير السيناريو الافتراضي إلى `customerSupportComplaint` لمكالمات الاستقبال / FNOL
+- إعادة المحاولة تلقائياً عند `SCENARIO_MISMATCH_NOT_SCORED` بالسيناريو الذي تقترحه API
+- نتائج مُثراة: `headline`، `recommendedDecision`، `executiveSummary`، `keyScores`، `importantCallSignals`
+
+### v2.1.0 \u2014 التحليل الجنائي
+
+- `POST /forensics/poi-fraud-check` \u2014 درجة احتيال مركّبة تجمع بين الصوت وKYC والأدلة لكل مشارك
+
+### v2.0.0 \u2014 تدوين المراجعة (Audit logging)
+
+- معترض عام (interceptor) يسجّل كل طلب يُعدّل البيانات مع اسم الفاعل وبريده الإلكتروني وعنوان IP والتوقيت
+- يدعم `GET /audit/logs` عوامل التصفية `sortBy`، `sortOrder`، `page`، `limit`، `resourceType`، `resourceId`
+
+## يونيو 2026
+
+### v1.9.0 \u2014 KYC للمؤسسات
+
+- `POST /organizations/:id/run-kyc` \u2014 التحقق من الشركات مع إنشاء تلقائي لمشاركين من المديرين
+
+### v1.8.0 \u2014 سير عمل المطالبات
+
+- تعيين محقّق يُنقل المطالبة تلقائياً إلى `INVESTIGATING`
+- حقول تحقيق جديدة: `partiesContacted`، `riskIndicators`، `evidenceReviewed`
+
+### v1.7.0 \u2014 فحص العقوبات
+
+- `POST /participants/sanctions-sources/sync` \u2014 نقطة طرفية عامة لتحديث مصادر قوائم المراقبة
+- `organizationId` أصبح يُستنتج الآن من جانب الخادم من سياق JWT

@@ -1,0 +1,68 @@
+---
+title: 简介
+description: Verify Group 平台 API — 面向非洲市场的企业级身份验证、理赔管理与合规服务。
+---
+
+## 欢迎使用 Verify Group
+
+**Verify Group 平台**是一套企业级多租户 API，提供以下能力：
+
+- **KYC / 身份验证** — 由 CreditInfo、InsightGenie 及自研 AI 驱动的个人与企业身份验证
+- **理赔管理** — 覆盖受理、审核、调查与结案的完整保险理赔生命周期工作流
+- **制裁与反洗钱筛查** — 通过 Sanctions.io 提供的实时监控名单筛查及持续监测
+- **语音智能** — 由 InsightGenie 提供的 AI 驱动语音生物识别分析与欺诈检测
+- **文档真伪核验** — 基于 OCR 与取证分析的文档验证能力
+
+<CardGroup cols={2}>
+  <Card title="快速开始" icon="rocket" href="/quickstart">
+    在 5 分钟内完成您的第一次 API 调用。
+  </Card>
+  <Card title="身份认证" icon="lock" href="/authentication">
+    了解如何对 API 请求进行身份认证。
+  </Card>
+  <Card title="API 参考" icon="code" href="/api-reference">
+    浏览完整的交互式 API 参考文档。
+  </Card>
+  <Card title="JavaScript SDK" icon="box" href="/sdks/javascript">
+    使用我们官方的 TypeScript SDK。
+  </Card>
+</CardGroup>
+
+## 基础 URL
+
+| 环境 | URL |
+|---|---|
+| 生产环境 | `https://gateway.verify-group.io/api/v1` |
+| UAT | `https://uat.gateway.verify-group.io/api/v1` |
+| 本地开发 | `http://localhost:4008/api/v1` |
+
+## 响应格式
+
+所有成功响应均遵循统一的封装结构：
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Success",
+  "data": { ... },
+  "metadata": {
+    "requestId": "4515a20d-9157-8b5a-5b45-a4f111afc8ad",
+    "timestamp": "2026-07-09T10:00:00.000Z"
+  }
+}
+```
+
+## 错误格式
+
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "error": "BadRequestException"
+}
+```
+
+## 技术支持
+
+邮箱：[support@verify-group.io](mailto:support@verify-group.io)

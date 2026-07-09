@@ -1,0 +1,23 @@
+---
+title: KYC
+description: Conceitos de verificação de identidade e de empresas.
+---
+
+## Tipos de verificação
+
+| Tipo | Cenário |
+|---|---|
+| Consulta de ID | `identity` |
+| Biométrica | `biometric` |
+| UBO de empresa | `business_ubo` |
+
+## Ciclo de vida
+
+`created` → `processing` → `verified` / `failed` / `manual_review`
+
+## Provedores
+
+| Provedor | Região | Capacidades |
+|---|---|---|
+| CreditInfo | África Oriental | ID individual, bureau de crédito |
+| InsightGenie | Global | Biometria, OCR de documentos, voz |
