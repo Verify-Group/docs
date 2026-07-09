@@ -93,7 +93,7 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "swagger.json"
+        "openapi": "openapi.json"
       },
       {
         "tab": "Changelog",
