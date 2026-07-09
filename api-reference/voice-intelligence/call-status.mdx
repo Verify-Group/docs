@@ -1,7 +1,7 @@
 ---
 title: "Get call with fresh VAPI data"
 api: "GET /api/v1/voice-calls/{id}/vapi-status"
-description: "Retrieves call details with fresh data from VAPI API."
+description: "Fetch voice call details with a live status refresh from the VAPI provider, bypassing the local cache to get the latest call state, duration, and outcome."
 ---
 
 <ParamField path="id" type="string" required>

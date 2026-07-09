@@ -1,7 +1,7 @@
 ---
 title: "Update claim status"
 api: "PATCH /api/v1/claims/{id}/status"
-description: "Update claim status. APPROVED/REJECTED status changes require manager approval within 48 hours. Consumes 5 tokens."
+description: "Transition a claim to a new workflow status. APPROVED and REJECTED changes require manager approval within 48 hours. Consumes 5 tokens per call."
 ---
 
 <ParamField path="id" type="string" required>

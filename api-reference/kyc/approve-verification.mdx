@@ -1,7 +1,7 @@
 ---
 title: "Approve verification"
 api: "POST /api/v1/kyc/verifications/{id}/approve"
-description: "Approve a verification after review using current user as reviewer."
+description: "Approve a KYC verification after manual review. The currently authenticated user is recorded as the reviewer and the participant record is updated on success."
 ---
 
 <ParamField path="id" type="string" required>
