@@ -10,11 +10,7 @@
   "colors": {
     "primary": "#42b549",
     "light": "#5ecf65",
-    "dark": "#2e8e34",
-    "anchors": {
-      "from": "#42b549",
-      "to": "#2e8e34"
-    }
+    "dark": "#2e8e34"
   },
   "theme": "willow",
   "topbarCtaButton": {
