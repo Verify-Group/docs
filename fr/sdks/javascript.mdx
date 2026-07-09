@@ -1,13 +1,13 @@
 ---
 title: SDK JavaScript / TypeScript
-description: Installez le SDK TypeScript officiel de Verify Group, initialisez le client et appelez les endpoints KYC, sinistres, preuves et sanctions typés.
+description: Installez le SDK TypeScript officiel Verify Group, initialisez le client et appelez les points de terminaison KYC, réclamations, preuves et sanctions avec des helpers typés.
 ---
 
 ## Installation
 
 ```bash
 npm install @verify-group/sdk
-# ou
+# or
 pnpm add @verify-group/sdk
 ```
 
@@ -35,14 +35,14 @@ const kyc = await vg.kyc.create({
 await vg.kyc.sync(kyc.data.id);
 ```
 
-## Sinistres
+## Réclamations
 
 ```typescript
 const claim = await vg.claims.create({ type: "MOTOR", policyNumber: "POL-MT-KE-2025-8847", incidentDate: "2026-06-15", claimAmount: 185000 });
 await vg.claims.updateStatus(claim.data.id, { status: "INVESTIGATING" });
 ```
 
-## Participants & sanctions
+## Participants et sanctions
 
 ```typescript
 const p = await vg.participants.create({ firstName: "James", lastName: "Kamau", type: "individual", nationalId: "12345678", phone: "+254722000001", country: "KE" });

@@ -1,11 +1,11 @@
 ---
-title: أحداث Webhook
-description: مرجع كل حدث webhook في Verify Group، بما في ذلك إشعارات KYC ودورة حياة المطالبات وتطابقات العقوبات ومراجعة الأدلة مع مشغّلاتها والحمولات المرفقة.
+title: أحداث webhook
+description: مرجع لكل حدث webhook في Verify Group، بما في ذلك إشعارات KYC ودورة حياة المطالبات وتطابقات العقوبات ومراجعة الأدلة مع مشغّلاتها.
 ---
 
 ## أحداث KYC
 
-| الحدث | المُشغّل |
+| الحدث | المشغّل |
 |---|---|
 | `kyc.created` | تم بدء طلب KYC جديد |
 | `kyc.verified` | تم تأكيد الهوية |
@@ -14,24 +14,24 @@ description: مرجع كل حدث webhook في Verify Group، بما في ذلك
 
 ## أحداث المطالبات
 
-| الحدث | المُشغّل |
+| الحدث | المشغّل |
 |---|---|
 | `claim.created` | تم تقديم مطالبة جديدة |
-| `claim.status_changed` | تغيير في الحالة |
+| `claim.status_changed` | انتقال الحالة |
 | `claim.approved` | تمت الموافقة على المطالبة للتسوية |
 | `claim.rejected` | تم رفض المطالبة |
 
 ## أحداث العقوبات
 
-| الحدث | المُشغّل |
+| الحدث | المشغّل |
 |---|---|
-| `sanctions.check.completed` | اكتمل تشغيل الفحص |
-| `sanctions.match.detected` | تم العثور على مطابقة جديدة (المراقبة) |
-| `sanctions.match.resolved` | تم حلّ المطابقة كنتيجة إيجابية كاذبة |
+| `sanctions.check.completed` | اكتملت عملية الفحص |
+| `sanctions.match.detected` | تم العثور على تطابق جديد (المراقبة) |
+| `sanctions.match.resolved` | تم حل التطابق كإيجابي خاطئ |
 
 ## أحداث الأدلة
 
-| الحدث | المُشغّل |
+| الحدث | المشغّل |
 |---|---|
 | `evidence.uploaded` | تم إرفاق ملف جديد |
 | `evidence.reviewed` | تمت الموافقة على الدليل أو رفضه |

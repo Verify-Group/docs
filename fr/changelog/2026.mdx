@@ -1,6 +1,6 @@
 ---
 title: Journal des modifications — 2026
-description: "Notes de version 2026 de l'API Verify Group Platform : preuves, voice intelligence, forensics, journalisation d'audit et mises à jour sanctions."
+description: Notes de version de l'API Verify Group Platform pour 2026, couvrant les preuves, l'intelligence vocale, la forensique, la journalisation d'audit et les mises à jour de sanctions.
 ---
 
 ## Juillet 2026
@@ -8,13 +8,13 @@ description: "Notes de version 2026 de l'API Verify Group Platform : preuves, vo
 ### v2.3.0 — Gestion des preuves
 
 - `PATCH /evidence/:id/tags` — Étiquetez les preuves avec des libellés recherchables
-- `POST /evidence/:id/review` — Approuvez ou refusez les preuves avec des notes du réviseur
-- `POST /evidence/public-upload/proxy-upload` — Upload compatible navigateur (sans CORS)
+- `POST /evidence/:id/review` — Approuvez ou refusez les preuves avec des notes de relecteur
+- `POST /evidence/public-upload/proxy-upload` — Envoi sécurisé côté navigateur (sans CORS)
 
-### v2.2.0 — Voice intelligence
+### v2.2.0 — Intelligence vocale
 
-- Le scénario par défaut est désormais `customerSupportComplaint` pour les appels de réception/FNOL
-- Nouvelle tentative automatique en cas de `SCENARIO_MISMATCH_NOT_SCORED` avec le scénario suggéré par l'API
+- Le scénario par défaut est passé à `customerSupportComplaint` pour les appels d'intake/FNOL
+- Nouvelle tentative automatique sur `SCENARIO_MISMATCH_NOT_SCORED` avec le scénario suggéré par l'API
 - Résultats enrichis : `headline`, `recommendedDecision`, `executiveSummary`, `keyScores`, `importantCallSignals`
 
 ### v2.1.0 — Forensique
@@ -23,21 +23,21 @@ description: "Notes de version 2026 de l'API Verify Group Platform : preuves, vo
 
 ### v2.0.0 — Journalisation d'audit
 
-- Un intercepteur global journalise chaque requête modifiante avec le nom, l'email, l'IP et le timing de l'acteur
+- L'intercepteur global journalise chaque requête modificatrice avec le nom, l'email, l'IP et le timing de l'acteur
 - `GET /audit/logs` prend en charge les filtres `sortBy`, `sortOrder`, `page`, `limit`, `resourceType`, `resourceId`
 
 ## Juin 2026
 
 ### v1.9.0 — KYC d'organisation
 
-- `POST /organizations/:id/run-kyc` — Vérification d'entreprise avec création automatique des participants dirigeants
+- `POST /organizations/:id/run-kyc` — Vérification d'entreprise avec création automatique de participants dirigeants
 
-### v1.8.0 — Workflow des sinistres
+### v1.8.0 — Flux de réclamations
 
-- L'affectation d'un enquêteur fait automatiquement passer le sinistre à `INVESTIGATING`
+- L'affectation d'un enquêteur fait automatiquement passer la réclamation à `INVESTIGATING`
 - Nouveaux champs d'enquête : `partiesContacted`, `riskIndicators`, `evidenceReviewed`
 
-### v1.7.0 — Screening sanctions
+### v1.7.0 — Filtrage des sanctions
 
-- `POST /participants/sanctions-sources/sync` — endpoint public pour rafraîchir les sources de listes de surveillance
+- `POST /participants/sanctions-sources/sync` — point de terminaison public pour actualiser les sources de listes de surveillance
 - `organizationId` est désormais déduit côté serveur à partir du contexte JWT

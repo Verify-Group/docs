@@ -1,9 +1,9 @@
 ---
 title: Triagem de sanções
-description: Faça triagem de participantes contra as listas ONU, OFAC e UE, ative monitoramento contínuo e receba alertas via webhook em novos matches de sanções.
+description: Faça triagem de participantes contra listas restritivas da ONU, OFAC e UE, ative monitoramento contínuo e receba alertas por webhook em novos matches de sanções.
 ---
 
-## Sincronizar fontes de listas de vigilância
+## Sincronizar fontes de listas restritivas
 
 ```bash
 POST /api/v1/participants/sanctions-sources/sync
@@ -31,9 +31,9 @@ POST /api/v1/participants/{participantId}/sanctions-check
 
 ## Monitoramento contínuo
 
-Quando `enableMonitoring: true`, você recebe webhooks sempre que novas correspondências aparecem em qualquer lista cadastrada.
+Quando `enableMonitoring: true`, você recebe webhooks sempre que novos matches aparecem em qualquer lista inscrita.
 
 | Evento | Gatilho |
 |---|---|
-| `sanctions.match.detected` | Nova correspondência encontrada |
+| `sanctions.match.detected` | Novo match encontrado |
 | `sanctions.match.resolved` | Falso positivo resolvido |

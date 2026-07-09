@@ -1,11 +1,11 @@
 ---
 title: Gestão de evidências
-description: Faça upload de evidências de sinistros pelo endpoint de proxy, etiquete arquivos, execute aprovações de revisor e gerencie transições de status na API.
+description: Envie evidências de sinistros pelo endpoint proxy, etiquete arquivos, execute aprovações de revisores e gerencie transições de status na API Verify Group.
 ---
 
-## Upload (recomendado para clientes em navegador)
+## Upload (recomendado para clientes de navegador)
 
-Roteia o upload pelo backend para evitar problemas de CORS:
+Roteia o upload através do backend para evitar problemas de CORS:
 
 ```bash
 POST /api/v1/evidence/public-upload/proxy-upload
@@ -20,7 +20,7 @@ Retorna `evidenceId` e uma `signedUrl` para pré-visualização imediata.
 GET /api/v1/evidence?claimId={claimId}
 ```
 
-## Etiquetar evidência
+## Etiquetar evidências
 
 ```bash
 PATCH /api/v1/evidence/{id}/tags
@@ -29,7 +29,7 @@ PATCH /api/v1/evidence/{id}/tags
 {"tags": ["police_report", "verified", "high_priority"]}
 ```
 
-## Aprovar ou recusar evidência
+## Aprovar ou recusar evidências
 
 ```bash
 POST /api/v1/evidence/{id}/review
@@ -41,6 +41,6 @@ POST /api/v1/evidence/{id}/review
 | Status | Significado |
 |---|---|
 | `PENDING` | Aguardando revisão |
-| `APPROVED` | Verificada e aceita |
-| `REJECTED` | Recusada |
+| `APPROVED` | Verificado e aceito |
+| `REJECTED` | Recusado |
 | `UNDER_REVIEW` | Em análise forense |

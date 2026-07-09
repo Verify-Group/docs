@@ -1,6 +1,6 @@
 ---
 title: المصادقة
-description: صادِق طلبات واجهة Verify Group API عبر رموز JWT bearer، وحدِّث رمز الوصول عند انتهائه، واضبط ترويسة المؤسسة المطلوبة لبيئة تعدد المستأجرين بأمان تام.
+description: قم بمصادقة طلبات Verify Group API باستخدام رموز JWT bearer، وتحديث رمز الوصول، وضبط ترويسة المؤسسة متعددة المستأجرين المطلوبة.
 ---
 
 يجب أن يتضمن كل طلب `Authorization: Bearer <token>`.
@@ -19,7 +19,7 @@ POST /api/v1/auth/login
 {"data":{"accessToken":"eyJ...","refreshToken":"eyJ...","expiresIn":3600}}
 ```
 
-## تحديث رمز
+## تحديث الرمز
 
 ```bash
 POST /api/v1/auth/refresh
@@ -32,12 +32,12 @@ POST /api/v1/auth/refresh
 
 | الترويسة | مطلوبة | الوصف |
 |---|---|---|
-| `Authorization` | دائماً | `Bearer <token>` |
-| `X-Organization-ID` | لمعظم النقاط الطرفية | UUID خاص بمؤسستك |
+| `Authorization` | دائمًا | `Bearer <token>` |
+| `X-Organization-ID` | معظم نقاط النهاية | UUID الخاص بمؤسستك |
 
 ## أفضل ممارسات الأمان
 
 <Check>احفظ رموز الوصول في الذاكرة، وليس في localStorage</Check>
-<Check>احفظ رموز التحديث في ملفات تعريف ارتباط httpOnly آمنة</Check>
+<Check>احفظ رموز التحديث في ملفات تعريف الارتباط الآمنة httpOnly</Check>
 <Check>استخدم HTTPS في كل مكان</Check>
-<Check>ألغِ الرموز عند تسجيل الخروج</Check>
+<Check>قم بإبطال الرموز عند تسجيل الخروج</Check>

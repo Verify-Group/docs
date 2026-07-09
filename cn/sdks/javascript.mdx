@@ -1,13 +1,13 @@
 ---
 title: JavaScript / TypeScript SDK
-description: 安装官方发布的 Verify Group TypeScript SDK 软件包、初始化 API 客户端实例配置，并使用完整类型定义的辅助方法便捷调用 KYC 身份验证、保险理赔管理、证据文件上传以及全球制裁名单筛查等平台核心接口，提供优质开发者体验与类型安全保障。
+description: 安装 Verify Group 官方 TypeScript SDK，初始化客户端，并通过带类型的辅助方法调用 KYC、理赔、证据和制裁名单接口。
 ---
 
 ## 安装
 
 ```bash
 npm install @verify-group/sdk
-# 或
+# or
 pnpm add @verify-group/sdk
 ```
 
@@ -42,7 +42,7 @@ const claim = await vg.claims.create({ type: "MOTOR", policyNumber: "POL-MT-KE-2
 await vg.claims.updateStatus(claim.data.id, { status: "INVESTIGATING" });
 ```
 
-## 参与者与制裁筛查
+## 参与人与制裁筛查
 
 ```typescript
 const p = await vg.participants.create({ firstName: "James", lastName: "Kamau", type: "individual", nationalId: "12345678", phone: "+254722000001", country: "KE" });

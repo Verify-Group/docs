@@ -1,9 +1,9 @@
 ---
-title: Gestion des sinistres
-description: Créez des sinistres d'assurance, gérez les transitions de statuts, attachez des participants et inspectez l'audit trail sur le cycle Verify Group.
+title: Gestion des réclamations
+description: Créez des réclamations d'assurance, faites évoluer leurs statuts, rattachez des participants et inspectez la piste d'audit tout au long du cycle de vie complet des réclamations Verify Group.
 ---
 
-## Créer un sinistre
+## Créer une réclamation
 
 ```bash
 POST /api/v1/claims
@@ -36,7 +36,7 @@ POST /api/v1/claims/{claimId}/pois
 {"personId": "participant-uuid", "role": "claimant"}
 ```
 
-<Note>L'affectation d'un enquêteur fait automatiquement passer le sinistre à `INVESTIGATING`.</Note>
+<Note>L'affectation d'un enquêteur fait automatiquement passer la réclamation à `INVESTIGATING`.</Note>
 
 ## Piste d'audit
 

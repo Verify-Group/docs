@@ -1,11 +1,11 @@
 ---
 title: Démarrage rapide
-description: Obtenez vos identifiants Verify Group, authentifiez-vous et lancez votre premier appel KYC ou sinistres en moins de cinq minutes avec des exemples curl.
+description: Obtenez vos identifiants API Verify Group, authentifiez-vous et effectuez votre premier appel KYC ou de réclamation en moins de cinq minutes avec des exemples curl prêts à coller.
 ---
 
 ## 1. Obtenez vos identifiants
 
-Connectez-vous au [tableau de bord](https://app.verify-group.io) et accédez à **Paramètres → Clés API**.
+Connectez-vous au [Dashboard](https://app.verify-group.io) et rendez-vous dans **Settings → API Keys**.
 
 ## 2. Authentifiez-vous
 
@@ -26,7 +26,7 @@ curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
 }
 ```
 
-## 3. Incluez votre en-tête d'organisation
+## 3. Incluez l'en-tête de votre organisation
 
 ```bash
 export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
@@ -37,7 +37,7 @@ curl https://gateway.verify-group.io/api/v1/participants \
   -H "X-Organization-ID: $ORG_ID"
 ```
 
-## 4. Lancez une vérification KYC
+## 4. Exécutez une vérification KYC
 
 ```bash
 curl -X POST https://gateway.verify-group.io/api/v1/kyc \
@@ -56,11 +56,11 @@ curl -X POST https://gateway.verify-group.io/api/v1/kyc \
   }'
 ```
 
-<Check>Vous avez effectué votre première vérification d'identité !</Check>
+<Check>Vous venez de réaliser votre première vérification d'identité !</Check>
 
 <CardGroup cols={2}>
   <Card title="Authentification" icon="lock" href="/authentication">Flux de rafraîchissement JWT et gestion des jetons.</Card>
-  <Card title="Guide des sinistres" icon="file-text" href="/guides/claims-management">Créez et traitez les sinistres de bout en bout.</Card>
-  <Card title="Screening sanctions" icon="shield" href="/guides/sanctions-screening">Screening contre les listes de surveillance mondiales.</Card>
+  <Card title="Guide des réclamations" icon="file-text" href="/guides/claims-management">Créez et traitez les réclamations de bout en bout.</Card>
+  <Card title="Filtrage des sanctions" icon="shield" href="/guides/sanctions-screening">Filtrez par rapport aux listes de surveillance mondiales.</Card>
   <Card title="SDK JavaScript" icon="box" href="/sdks/javascript">Utilisez le SDK typé.</Card>
 </CardGroup>

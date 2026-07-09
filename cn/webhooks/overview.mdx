@@ -1,9 +1,9 @@
 ---
-title: Webhooks
-description: 在您的业务系统中注册 Verify Group 平台的 Webhook 回调接收端点、通过 HMAC-SHA256 算法校验请求签名的完整性，并妥善处理带有指数退避策略的自动重试投递机制，实时接收并可靠处理来自平台的各类事件通知，构建稳健的事件驱动型业务集成。
+title: Webhook
+description: 注册 webhook 端点、校验 HMAC-SHA256 签名，并处理 Verify Group 针对实时 API 事件的指数退避重试机制。
 ---
 
-## 注册 Webhook
+## 注册 webhook
 
 ```bash
 POST /api/v1/webhooks
@@ -16,9 +16,9 @@ POST /api/v1/webhooks
 }
 ```
 
-## 验证签名
+## 校验签名
 
-每次投递都会带上 `X-VG-Signature-256`。请务必在处理前进行校验：
+每次投递都会附带 `X-VG-Signature-256`。请务必在处理前先校验：
 
 ```typescript
 import crypto from "crypto";
@@ -29,10 +29,10 @@ function verify(rawBody: string, signature: string, secret: string): boolean {
 }
 ```
 
-<Warning>在验证签名之前，请以**原始字节**读取请求体 — 先解析 JSON 会改变字节表示，从而导致签名校验失败。</Warning>
+<Warning>校验前请以 **原始字节** 形式读取 body —— 先解析 JSON 会改变字节表示，从而导致签名校验失败。</Warning>
 
 ## 重试策略
 
-投递失败后会按指数退避重试：5s → 30s → 5m → 30m → 2h。连续失败 5 次后，Webhook 将被标记为 `failed`，并向您发送邮件告警。
+投递失败时，我们会按指数退避重试：5s → 30s → 5m → 30m → 2h。连续失败 5 次后，我们会将该 webhook 标记为 `failed`，并向你发送邮件告警。
 
-<Warning>您的接收端必须在 **30 秒**内响应，否则本次投递会被判定为失败。</Warning>
+<Warning>你的端点必须在 **30 秒** 内响应，否则我们会将本次投递判定为失败。</Warning>

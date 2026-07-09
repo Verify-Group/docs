@@ -1,9 +1,9 @@
 ---
-title: Sinistres
-description: Structure, cycle de vie et métadonnées de workflow de l'objet sinistre d'assurance sur les branches auto, santé, vie, biens et accidents du travail.
+title: Réclamations
+description: Structure, cycle de vie des statuts et métadonnées de flux de l'objet réclamation d'assurance pour les branches automobile, santé, vie, dommages aux biens et accidents du travail.
 ---
 
-## Lignes d'activité
+## Branches d'activité
 
 `MOTOR` · `HEALTH` · `LIFE` · `PROPERTY` · `WORKERS_COMPENSATION`
 
@@ -14,11 +14,11 @@ DRAFT → SUBMITTED → UNDER_REVIEW → INVESTIGATING → PENDING_APPROVAL → 
                                                   ↘ PENDING_EVIDENCE / REJECTED
 ```
 
-## Métadonnées de workflow
+## Métadonnées de flux
 
 | Clé | Étape |
 |---|---|
-| `metadata.intake[]` | Réception FNOL |
+| `metadata.intake[]` | Prise en charge FNOL |
 | `metadata.validation[]` | Vérification de la couverture |
 | `metadata.investigation[]` | Enquête sur le terrain |
 | `metadata.approval[]` | Décision d'approbation |

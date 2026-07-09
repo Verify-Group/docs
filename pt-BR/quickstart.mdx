@@ -1,11 +1,11 @@
 ---
 title: Início rápido
-description: Obtenha credenciais da API da Verify Group, autentique-se e faça sua primeira chamada de KYC ou sinistros em menos de cinco minutos com exemplos em curl.
+description: Obtenha suas credenciais da API Verify Group, autentique-se e faça sua primeira chamada de KYC ou sinistros em menos de cinco minutos com exemplos curl prontos para copiar e colar.
 ---
 
 ## 1. Obtenha suas credenciais
 
-Acesse o [Dashboard](https://app.verify-group.io) e vá para **Settings → API Keys**.
+Faça login no [Dashboard](https://app.verify-group.io) e vá em **Configurações → Chaves de API**.
 
 ## 2. Autentique-se
 
@@ -26,7 +26,7 @@ curl -X POST https://gateway.verify-group.io/api/v1/auth/login \
 }
 ```
 
-## 3. Inclua o cabeçalho da sua organização
+## 3. Inclua o cabeçalho de organização
 
 ```bash
 export ACCESS_TOKEN="eyJhbGciOiJSUzI1NiJ9..."
@@ -61,6 +61,6 @@ curl -X POST https://gateway.verify-group.io/api/v1/kyc \
 <CardGroup cols={2}>
   <Card title="Autenticação" icon="lock" href="/authentication">Fluxo de refresh JWT e gerenciamento de tokens.</Card>
   <Card title="Guia de sinistros" icon="file-text" href="/guides/claims-management">Crie e processe sinistros de ponta a ponta.</Card>
-  <Card title="Triagem de sanções" icon="shield" href="/guides/sanctions-screening">Faça triagem contra listas globais de vigilância.</Card>
+  <Card title="Triagem de sanções" icon="shield" href="/guides/sanctions-screening">Faça triagem contra listas restritivas globais.</Card>
   <Card title="SDK JavaScript" icon="box" href="/sdks/javascript">Use o SDK tipado.</Card>
 </CardGroup>

@@ -1,6 +1,6 @@
 ---
 title: Jetons
-description: Durées de vie des jetons d'accès et de rafraîchissement, structure du payload JWT et rotation des jetons refresh pour l'API Verify Group Platform.
+description: Durées de vie des jetons d'accès et de rafraîchissement, structure de la charge utile JWT et comportement de rotation des jetons de rafraîchissement pour l'API Verify Group Platform.
 ---
 
 | Type | Durée de vie |
@@ -8,10 +8,10 @@ description: Durées de vie des jetons d'accès et de rafraîchissement, structu
 | Jeton d'accès | 1 heure |
 | Jeton de rafraîchissement | 30 jours |
 
-## Payload décodé
+## Charge utile décodée
 
 ```json
 {"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
 ```
 
-Chaque utilisation d'un jeton de rafraîchissement **fait tourner** les deux jetons — l'ancienne paire est immédiatement invalidée.
+Chaque utilisation d'un jeton de rafraîchissement provoque une **rotation** des deux jetons — l'ancienne paire est immédiatement invalidée.

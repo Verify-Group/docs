@@ -1,20 +1,20 @@
 ---
 title: إدارة الأدلة
-description: ارفع أدلة المطالبة عبر نقطة الوسيط، ووسم الملفات، وأجرِ موافقات المراجعين، وأدر انتقالات حالة الأدلة على واجهة برمجة تطبيقات Verify Group بمرونة.
+description: ارفع أدلة المطالبات عبر نقطة نهاية الوسيط، ووسم الملفات، وشغّل موافقات المراجعين، وأدر انتقالات حالة الأدلة على Verify Group API.
 ---
 
 ## الرفع (موصى به لعملاء المتصفح)
 
-يوجّه الرفع عبر الخادم لتجنّب مشكلات CORS:
+يوجّه الرفع عبر الخلفية لتجنب مشكلات CORS:
 
 ```bash
 POST /api/v1/evidence/public-upload/proxy-upload
 Content-Type: multipart/form-data
 ```
 
-يُرجع `evidenceId` و`signedUrl` للمعاينة الفورية.
+يُعيد `evidenceId` و`signedUrl` للمعاينة الفورية.
 
-## سرد الأدلة الخاصة بمطالبة
+## سرد الأدلة لمطالبة
 
 ```bash
 GET /api/v1/evidence?claimId={claimId}
@@ -41,6 +41,6 @@ POST /api/v1/evidence/{id}/review
 | الحالة | المعنى |
 |---|---|
 | `PENDING` | بانتظار المراجعة |
-| `APPROVED` | تم التحقق منها وقبولها |
-| `REJECTED` | مرفوضة |
+| `APPROVED` | تم التحقق منه وقبوله |
+| `REJECTED` | مرفوض |
 | `UNDER_REVIEW` | قيد التحليل الجنائي |

@@ -1,9 +1,9 @@
 ---
 title: Tokens
-description: Duração do access token e do refresh token, estrutura do payload JWT e comportamento de rotação de refresh tokens na API da Verify Group Platform.
+description: Tempos de vida do token de acesso e do refresh token, estrutura do payload JWT e comportamento de rotação do refresh token na API da plataforma Verify Group.
 ---
 
-| Tipo | Duração |
+| Tipo | Tempo de vida |
 |---|---|
 | Token de acesso | 1 hora |
 | Refresh token | 30 dias |
@@ -14,4 +14,4 @@ description: Duração do access token e do refresh token, estrutura do payload 
 {"sub":"user-uuid","email":"user@example.com","organizationId":"org-uuid","roles":["claims_manager"]}
 ```
 
-Cada uso do refresh token **rotaciona** os dois tokens — o par antigo é invalidado imediatamente.
+Cada uso de refresh token **rotaciona** ambos os tokens — o par antigo é imediatamente invalidado.

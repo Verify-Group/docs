@@ -1,6 +1,6 @@
 ---
 title: Verificação KYC
-description: Execute KYC de pessoas físicas e empresas na Verify Group, consulte o status, sincronize com participantes e dispare KYC em toda a organização.
+description: Execute KYC individual e empresarial pela Verify Group, verifique o status, sincronize resultados com participantes e dispare KYC em toda a organização.
 ---
 
 ## Executar KYC
@@ -21,7 +21,7 @@ POST /api/v1/kyc
 }
 ```
 
-## Consultar status
+## Verificar status
 
 ```bash
 GET /api/v1/kyc/{id}
@@ -35,7 +35,7 @@ GET /api/v1/kyc/{id}
 | `failed` | Não foi possível verificar |
 | `manual_review` | Requer revisão humana |
 
-## Sincronizar resultado ao participante
+## Sincronizar resultado com o participante
 
 ```bash
 POST /api/v1/kyc/{id}/sync
@@ -52,4 +52,4 @@ POST /api/v1/organizations/{id}/run-kyc
 {"autoSync": true}
 ```
 
-Cria automaticamente registros de participante para todos os diretores identificados.
+Cria automaticamente registros de participantes para todos os diretores identificados.
