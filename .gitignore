@@ -1,0 +1,5 @@
+
+# Large video files — host externally (GitHub limit 100MB)
+manuals/*.mp4
+manuals/*.mov
+manuals/*.avi

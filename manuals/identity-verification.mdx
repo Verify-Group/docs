@@ -1,0 +1,239 @@
+---
+title: Individual Identity Verification (KYC)
+description: A step-by-step guide to verifying an individual's identity using Verify Group's Standard KYC and Advanced KYC flows, with screenshots at every stage.
+---
+
+## Overview
+
+**Individual KYC (Know Your Customer)** is the process of confirming that a person is who they claim to be. Verify Group supports two levels of individual identity verification:
+
+- **Standard KYC** — A focused identity check using national ID or passport number. Suitable for basic onboarding and compliance requirements.
+- **Advanced KYC** — A comprehensive multi-step check that also verifies biometrics, contact details, sanctions screening, financial footprint, and digital presence. Suitable for high-risk onboarding, insurance claims, and regulatory compliance.
+
+Both flows produce a **verification result** — a structured report you can save, share, and refer back to at any time.
+
+<Card title="Watch the Individual KYC Walkthrough" icon="circle-play" href="https://www.youtube.com/@VerifyGroup">
+  A step-by-step video demonstration of the Standard and Advanced Individual KYC flows from start to result.
+</Card>
+
+---
+
+## Before you begin
+
+To run an individual KYC check, you need:
+
+- The participant's **full legal name** (as it appears on their government-issued ID)
+- Their **national ID number**, passport number, or alien ID number
+- Their **country of residence** (for routing the verification to the correct data provider)
+
+Optionally, for advanced checks:
+- Phone number (for contact verification)
+- Date of birth
+- Email address
+
+---
+
+## Starting a verification
+
+<Steps>
+  <Step title="Navigate to Checks in the sidebar">
+    In the left sidebar, click **Checks**. This opens the Verification hub where you can start new checks or review past ones.
+  </Step>
+  <Step title="Select Individual Verification">
+    Under **Individual**, choose either **Standard** or **Advanced** depending on the depth of check you need. If you are unsure, start with Standard — you can always escalate to Advanced later.
+  </Step>
+</Steps>
+
+---
+
+## Standard KYC — Identity check
+
+The Standard flow asks for the minimum information needed to verify someone's identity against government records.
+
+### Step 1 — Enter the participant's details
+
+![The Standard KYC initial screen with the participant search form](/manuals/kyc_individual_standard.png)
+
+On this screen you will see fields for:
+
+- **Identifier type** — select the type of ID you have (National ID, Passport, Alien ID, KRA PIN)
+- **Identifier number** — type the exact number from the physical document
+- **Country** — select the country that issued the document
+
+<Warning>
+  Make sure you copy the ID number exactly as it appears on the physical document, including any leading zeros. A single incorrect digit will cause the verification to fail.
+</Warning>
+
+Click **Run Verification** to submit the check. The platform sends the details to the relevant identity data provider and waits for a response, which typically arrives in under 30 seconds.
+
+### Step 2 — Review the identity result
+
+![The Standard KYC identity result screen showing matched personal details](/manuals/kyc_individual_identity.png)
+
+When the result comes back, the screen displays a structured report showing:
+
+| Field | Description |
+|---|---|
+| **Name** | The full name returned by the identity registry, compared against what you submitted |
+| **Date of Birth** | The registered date of birth |
+| **Gender** | As recorded in the government registry |
+| **ID Status** | Whether the document is active, expired, or flagged |
+| **Match Score** | A confidence percentage indicating how closely the submitted data matched the registry record |
+
+A **green badge** marked "Verified" means the identity was confirmed. A **red badge** means the data did not match — check the ID number and resubmit, or escalate to Advanced KYC for a more thorough investigation.
+
+### Step 3 — View the full result
+
+![The Individual KYC results summary page](/manuals/kyc_individual_results.png)
+
+The results summary brings all the check components onto a single screen. From here you can:
+
+- **Download the report** as a PDF for your records
+- **Sync the result** to the participant's profile (updates their KYC status automatically)
+- **Escalate to Advanced KYC** if the Standard check was inconclusive
+
+---
+
+## Advanced KYC — Multi-step comprehensive check
+
+The Advanced flow adds several additional verification layers on top of the Standard identity check. Each step can be completed independently, and you can return to complete remaining steps later if needed.
+
+### Step 1 — Start the Advanced check
+
+![The Advanced KYC initial screen showing the multi-step flow](/manuals/kyc_individual_advance_initital.png)
+
+The Advanced KYC screen shows a **progress tracker** at the top, listing all the steps included in this flow. Each step is marked as Pending, In Progress, or Completed. You move through them sequentially, but you can save your progress and return at any time.
+
+### Step 2 — Biometrics verification
+
+![The biometrics step showing face capture and liveness detection](/manuals/kyc_individual_biometrics.png)
+
+The biometrics step compares the participant's **live facial image** against the photo stored in the government ID registry. This step guards against impersonation — confirming that the person presenting the ID is the same person it was issued to.
+
+On this screen:
+- The participant is prompted to **take a selfie** or upload a recent photo
+- The system compares this image against the registered photo using facial recognition
+- A **liveness score** is calculated to confirm the image is of a real, present person (not a printed photo or screen recording)
+
+<Note>
+  For remote verifications, the participant can complete the biometrics step through a secure link sent to their phone. They are not required to be present at your office.
+</Note>
+
+### Step 3 — Contact verification
+
+![The contact verification step showing phone and email fields](/manuals/kyc_individual_contact.png)
+
+In this step, you verify that the contact details provided by the participant actually belong to them:
+
+- **Phone verification** — a one-time code is sent to the mobile number; the participant must enter the code to confirm ownership
+- **Email verification** — a confirmation link is sent to the email address
+
+If the participant passes both checks, their contact details are marked as **verified** and stored against their profile.
+
+### Step 4 — Sanctions screening
+
+![The sanctions check screen showing watchlist results](/manuals/kyc_individual_sactions.png)
+
+The sanctions step screens the participant against major global watchlists, including:
+
+- **OFAC SDN List** (US Treasury)
+- **UN Security Council Consolidated List**
+- **EU Sanctions List**
+- **UK HM Treasury Financial Sanctions**
+- **Interpol Notices**
+- Regional African watchlists
+
+The result shows a **risk score** and any specific matches found. A **green No Match** result means the person does not appear on any screened list. A **red Match** result requires manual review by your compliance team before proceeding.
+
+### Step 5 — Digital footprint
+
+![The digital footprint screen showing social and professional presence data](/manuals/kyc_individual_digital_footprint.png)
+
+The digital footprint step uses open-source intelligence (OSINT) techniques to build a picture of the participant's online presence:
+
+- **Social media profiles** — whether the participant has verifiable social media accounts consistent with their claimed identity
+- **Professional listings** — company directories, LinkedIn, and professional registries
+- **Email domain reputation** — whether the email address is from a reputable provider or a disposable address
+- **Phone number intelligence** — carrier, country of registration, and whether the number has been flagged for fraud
+
+This step is particularly useful for detecting **synthetic identities** — fictitious persons constructed from real data belonging to multiple different people.
+
+### Step 6 — Financial verification
+
+![The financial verification step showing income and creditworthiness data](/manuals/kyc_individual_advance_finance.png)
+
+The financial step verifies the participant's declared income, employment status, and creditworthiness against formal data sources. This is relevant for insurance underwriting, loan applications, and high-value transaction screening.
+
+The results display:
+
+- **Credit score** and rating band
+- **Employment status** as reported by formal payroll and tax records
+- **Outstanding obligations** — active loans, debt facilities, or defaults
+- **Adverse information flags** — county court judgements, bankruptcies, or regulatory sanctions
+
+### Step 7 — Review the Advanced results
+
+![The Advanced KYC results summary showing all steps and scores](/manuals/kyc_individual_advance_results.png)
+
+Once all steps are complete (or as many as you have chosen to run), the **Advanced Results** screen summarises every check into a single view:
+
+| Section | What it tells you |
+|---|---|
+| **Overall Risk Rating** | Low / Medium / High / Critical — a composite score across all checks |
+| **Identity** | Whether the national ID matched the registry |
+| **Biometrics** | Face match score and liveness result |
+| **Contact** | Whether phone and email were successfully verified |
+| **Sanctions** | Match status against global watchlists |
+| **Digital Footprint** | Online presence consistency score |
+| **Financial** | Credit and employment verification outcome |
+
+Use this summary to make an **informed decision** about whether to proceed with onboarding the participant, require further documentation, or decline.
+
+---
+
+## Reviewing past verifications
+
+### KYC History
+
+![The KYC History screen showing a table of all past verification requests](/manuals/kyc_history.png)
+
+The **History** section (found under **Checks → History** in the sidebar) shows every verification your organisation has ever run, in chronological order.
+
+You can filter and search by:
+- **Participant name or ID number**
+- **Verification type** (Standard, Advanced, Business, Document, etc.)
+- **Status** (Pending, Completed, Failed, In Review)
+- **Date range**
+- **Assigned user** (the team member who ran the check)
+
+Click any row to open the full verification record, including the original report, all check results, and the audit trail of who reviewed it.
+
+<Tip>
+  Use the **Export** button in the top-right of the History table to download a CSV of verification records for reporting or audit purposes.
+</Tip>
+
+---
+
+## Understanding verification statuses
+
+| Status | What it means |
+|---|---|
+| **Pending** | The verification was submitted and is waiting for a response from the data provider |
+| **Processing** | The provider is actively working on the result |
+| **Verified** | The identity was confirmed successfully |
+| **Failed** | The data did not match — the check returned a negative result |
+| **Manual Review** | The result was inconclusive and needs a human reviewer to make a final decision |
+| **Error** | A technical problem occurred — resubmit or contact support |
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Business Verification" icon="building" href="/manuals/business-verification">
+    Run KYC/KYB on companies and business entities.
+  </Card>
+  <Card title="Document Verification" icon="file-check" href="/manuals/document-asset-verification">
+    Verify the authenticity of physical documents.
+  </Card>
+</CardGroup>

@@ -27,7 +27,7 @@
     {
       "name": "Status",
       "icon": "signal",
-      "url": "https://status.verify-group.io"
+      "url": "https://status.verify-group.com"
     },
     {
       "name": "GitHub",
@@ -37,6 +37,40 @@
   ],
   "navigation": {
     "tabs": [
+      {
+        "tab": "User Manual",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "manuals/introduction",
+              "manuals/getting-started",
+              "manuals/dashboard"
+            ]
+          },
+          {
+            "group": "Identity Verification",
+            "pages": [
+              "manuals/identity-verification",
+              "manuals/business-verification",
+              "manuals/document-asset-verification",
+              "manuals/custom-checks"
+            ]
+          },
+          {
+            "group": "Claims & Evidence",
+            "pages": [
+              "manuals/claims-management"
+            ]
+          },
+          {
+            "group": "Communication",
+            "pages": [
+              "manuals/messaging"
+            ]
+          }
+        ]
+      },
       {
         "tab": "Documentation",
         "groups": [
